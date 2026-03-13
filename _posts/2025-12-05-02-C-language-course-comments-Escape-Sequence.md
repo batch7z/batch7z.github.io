@@ -115,7 +115,18 @@ author: batch7z
 .blist { margin:.5rem 0 1rem; padding:0; list-style:none; direction:rtl; }
 .blist li { padding:.3rem 0 .3rem 0; padding-right:1.4rem; position:relative; font-size:.92rem; color:var(--text-dim); line-height:1.7; }
 .blist li::before { content:"◆"; color:var(--purple-lite); font-size:.55rem; position:absolute; right:0; top:.55rem; }
-.blist li code { background:rgba(155,89,208,.14); color:var(--purple-lite); padding:.05rem .35rem; border-radius:4px; font-family:'Fira Code',monospace; font-size:.83rem; }
+.blist li code { 
+  background: rgba(155, 89, 208, 0.14); 
+  color: var(--purple-lite); 
+  padding: .05rem .35rem; 
+  border-radius: 4px; 
+  font-family: 'Fira Code', monospace; 
+  font-size: .83rem;
+  /* التعديل اللي هيصلح الشكل */
+  direction: ltr;
+  display: inline-block;
+  unicode-bidi: isolate;
+}
 .blist li strong { color:var(--text); }
 .blist .sub { margin:.2rem 0 0 0; padding:0; list-style:none; }
 .blist .sub li { font-size:.88rem; padding-right:1.4rem; }
