@@ -108,7 +108,7 @@ author: batch7z
 <div id="full" class="px-sub"><span class="sh-pre">&gt;_</span><span class="sh-lbl">الكود كامل</span></div>
 <div class="cb">
   <div class="cb-head"><span class="dot-r"></span><span class="dot-y"></span><span class="dot-g"></span><span class="cb-lang">C</span><button class="cb-copy" onclick="cp(this)">Copy</button></div>
-  <pre><code><span class="pp">#include</span> <span class="st">&lt;stdio.h&gt;</span>
+  <pre><code><span class="pp">&#35;include</span> <span class="st">&lt;stdio.h&gt;</span>
 
 <span class="tp">int</span> <span class="fn">main</span>() {
     <span class="fn">printf</span>(<span class="st">"test\n"</span>);
@@ -122,7 +122,7 @@ author: batch7z
 <div id="inc" class="px-sub"><span class="sh-pre">&gt;_</span><span class="sh-code">&#35;include &lt;stdio.h&gt;</span></div>
 <div class="cb">
   <div class="cb-head"><span class="dot-r"></span><span class="dot-y"></span><span class="dot-g"></span><span class="cb-lang">C</span><button class="cb-copy" onclick="cp(this)">Copy</button></div>
-  <pre><code><span class="pp">#include</span> <span class="st">&lt;stdio.h&gt;</span></code></pre>
+  <pre><code><span class="pp">&#35;include</span> <span class="st">&lt;stdio.h&gt;</span></code></pre>
 </div>
 <ul class="blist">
   <li>دي تعليمة <strong>Preprocessor</strong></li>
