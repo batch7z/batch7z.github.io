@@ -43,7 +43,7 @@ author: batch7z
 /* ══ SUB-HEADER ══ */
 .px-sub {
   display:flex; align-items:center; gap:.85rem;
-  margin:2.2rem 0 1rem; direction:rtl;
+  margin:2.2rem 0 1rem; direction:ltr;
   font-family:'Cairo',sans-serif;
   font-size:1.05rem; font-weight:700; color:var(--text);
 }
@@ -55,7 +55,7 @@ author: batch7z
 }
 .px-sub::after {
   content:''; flex:1; height:1px;
-  background:linear-gradient(to left,transparent,rgba(192,132,252,.25));
+  background:linear-gradient(to right,transparent,rgba(192,132,252,.25));
 }
 .sub-pre {
   font-family:'Fira Code',monospace; color:var(--purple-lite);
