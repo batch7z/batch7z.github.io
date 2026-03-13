@@ -27,9 +27,9 @@ author: batch7z
 }
 .pw{font-family:'Cairo','Segoe UI',sans-serif;color:var(--text);line-height:1.85;direction:rtl;}
 .px-head{font-family:'Press Start 2P',monospace;color:var(--purple);font-size:1.45rem;line-height:1.65;margin:2.5rem 0 1rem;padding-bottom:.6rem;border-bottom:1px solid var(--border);direction:ltr;text-shadow:0 0 22px rgba(155,89,208,.45);}
-.px-sub{display:flex;align-items:center;gap:.85rem;margin:2.2rem 0 1rem;direction:rtl;}
+.px-sub{display:flex;align-items:center;gap:.85rem;margin:2.2rem 0 1rem;direction:ltr;}
 .px-sub::before{content:'';display:block;width:4px;min-height:1.6rem;border-radius:4px;background:linear-gradient(180deg,var(--purple-lite) 0%,#f85149 100%);flex-shrink:0;box-shadow:0 0 10px rgba(192,132,252,.4);}
-.px-sub::after{content:'';flex:1;height:1px;background:linear-gradient(to left,transparent,rgba(192,132,252,.25));}
+.px-sub::after{content:'';flex:1;height:1px;background:linear-gradient(to right,transparent,rgba(192,132,252,.25));}
 .sh-pre{font-family:'Fira Code',monospace;color:var(--purple-lite);font-size:.78rem;opacity:.55;flex-shrink:0;letter-spacing:1px;}
 .sh-code{font-family:'Fira Code',monospace;color:var(--purple-lite);font-size:.9rem;font-weight:600;background:rgba(155,89,208,.13);padding:.15rem .55rem;border-radius:5px;flex-shrink:0;}
 .sh-lbl{font-family:'Cairo',sans-serif;color:var(--text-dim);font-size:.95rem;font-weight:600;}
