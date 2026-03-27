@@ -4,7 +4,6 @@ import avatarImg from "@/assets/batch-avatar.jpg";
 const HeroSection = () => {
   return (
     <section className="relative min-h-screen flex flex-col items-center justify-center grid-bg scanlines overflow-hidden">
-      {/* Floating particles */}
       {[...Array(6)].map((_, i) => (
         <div
           key={i}
@@ -17,7 +16,6 @@ const HeroSection = () => {
         />
       ))}
 
-      {/* Avatar */}
       <motion.div
         initial={{ scale: 0, rotate: -180 }}
         animate={{ scale: 1, rotate: 0 }}
@@ -26,31 +24,48 @@ const HeroSection = () => {
       >
         <div className="absolute inset-0 rounded-2xl bg-primary/20 pulse-ring" />
         <div className="w-36 h-36 rounded-2xl overflow-hidden gradient-border glow-cyan">
-          <img
-            src={avatarImg}
-            alt="Batch_7z"
-            className="w-full h-full object-cover"
-          />
+          <img src={avatarImg} alt="Batch_7z" className="w-full h-full object-cover" />
         </div>
       </motion.div>
 
-      {/* Title */}
       <motion.h1
         initial={{ opacity: 0, y: 30 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6, delay: 0.3 }}
-        className="font-display text-4xl md:text-6xl font-bold text-center tracking-tight mb-6"
+        className="font-display text-4xl md:text-6xl font-bold text-center tracking-tight mb-4"
       >
-        <span className="glow-text-cyan text-primary">Analyzing Malware.</span>
-        <br />
-        <span className="glow-text-pink text-accent">Breaking Systems.</span>
+        <span className="glow-text-cyan text-primary">Batch_7z</span>
       </motion.h1>
 
-      {/* Terminal prompt */}
+      <motion.p
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6, delay: 0.45 }}
+        className="text-muted-foreground text-sm md:text-base text-center max-w-lg mb-2"
+      >
+        طالب في مجال الأمن السيبراني — أتعلم وأشارك ملخصاتي
+      </motion.p>
+
+      <motion.div
+        initial={{ opacity: 0, y: 15 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6, delay: 0.55 }}
+        className="flex flex-wrap items-center justify-center gap-3 mb-8"
+      >
+        {["Malware Dev", "Malware Analysis", "Reverse Engineering", "Cryptography"].map((skill) => (
+          <span
+            key={skill}
+            className="text-[10px] tracking-[0.15em] px-3 py-1 rounded border border-border bg-muted/50 text-muted-foreground"
+          >
+            {skill}
+          </span>
+        ))}
+      </motion.div>
+
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6, delay: 0.6 }}
+        transition={{ duration: 0.6, delay: 0.7 }}
         className="bg-muted/50 border border-border rounded-lg px-6 py-3 backdrop-blur-sm"
       >
         <span className="text-primary text-sm">root@batch7z:~$</span>
@@ -58,7 +73,6 @@ const HeroSection = () => {
         <span className="text-primary cursor-blink ml-1">█</span>
       </motion.div>
 
-      {/* Scroll indicator */}
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}

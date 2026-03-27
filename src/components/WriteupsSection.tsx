@@ -4,53 +4,60 @@ interface WriteupCard {
   tags: string[];
   title: string;
   description: string;
-  difficulty: "LOW" | "MEDIUM" | "HIGH" | "EXTREME";
+  category: "malware" | "reverse" | "crypto" | "c-lang";
 }
 
 const writeups: WriteupCard[] = [
   {
-    tags: ["MALWARE", "PE"],
-    title: "UPX Multi-Layer Unpacking — Manual Approach",
-    description: "Manually unpacking a multi-layered UPX packed binary using x64dbg and reconstructing the IAT for static analysis.",
-    difficulty: "HIGH",
+    tags: ["C", "ملخص"],
+    title: "المؤشرات في لغة C — Pointers",
+    description: "شرح كامل للمؤشرات وعلاقتها بالذاكرة، pointer arithmetic، و double pointers مع أمثلة عملية.",
+    category: "c-lang",
   },
   {
-    tags: ["REVERSE", "CRACKME"],
-    title: "Anti-Debug Bypass — TLS Callbacks & Timing Checks",
-    description: "Bypassing anti-debugging techniques including TLS callbacks, NtQueryInformationProcess, and RDTSC timing checks.",
-    difficulty: "MEDIUM",
+    tags: ["C", "ملخص"],
+    title: "إدارة الذاكرة — Memory Management",
+    description: "malloc, calloc, realloc, free — كل اللي محتاج تعرفه عن إدارة الذاكرة الديناميكية في C.",
+    category: "c-lang",
+  },
+  {
+    tags: ["C", "ملخص"],
+    title: "Structures & Unions",
+    description: "الفرق بين struct و union وإزاي تستخدمهم في بناء data types مخصصة.",
+    category: "c-lang",
+  },
+  {
+    tags: ["MALWARE", "DEV"],
+    title: "Process Injection — CreateRemoteThread",
+    description: "شرح تقنية حقن الكود في عمليات أخرى باستخدام CreateRemoteThread و VirtualAllocEx.",
+    category: "malware",
+  },
+  {
+    tags: ["REVERSE", "PE"],
+    title: "PE File Format — تحليل هيكل الملفات التنفيذية",
+    description: "فهم بنية ملفات PE: DOS Header, PE Header, Sections, Import/Export Tables.",
+    category: "reverse",
   },
   {
     tags: ["CRYPTO", "AES"],
-    title: "Custom AES Implementation — Side Channel Attack",
-    description: "Exploiting a vulnerable custom AES implementation through cache-timing side channel analysis to recover the encryption key.",
-    difficulty: "EXTREME",
-  },
-  {
-    tags: ["MALWARE", "C2"],
-    title: "RAT Analysis — C2 Protocol Reverse Engineering",
-    description: "Reverse engineering a custom RAT's C2 communication protocol to understand command structure and extract IOCs.",
-    difficulty: "HIGH",
-  },
-  {
-    tags: ["REVERSE", "DOTNET"],
-    title: ".NET Obfuscation — ConfuserEx Deobfuscation",
-    description: "Deobfuscating ConfuserEx protected .NET assemblies using de4dot and manual control flow deobfuscation techniques.",
-    difficulty: "MEDIUM",
-  },
-  {
-    tags: ["CRYPTO", "RSA"],
-    title: "RSA Padding Oracle — Bleichenbacher Attack",
-    description: "Implementing Bleichenbacher's adaptive chosen-ciphertext attack against PKCS#1 v1.5 to decrypt RSA ciphertext.",
-    difficulty: "EXTREME",
+    title: "خوارزمية AES — شرح مبسط",
+    description: "شرح خطوات التشفير في AES: SubBytes, ShiftRows, MixColumns, AddRoundKey.",
+    category: "crypto",
   },
 ];
 
-const difficultyColor: Record<string, string> = {
-  LOW: "text-primary",
-  MEDIUM: "text-glow-purple",
-  HIGH: "text-accent",
-  EXTREME: "text-destructive",
+const categoryColors: Record<string, string> = {
+  malware: "border-accent/30 hover:border-accent/60",
+  reverse: "border-primary/30 hover:border-primary/60",
+  crypto: "border-glow-purple/30 hover:border-glow-purple/60",
+  "c-lang": "border-primary/30 hover:border-primary/60",
+};
+
+const categoryBadge: Record<string, string> = {
+  malware: "text-accent",
+  reverse: "text-primary",
+  crypto: "text-glow-purple",
+  "c-lang": "text-primary",
 };
 
 const WriteupsSection = () => {
@@ -65,22 +72,22 @@ const WriteupsSection = () => {
         >
           <span className="text-xs text-muted-foreground tracking-[0.3em]">03</span>
           <h2 className="font-display text-3xl font-bold mt-2 text-foreground">
-            WRITEUPS
+            WRITEUPS & NOTES
           </h2>
           <p className="text-muted-foreground text-sm mt-2">
-            Field reports from malware labs & CTF challenges
+            ملخصاتي ومذكراتي في البرمجة والأمن السيبراني
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
           {writeups.map((writeup, i) => (
             <motion.div
               key={i}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ delay: i * 0.1 }}
-              className="group bg-card border border-border rounded-lg p-5 hover:border-primary/30 transition-all duration-300 cursor-pointer"
+              transition={{ delay: i * 0.08 }}
+              className={`group bg-card border rounded-lg p-5 transition-all duration-300 cursor-pointer ${categoryColors[writeup.category]}`}
             >
               <div className="flex items-center gap-2 mb-3">
                 {writeup.tags.map((tag, j) => (
@@ -89,20 +96,15 @@ const WriteupsSection = () => {
                   </span>
                 ))}
               </div>
-              <h3 className="font-display text-sm font-semibold text-foreground mb-2 group-hover:text-primary transition-colors">
+              <h3 className={`font-display text-sm font-semibold mb-2 transition-colors ${categoryBadge[writeup.category]}`}>
                 {writeup.title}
               </h3>
-              <p className="text-xs text-muted-foreground leading-relaxed mb-4">
+              <p className="text-xs text-muted-foreground leading-relaxed mb-4" dir="rtl">
                 {writeup.description}
               </p>
-              <div className="flex items-center justify-between">
-                <span className={`text-[10px] font-bold tracking-[0.2em] ${difficultyColor[writeup.difficulty]}`}>
-                  {writeup.difficulty}
-                </span>
-                <span className="text-xs text-muted-foreground group-hover:text-primary transition-colors">
-                  READ →
-                </span>
-              </div>
+              <span className="text-xs text-muted-foreground group-hover:text-primary transition-colors">
+                READ →
+              </span>
             </motion.div>
           ))}
         </div>
