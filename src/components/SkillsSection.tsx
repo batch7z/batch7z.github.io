@@ -1,4 +1,6 @@
 import { motion } from "framer-motion";
+import { useNavigate } from "react-router-dom";
+import { BookOpen, Clock } from "lucide-react";
 
 const skills = [
   {
@@ -8,6 +10,8 @@ const skills = [
     color: "text-accent",
     bgColor: "bg-accent/5 border-accent/15 hover:border-accent/40",
     level: "Learning",
+    hasSummaries: false,
+    summaryCount: 0,
   },
   {
     title: "Malware Analysis",
@@ -16,6 +20,8 @@ const skills = [
     color: "text-primary",
     bgColor: "bg-primary/5 border-primary/15 hover:border-primary/40",
     level: "Learning",
+    hasSummaries: false,
+    summaryCount: 0,
   },
   {
     title: "Reverse Engineering",
@@ -24,6 +30,8 @@ const skills = [
     color: "text-secondary",
     bgColor: "bg-secondary/5 border-secondary/15 hover:border-secondary/40",
     level: "Learning",
+    hasSummaries: false,
+    summaryCount: 0,
   },
   {
     title: "Cryptography",
@@ -32,6 +40,8 @@ const skills = [
     color: "text-primary",
     bgColor: "bg-primary/5 border-primary/15 hover:border-primary/40",
     level: "Learning",
+    hasSummaries: false,
+    summaryCount: 0,
   },
   {
     title: "C Programming",
@@ -40,6 +50,9 @@ const skills = [
     color: "text-accent",
     bgColor: "bg-accent/5 border-accent/15 hover:border-accent/40",
     level: "Active",
+    hasSummaries: true,
+    summaryCount: 1,
+    blogAnchor: "#blog",
   },
 ];
 
@@ -70,7 +83,12 @@ const SkillsSection = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: i * 0.08 }}
-              className={`group border rounded-xl p-6 transition-all duration-500 cursor-default ${skill.bgColor}`}
+              className={`group relative border rounded-xl p-6 transition-all duration-500 ${skill.hasSummaries ? "cursor-pointer" : "cursor-default"} ${skill.bgColor}`}
+              onClick={() => {
+                if (skill.hasSummaries && skill.blogAnchor) {
+                  document.querySelector(skill.blogAnchor)?.scrollIntoView({ behavior: "smooth" });
+                }
+              }}
             >
               <div className="flex items-start justify-between mb-4">
                 <span className="text-3xl">{skill.icon}</span>
@@ -81,9 +99,26 @@ const SkillsSection = () => {
               <h3 className={`font-display text-lg font-semibold mb-2 ${skill.color}`}>
                 {skill.title}
               </h3>
-              <p className="text-xs text-muted-foreground leading-relaxed">
+              <p className="text-xs text-muted-foreground leading-relaxed mb-4">
                 {skill.description}
               </p>
+
+              {/* Hover badge */}
+              <div className={`flex items-center gap-1.5 transition-all duration-300 opacity-0 translate-y-1 group-hover:opacity-100 group-hover:translate-y-0 ${skill.hasSummaries ? "text-primary" : "text-muted-foreground"}`}>
+                {skill.hasSummaries ? (
+                  <>
+                    <BookOpen className="w-3.5 h-3.5" />
+                    <span className="text-[10px] tracking-wider font-mono">
+                      {skill.summaryCount} {skill.summaryCount === 1 ? "SUMMARY" : "SUMMARIES"} AVAILABLE
+                    </span>
+                  </>
+                ) : (
+                  <>
+                    <Clock className="w-3.5 h-3.5" />
+                    <span className="text-[10px] tracking-wider font-mono">COMING SOON</span>
+                  </>
+                )}
+              </div>
             </motion.div>
           ))}
         </div>
