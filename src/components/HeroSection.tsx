@@ -3,89 +3,92 @@ import avatarImg from "@/assets/batch-avatar.jpg";
 
 const HeroSection = () => {
   return (
-    <section className="relative min-h-screen flex flex-col items-center justify-center grid-bg scanlines overflow-hidden">
-      {[...Array(6)].map((_, i) => (
-        <div
-          key={i}
-          className="absolute w-1 h-1 rounded-full bg-primary/30 animate-float"
-          style={{
-            left: `${15 + i * 15}%`,
-            top: `${20 + (i % 3) * 25}%`,
-            animationDelay: `${i * 0.8}s`,
-          }}
-        />
-      ))}
+    <section className="relative min-h-screen flex items-center hex-grid noise overflow-hidden">
+      {/* Decorative elements */}
+      <div className="absolute top-20 left-10 w-px h-32 bg-gradient-to-b from-transparent via-primary/20 to-transparent" />
+      <div className="absolute top-40 right-16 w-px h-48 bg-gradient-to-b from-transparent via-secondary/15 to-transparent" />
+      <div className="absolute bottom-32 left-1/4 w-24 h-px bg-gradient-to-r from-transparent via-primary/15 to-transparent" />
 
-      <motion.div
-        initial={{ scale: 0, rotate: -180 }}
-        animate={{ scale: 1, rotate: 0 }}
-        transition={{ duration: 0.8, type: "spring" }}
-        className="relative mb-8"
-      >
-        <div className="absolute inset-0 rounded-2xl bg-primary/20 pulse-ring" />
-        <div className="w-36 h-36 rounded-2xl overflow-hidden gradient-border glow-cyan">
-          <img src={avatarImg} alt="Batch_7z" className="w-full h-full object-cover" />
-        </div>
-      </motion.div>
+      {/* Scan line */}
+      <div className="absolute inset-0 scan-line" />
 
-      <motion.h1
-        initial={{ opacity: 0, y: 30 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6, delay: 0.3 }}
-        className="font-display text-4xl md:text-6xl font-bold text-center tracking-tight mb-4"
-      >
-        <span className="glow-text-cyan text-primary">Batch_7z</span>
-      </motion.h1>
+      <div className="max-w-7xl mx-auto px-6 lg:px-8 w-full">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+          {/* Left: Text content */}
+          <div className="lg:col-span-7 space-y-8">
+            <motion.div
+              initial={{ opacity: 0, x: -40 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.7, delay: 0.3 }}
+            >
+              <div className="flex items-center gap-3 mb-6">
+                <div className="h-px w-8 bg-primary/50" />
+                <span className="text-[11px] tracking-[0.4em] text-primary font-mono">
+                  CYBERSECURITY STUDENT
+                </span>
+              </div>
 
-      <motion.p
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6, delay: 0.45 }}
-        className="text-muted-foreground text-sm md:text-base text-center max-w-lg mb-2"
-      >
-        طالب في مجال الأمن السيبراني — أتعلم وأشارك ملخصاتي
-      </motion.p>
+              <h1 className="font-display text-5xl md:text-7xl font-black leading-[0.95] mb-6">
+                <span className="text-foreground">I Break</span>
+                <br />
+                <span className="text-primary glow-text-green">Malware</span>
+                <br />
+                <span className="text-foreground">Apart</span>
+                <span className="text-secondary">.</span>
+              </h1>
 
-      <motion.div
-        initial={{ opacity: 0, y: 15 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6, delay: 0.55 }}
-        className="flex flex-wrap items-center justify-center gap-3 mb-8"
-      >
-        {["Malware Dev", "Malware Analysis", "Reverse Engineering", "Cryptography"].map((skill) => (
-          <span
-            key={skill}
-            className="text-[10px] tracking-[0.15em] px-3 py-1 rounded border border-border bg-muted/50 text-muted-foreground"
+              <p className="text-muted-foreground text-sm leading-relaxed max-w-md mb-8">
+                طالب بتعلم تحليل البرمجيات الخبيثة، الهندسة العكسية، تطوير الـ Malware، 
+                والتشفير. بوثق رحلتي وبشارك ملخصاتي هنا.
+              </p>
+
+              {/* Terminal prompt */}
+              <div className="bg-card/80 border border-border rounded-lg px-5 py-3 inline-block backdrop-blur-sm corner-decor">
+                <span className="text-primary text-xs">batch7z</span>
+                <span className="text-muted-foreground text-xs">@</span>
+                <span className="text-secondary text-xs">kali</span>
+                <span className="text-muted-foreground text-xs">:~$ </span>
+                <span className="text-foreground text-xs">file suspicious.exe</span>
+                <span className="text-primary cursor-blink ml-1 text-xs">▊</span>
+              </div>
+            </motion.div>
+          </div>
+
+          {/* Right: Avatar + Stats */}
+          <motion.div
+            initial={{ opacity: 0, x: 40 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.7, delay: 0.5 }}
+            className="lg:col-span-5 flex flex-col items-center lg:items-end gap-6"
           >
-            {skill}
-          </span>
-        ))}
-      </motion.div>
+            {/* Avatar */}
+            <div className="relative animate-float-slow">
+              <div className="w-52 h-52 md:w-64 md:h-64 rounded-2xl overflow-hidden gradient-border-green glow-green relative z-10">
+                <img src={avatarImg} alt="Batch_7z" className="w-full h-full object-cover" />
+              </div>
+              {/* Decorative frame */}
+              <div className="absolute -inset-3 rounded-3xl border border-primary/10" />
+              <div className="absolute -inset-6 rounded-3xl border border-primary/5" />
+            </div>
 
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6, delay: 0.7 }}
-        className="bg-muted/50 border border-border rounded-lg px-6 py-3 backdrop-blur-sm"
-      >
-        <span className="text-primary text-sm">root@batch7z:~$</span>
-        <span className="text-foreground text-sm ml-2">strings malware.exe | grep -i flag</span>
-        <span className="text-primary cursor-blink ml-1">█</span>
-      </motion.div>
+            {/* Status cards */}
+            <div className="flex gap-3">
+              {[
+                { label: "STATUS", value: "LEARNING", color: "text-primary" },
+                { label: "FOCUS", value: "MALWARE", color: "text-accent" },
+              ].map((item) => (
+                <div key={item.label} className="bg-card/60 border border-border rounded-lg px-4 py-2 backdrop-blur-sm">
+                  <span className="text-[9px] tracking-[0.3em] text-muted-foreground block">{item.label}</span>
+                  <span className={`text-xs font-bold ${item.color}`}>{item.value}</span>
+                </div>
+              ))}
+            </div>
+          </motion.div>
+        </div>
+      </div>
 
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 1.2 }}
-        className="absolute bottom-12 flex flex-col items-center gap-2"
-      >
-        <span className="text-xs tracking-[0.3em] text-muted-foreground">SCROLL_DOWN</span>
-        <motion.div
-          animate={{ y: [0, 8, 0] }}
-          transition={{ duration: 1.5, repeat: Infinity }}
-          className="w-px h-8 bg-gradient-to-b from-primary to-transparent"
-        />
-      </motion.div>
+      {/* Bottom gradient line */}
+      <div className="absolute bottom-0 left-0 right-0 h-px gradient-line" />
     </section>
   );
 };
