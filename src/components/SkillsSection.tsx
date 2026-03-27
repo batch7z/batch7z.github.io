@@ -81,7 +81,7 @@ const SkillsSection = () => {
               <h3 className={`font-display text-lg font-semibold mb-2 ${skill.color}`}>
                 {skill.title}
               </h3>
-              <p className="text-xs text-muted-foreground leading-relaxed" dir="rtl">
+              <p className="text-xs text-muted-foreground leading-relaxed">
                 {skill.description}
               </p>
             </motion.div>

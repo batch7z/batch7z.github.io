@@ -51,7 +51,7 @@ const AboutSection = () => {
             className="bg-card border border-border rounded-xl p-8"
           >
             <h3 className="font-display text-lg font-semibold text-foreground mb-4">
-              الأدوات اللي بستخدمها
+              My Toolkit
             </h3>
             <div className="grid grid-cols-2 gap-3">
               {[

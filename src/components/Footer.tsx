@@ -5,7 +5,7 @@ const socials = [
   { name: "GitHub", url: "https://github.com/batch7z", icon: Github },
   { name: "LinkedIn", url: "https://www.linkedin.com/in/batch-7z/", icon: Linkedin },
   { name: "X", url: "https://x.com/batch_7z", icon: Twitter },
-  { name: "Telegram", url: "https://t.me/batch7z", icon: Send },
+  { name: "Telegram", url: "https://t.me/batch_7z", icon: Send },
   { name: "Instagram", url: "https://www.instagram.com/batch_7z/", icon: Instagram },
   { name: "Facebook", url: "https://www.facebook.com/profile.php?id=100078981974023", icon: Facebook },
   { name: "YouTube", url: "https://youtube.com/@batch7z", icon: Youtube },
