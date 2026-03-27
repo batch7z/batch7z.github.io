@@ -8,14 +8,12 @@ export default {
     container: {
       center: true,
       padding: "2rem",
-      screens: {
-        "2xl": "1400px",
-      },
+      screens: { "2xl": "1400px" },
     },
     extend: {
       fontFamily: {
-        mono: ["'JetBrains Mono'", "monospace"],
-        display: ["'Space Grotesk'", "sans-serif"],
+        mono: ["'Fira Code'", "monospace"],
+        display: ["'Outfit'", "sans-serif"],
       },
       colors: {
         border: "hsl(var(--border))",
@@ -52,9 +50,9 @@ export default {
           foreground: "hsl(var(--card-foreground))",
         },
         glow: {
-          cyan: "hsl(var(--glow-cyan))",
+          green: "hsl(var(--glow-green))",
           purple: "hsl(var(--glow-purple))",
-          pink: "hsl(var(--glow-pink))",
+          amber: "hsl(var(--glow-amber))",
         },
         sidebar: {
           DEFAULT: "hsl(var(--sidebar-background))",
