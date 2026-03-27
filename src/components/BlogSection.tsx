@@ -1,4 +1,14 @@
 import { motion } from "framer-motion";
+import { Link } from "react-router-dom";
+import { blogPosts } from "@/data/blogPosts";
+
+const categoryTagClass: Record<string, string> = {
+  "C Programming": "tag-green",
+  "Malware": "tag-amber",
+  "Reverse Engineering": "tag-purple",
+  "Cryptography": "tag-purple",
+  "Assembly": "tag-amber",
+};
 
 const BlogSection = () => {
   return (
@@ -22,45 +32,70 @@ const BlogSection = () => {
           </p>
         </motion.div>
 
-        {/* Empty state — waiting for posts */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="border border-dashed border-border rounded-2xl p-16 flex flex-col items-center justify-center text-center"
-        >
-          <div className="w-16 h-16 rounded-2xl bg-muted/50 flex items-center justify-center mb-6">
-            <span className="text-3xl">📝</span>
-          </div>
-          <h3 className="font-display text-xl font-semibold text-foreground mb-2">
-            قريبًا...
-          </h3>
-          <p className="text-muted-foreground text-sm max-w-md mb-6" dir="rtl">
-            المدونة لسه في البداية — هنشر هنا ملخصاتي في لغة C، 
-            تحليل الـ Malware، الهندسة العكسية، والتشفير. تابعني!
-          </p>
-
-          {/* Preview of what's coming */}
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 w-full max-w-2xl">
-            {[
-              { title: "ملخصات C", icon: "💻", tag: "C LANG", tagClass: "tag-green" },
-              { title: "تحليل Malware", icon: "🔬", tag: "MALWARE", tagClass: "tag-amber" },
-              { title: "ملخصات Crypto", icon: "🔐", tag: "CRYPTO", tagClass: "tag-purple" },
-            ].map((item, i) => (
+        {/* Blog posts grid */}
+        {blogPosts.length > 0 ? (
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mb-8">
+            {blogPosts.map((post, i) => (
               <motion.div
-                key={item.title}
-                initial={{ opacity: 0, y: 10 }}
+                key={post.slug}
+                initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ delay: 0.2 + i * 0.1 }}
-                className="bg-card/60 border border-border rounded-xl p-4 text-center"
+                transition={{ delay: i * 0.08 }}
               >
-                <span className="text-2xl block mb-2">{item.icon}</span>
-                <span className={`text-[9px] tracking-[0.2em] px-2 py-0.5 rounded-full ${item.tagClass} inline-block mb-2`}>
-                  {item.tag}
-                </span>
-                <p className="text-xs text-muted-foreground">{item.title}</p>
+                <Link
+                  to={`/blog/${post.slug}`}
+                  className="group block bg-card/60 border border-border rounded-xl p-6 hover:border-primary/30 transition-all duration-500 h-full"
+                >
+                  <div className="flex items-center gap-2 mb-3">
+                    <span className={`text-[9px] tracking-wider px-2.5 py-0.5 rounded-full ${categoryTagClass[post.category] || "tag-green"}`}>
+                      {post.category}
+                    </span>
+                    <span className="text-[10px] text-muted-foreground">{post.date}</span>
+                  </div>
+                  <h3 className="font-display text-sm font-semibold text-foreground group-hover:text-primary transition-colors mb-3 leading-relaxed">
+                    {post.title}
+                  </h3>
+                  <div className="flex items-center gap-1.5 mb-4">
+                    {post.tags.slice(0, 3).map((tag) => (
+                      <span key={tag} className="text-[9px] px-1.5 py-0.5 rounded bg-muted text-muted-foreground">
+                        #{tag}
+                      </span>
+                    ))}
+                  </div>
+                  <div className="flex items-center justify-between">
+                    <span className="text-[10px] text-muted-foreground">
+                      {post.sections.length} أقسام
+                    </span>
+                    <span className="text-xs text-muted-foreground group-hover:text-primary transition-colors">
+                      READ →
+                    </span>
+                  </div>
+                </Link>
               </motion.div>
+            ))}
+          </div>
+        ) : null}
+
+        {/* Coming soon categories */}
+        <motion.div
+          initial={{ opacity: 0, y: 15 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="border border-dashed border-border rounded-xl p-8 flex flex-col items-center text-center"
+        >
+          <span className="text-[10px] tracking-[0.3em] text-muted-foreground mb-4">COMING SOON</span>
+          <div className="flex flex-wrap items-center justify-center gap-3">
+            {[
+              { label: "المزيد من ملخصات C", tagClass: "tag-green" },
+              { label: "Assembly Notes", tagClass: "tag-amber" },
+              { label: "Malware Analysis", tagClass: "tag-amber" },
+              { label: "Reverse Engineering", tagClass: "tag-purple" },
+              { label: "Cryptography", tagClass: "tag-purple" },
+            ].map((item) => (
+              <span key={item.label} className={`text-[10px] tracking-wider px-3 py-1.5 rounded-full ${item.tagClass}`}>
+                {item.label}
+              </span>
             ))}
           </div>
         </motion.div>

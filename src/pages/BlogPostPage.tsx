@@ -1,0 +1,98 @@
+import { useParams, Link } from "react-router-dom";
+import { motion } from "framer-motion";
+import { blogPosts } from "@/data/blogPosts";
+import BlogSectionCard from "@/components/BlogSectionCard";
+
+const BlogPostPage = () => {
+  const { slug } = useParams();
+  const post = blogPosts.find((p) => p.slug === slug);
+
+  if (!post) {
+    return (
+      <div className="min-h-screen bg-background flex items-center justify-center">
+        <div className="text-center">
+          <h1 className="font-display text-3xl font-bold text-foreground mb-4">404</h1>
+          <p className="text-muted-foreground mb-6">المقال مش موجود</p>
+          <Link to="/" className="text-primary text-sm hover:underline">← الرجوع للرئيسية</Link>
+        </div>
+      </div>
+    );
+  }
+
+  return (
+    <div className="min-h-screen bg-background hex-grid noise">
+      {/* Header */}
+      <div className="border-b border-border">
+        <div className="max-w-4xl mx-auto px-6 py-4">
+          <Link to="/" className="text-xs text-muted-foreground hover:text-primary transition-colors flex items-center gap-2">
+            <span>←</span>
+            <span className="font-display font-bold tracking-wider">BATCH<span className="text-primary">_7Z</span></span>
+          </Link>
+        </div>
+      </div>
+
+      <div className="max-w-4xl mx-auto px-6 py-12">
+        {/* Post header */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          className="mb-12"
+        >
+          <div className="flex items-center gap-3 mb-4">
+            <span className="tag-green text-[10px] tracking-wider px-2.5 py-1 rounded-full">{post.category}</span>
+            <span className="text-[10px] text-muted-foreground">{post.date}</span>
+          </div>
+          <h1 className="font-display text-3xl md:text-4xl font-bold text-foreground mb-6">
+            {post.title}
+          </h1>
+          <div className="flex items-center gap-2 mb-6">
+            {post.tags.map((tag) => (
+              <span key={tag} className="text-[9px] tracking-wider px-2 py-0.5 rounded bg-muted text-muted-foreground">
+                #{tag}
+              </span>
+            ))}
+          </div>
+
+          {/* Table of contents */}
+          <div className="bg-card/60 border border-border rounded-xl p-5">
+            <h2 className="text-xs font-bold tracking-wider text-primary mb-3">📌 فهرس المحتوى</h2>
+            <div className="space-y-1.5">
+              {post.sections.map((section, i) => (
+                <a
+                  key={section.id}
+                  href={`#${section.id}`}
+                  className="text-xs text-muted-foreground hover:text-primary transition-colors flex items-center gap-2"
+                >
+                  <span className="text-primary/40 text-[10px]">{String(i + 1).padStart(2, "0")}</span>
+                  {section.title}
+                </a>
+              ))}
+            </div>
+          </div>
+        </motion.div>
+
+        {/* Sections */}
+        <div className="space-y-6">
+          {post.sections.map((section, i) => (
+            <BlogSectionCard key={section.id} section={section} index={i} />
+          ))}
+        </div>
+
+        {/* Footer */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          className="mt-16 pt-8 border-t border-border flex items-center justify-between"
+        >
+          <Link to="/#blog" className="text-xs text-muted-foreground hover:text-primary transition-colors">
+            ← كل المقالات
+          </Link>
+          <span className="text-[10px] text-muted-foreground">@batch7z</span>
+        </motion.div>
+      </div>
+    </div>
+  );
+};
+
+export default BlogPostPage;
