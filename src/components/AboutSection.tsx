@@ -14,25 +14,35 @@ const AboutSection = () => {
             ABOUT_ME
           </h2>
           <div className="bg-card border border-border rounded-lg p-8">
-            <p className="text-sm text-muted-foreground leading-relaxed mb-4">
-              طالب مهتم بمجال الأمن السيبراني، متخصص في تحليل البرمجيات الخبيثة (Malware Analysis)، 
-              الهندسة العكسية (Reverse Engineering)، وعلم التشفير (Cryptography).
+            <p className="text-sm text-muted-foreground leading-relaxed mb-4" dir="rtl">
+              أنا طالب بتعلم في مجال الأمن السيبراني. مهتم بتطوير البرمجيات الخبيثة (Malware Development)، 
+              تحليل البرمجيات الخبيثة (Malware Analysis)، الهندسة العكسية (Reverse Engineering)، 
+              وعلم التشفير (Cryptography).
             </p>
-            <p className="text-sm text-muted-foreground leading-relaxed mb-6">
-              أقوم بنشر ملخصاتي وتحليلاتي هنا لمشاركة المعرفة مع المجتمع العربي في مجال الأمن السيبراني.
+            <p className="text-sm text-muted-foreground leading-relaxed mb-6" dir="rtl">
+              بنشر هنا ملخصاتي اليومية — سواء في لغة C أو في المجالات الأمنية اللي بدرسها. 
+              الهدف إني أوثق رحلتي في التعلم وأشارك المعرفة.
             </p>
-            <div className="flex items-center justify-center gap-6 text-xs text-muted-foreground">
+            <div className="flex flex-wrap items-center justify-center gap-4 text-xs text-muted-foreground">
               <div className="flex items-center gap-2">
-                <div className="w-1.5 h-1.5 rounded-full bg-primary" />
-                <span>Malware Analysis</span>
-              </div>
-              <div className="flex items-center gap-2">
-                <div className="w-1.5 h-1.5 rounded-full bg-glow-purple" />
-                <span>Reverse Engineering</span>
+                <div className="w-1.5 h-1.5 rounded-full bg-accent" />
+                <span>Malware Dev</span>
               </div>
               <div className="flex items-center gap-2">
                 <div className="w-1.5 h-1.5 rounded-full bg-accent" />
+                <span>Malware Analysis</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <div className="w-1.5 h-1.5 rounded-full bg-primary" />
+                <span>Reverse Engineering</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <div className="w-1.5 h-1.5 rounded-full bg-glow-purple" />
                 <span>Cryptography</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <div className="w-1.5 h-1.5 rounded-full bg-primary" />
+                <span>C Programming</span>
               </div>
             </div>
           </div>
