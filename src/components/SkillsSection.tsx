@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 const skills = [
   {
     title: "Malware Development",
-    description: "تطوير وفهم كيفية عمل البرمجيات الخبيثة من الداخل",
+    description: "Building and understanding how malware works from the inside — shellcode, loaders, and evasion techniques.",
     icon: "🦠",
     color: "text-accent",
     bgColor: "bg-accent/5 border-accent/15 hover:border-accent/40",
@@ -11,7 +11,7 @@ const skills = [
   },
   {
     title: "Malware Analysis",
-    description: "تحليل عينات Malware وفهم سلوكها وآليات عملها",
+    description: "Analyzing malware samples to understand their behavior, persistence mechanisms, and C2 communication.",
     icon: "🔬",
     color: "text-primary",
     bgColor: "bg-primary/5 border-primary/15 hover:border-primary/40",
@@ -19,7 +19,7 @@ const skills = [
   },
   {
     title: "Reverse Engineering",
-    description: "الهندسة العكسية للبرامج باستخدام أدوات مثل x64dbg و Ghidra",
+    description: "Disassembling and debugging binaries using tools like x64dbg, Ghidra, and IDA to uncover hidden logic.",
     icon: "⚙️",
     color: "text-secondary",
     bgColor: "bg-secondary/5 border-secondary/15 hover:border-secondary/40",
@@ -27,7 +27,7 @@ const skills = [
   },
   {
     title: "Cryptography",
-    description: "دراسة خوارزميات التشفير وكسرها — AES, RSA, وغيرها",
+    description: "Studying encryption algorithms — AES, RSA, XOR — and how to break or implement them securely.",
     icon: "🔐",
     color: "text-primary",
     bgColor: "bg-primary/5 border-primary/15 hover:border-primary/40",
@@ -35,7 +35,7 @@ const skills = [
   },
   {
     title: "C Programming",
-    description: "البرمجة بلغة C — المؤشرات، الذاكرة، والـ system programming",
+    description: "Low-level programming — pointers, memory management, and system-level development for security tools.",
     icon: "💻",
     color: "text-accent",
     bgColor: "bg-accent/5 border-accent/15 hover:border-accent/40",
