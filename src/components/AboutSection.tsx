@@ -27,19 +27,19 @@ const AboutSection = () => {
             className="bg-card border border-border rounded-xl p-8 corner-decor"
           >
             <h3 className="font-display text-lg font-semibold text-foreground mb-4">
-              من أنا؟
+              Who Am I?
             </h3>
-            <div className="space-y-3 text-sm text-muted-foreground leading-relaxed" dir="rtl">
+            <div className="space-y-3 text-sm text-muted-foreground leading-relaxed">
               <p>
-                أنا <span className="text-primary font-semibold">Batch_7z</span> — طالب شغوف بمجال الأمن السيبراني. 
-                رحلتي بدأت من البرمجة بلغة C ومنها دخلت عالم الـ Low-Level والأمن.
+                I'm <span className="text-primary font-semibold">Batch_7z</span> — a cybersecurity student passionate about the offensive side of security. 
+                My journey started with C programming and quickly led me into the world of low-level systems and malware.
               </p>
               <p>
-                بركز حاليًا على تعلم تحليل البرمجيات الخبيثة والهندسة العكسية، 
-                وبطور مهاراتي في التشفير و Malware Development.
+                Currently focused on learning malware analysis, reverse engineering, 
+                cryptography, and malware development — building skills one exploit at a time.
               </p>
               <p>
-                الموقع ده هو مساحتي الشخصية لتوثيق كل حاجة بتعلمها — ملخصات، تحليلات، وملاحظات.
+                This site is my personal space to document everything I learn — summaries, analyses, and notes from the trenches.
               </p>
             </div>
           </motion.div>
