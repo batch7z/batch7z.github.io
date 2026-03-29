@@ -4,6 +4,7 @@ export interface BlogPost {
   date: string;
   category: string;
   tags: string[];
+  heroImage?: string;
   sections: BlogSection[];
 }
 
@@ -24,6 +25,7 @@ export const blogPosts: BlogPost[] = [
     date: "2025-12-03",
     category: "C Programming",
     tags: ["c", "basics", "printf", "main"],
+    heroImage: "/assets/img/23523.png",
     sections: [
       {
         id: "full-code",
@@ -107,6 +109,7 @@ export const blogPosts: BlogPost[] = [
     date: "2025-12-05",
     category: "C Programming",
     tags: ["c", "comments", "escape-sequences"],
+    heroImage: "/assets/img/24793.png",
     sections: [
       {
         id: "comments-def",
@@ -346,6 +349,265 @@ export const blogPosts: BlogPost[] = [
             ["\\xhh", "Hex", "ASCII Hex", 'printf("\\x41");', "A"],
           ],
         },
+      },
+    ],
+  },
+  // ══════════════════════════════════════════════
+  // 03 — Little bit about variables
+  // ══════════════════════════════════════════════
+  {
+    slug: "c-03-little-bit-about-variables",
+    title: "03 - C Language - أنواع البيانات الأساسية",
+    date: "2025-12-07",
+    category: "C Programming",
+    tags: ["c", "variables", "data-types", "char", "int", "float", "bool"],
+    heroImage: "/assets/img/25424.png",
+    sections: [
+      // ── CHAR ──────────────────────────────────────
+      {
+        id: "char-def",
+        title: "char — تخزين الحروف",
+        explanation: [
+          "نوع بيانات بيُستخدم لتخزين حرف واحد فقط",
+          "حجمه دائمًا 1 بايت",
+          "بيُخزن قيمة الحرف كـ رقم ASCII",
+        ],
+      },
+      {
+        id: "char-declaration",
+        title: "تعريف متغير char",
+        code: `char c = 'A';`,
+        table: {
+          headers: ["الجزء", "الشرح"],
+          rows: [
+            ["'A'", "حرف واحد — لازم Single Quotes"],
+            ["القيمة المخزنة", "65 (ASCII)"],
+          ],
+        },
+      },
+      {
+        id: "char-uses",
+        title: "جدول استخدامات char",
+        table: {
+          headers: ["الاستخدام", "المثال", "الشرح"],
+          rows: [
+            ["تخزين حرف", "char c = 'A';", "تخزين حرف واحد"],
+            ["طباعة حرف", 'printf("%c", c);', "%c لطباعة char"],
+            ["قيمة ASCII", 'printf("%d", c);', "يطبع قيمة ASCII"],
+            ["رمز خاص", "char x = '\\n';", "Escape Sequence"],
+            ["Octal", "char o = '\\101';", "ASCII Octal"],
+            ["Hex", "char h = '\\x41';", "ASCII Hex"],
+            ["اقتباس مفرد", "char q = '\\'';", "حرف '"],
+            ["Backslash", "char b = '\\\\';", "حرف \\"],
+          ],
+        },
+      },
+      {
+        id: "char-print-example",
+        title: "طباعة حرف وقيمته",
+        code: `char c = 'A';\nprintf("%c\\n", c);\nprintf("%d\\n", c);`,
+        output: "A\n65",
+      },
+      {
+        id: "char-escape-example",
+        title: "استخدام Escape Sequence مع char",
+        code: `char n = '\\n';\nprintf("Hello%cWorld", n);`,
+        output: "Hello\nWorld",
+      },
+      {
+        id: "char-octal-hex",
+        title: "الـ Octal و Hex مع char",
+        code: `// Octal\nchar a1 = '\\101';\n// Hex\nchar a2 = '\\x41';\nprintf("%c %c", a1, a2);`,
+        output: "A A",
+      },
+      {
+        id: "char-notes",
+        title: "ملاحظات مهمة — char",
+        note: { type: "warning", text: 'char c = "A"; ← ❌ غلط (ده string) — char c = \'A\'; ← ✅ صح' },
+      },
+      {
+        id: "char-lowlevel",
+        title: "معلومة Low Level — char",
+        code: `char c = 65;\nprintf("%c", c); // A`,
+        note: { type: "info", text: "char = رقم + حرف في نفس الوقت (ASCII)" },
+      },
+      // ── INT ───────────────────────────────────────
+      {
+        id: "int-def",
+        title: "int — تخزين الأرقام الصحيحة",
+        explanation: [
+          "نوع بيانات بيُستخدم لتخزين الأرقام الصحيحة فقط",
+          "حجمه غالبًا 4 بايت (يعتمد على النظام)",
+          "بيُخزن الأرقام بصيغة Binary (Two's Complement)",
+        ],
+      },
+      {
+        id: "int-declaration",
+        title: "تعريف متغير int",
+        code: `int num = 77;`,
+        table: {
+          headers: ["الجزء", "الشرح"],
+          rows: [
+            ["77", "رقم صحيح بدون كسور"],
+            ["القيمة المخزنة", "77"],
+          ],
+        },
+      },
+      {
+        id: "int-uses",
+        title: "جدول استخدامات int",
+        table: {
+          headers: ["الاستخدام", "المثال", "الشرح"],
+          rows: [
+            ["تخزين رقم صحيح", "int x = 10;", "تخزين عدد صحيح"],
+            ["طباعة رقم", 'printf("%d", x);', "%d لطباعة int"],
+            ["رقم سالب", "int n = -5;", "يدعم السالب"],
+            ["عمليات حسابية", "int z = x + y;", "جمع / طرح / ضرب"],
+            ["مقارنة", "if (x > y)", "يستخدم في الشروط"],
+          ],
+        },
+      },
+      {
+        id: "int-print-example",
+        title: "طباعة رقم صحيح",
+        code: `int num = 77;\nprintf("%d\\n", num);`,
+        output: "77",
+      },
+      {
+        id: "int-arithmetic",
+        title: "العمليات الحسابية على int",
+        code: `int a = 10, b = 3;\nprintf("%d\\n", a + b);\nprintf("%d\\n", a - b);\nprintf("%d\\n", a * b);\nprintf("%d\\n", a / b);`,
+        output: "13\n7\n30\n3",
+        note: { type: "info", text: "القسمة بدون كسور لأن النوع int" },
+      },
+      {
+        id: "int-range",
+        title: "مدى الأرقام (Range) — int",
+        table: {
+          headers: ["النوع", "الحجم", "المدى"],
+          rows: [["int", "4 بايت", "-2,147,483,648 → 2,147,483,647"]],
+        },
+      },
+      {
+        id: "int-notes",
+        title: "ملاحظات مهمة — int",
+        note: { type: "warning", text: "int x = 3.5; ← هيخزن 3 فقط (يتجاهل الكسر) — int لا يخزن كسور — القسمة بين int و int تنتج int" },
+      },
+      {
+        id: "int-lowlevel",
+        title: "معلومة Low Level — int",
+        code: `int x = 'A';\nprintf("%d", x); // 65`,
+        note: { type: "info", text: "لأن A = 65 في ASCII" },
+      },
+      // ── FLOAT ─────────────────────────────────────
+      {
+        id: "float-def",
+        title: "float — تخزين الأرقام العشرية",
+        explanation: [
+          "نوع بيانات بيُستخدم لتخزين الأرقام العشرية",
+          "حجمه غالبًا 4 بايت (يعتمد على النظام)",
+          "بيُخزن الأرقام بصيغة Floating Point (IEEE 754)",
+        ],
+      },
+      {
+        id: "float-declaration",
+        title: "تعريف متغير float",
+        code: `float x = 3.14;`,
+        table: {
+          headers: ["الجزء", "الشرح"],
+          rows: [
+            ["3.14", "رقم عشري"],
+            ["القيمة المخزنة", "≈ 3.14 (تقريب)"],
+          ],
+        },
+      },
+      {
+        id: "float-print-example",
+        title: "طباعة رقم عشري",
+        code: `float x = 3.14;\nprintf("%f\\n", x);`,
+        output: "3.140000",
+      },
+      {
+        id: "float-arithmetic",
+        title: "العمليات الحسابية على float",
+        code: `float a = 10.0, b = 3.0;\nprintf("%f\\n", a / b);`,
+        output: "3.333333",
+      },
+      {
+        id: "float-range",
+        title: "مدى الأرقام (Range) — float",
+        table: {
+          headers: ["النوع", "الحجم", "المدى التقريبي"],
+          rows: [["float", "4 بايت", "±3.4 × 10³⁸"]],
+        },
+      },
+      {
+        id: "float-trap",
+        title: "فخ شائع جداً — float",
+        code: `float x = 5 / 2;\nprintf("%f", x); // 2.000000\n\n// الحل الصحيح:\nfloat y = 5.0 / 2;\nprintf("%f", y); // 2.500000`,
+        note: { type: "warning", text: "القسمة تمت كـ int لأن الاتنين أرقام صحيحة! — الحل: استخدم 5.0 بدل 5" },
+      },
+      {
+        id: "float-notes",
+        title: "ملاحظات مهمة — float",
+        note: { type: "info", text: "float x = 5; ← ✅ صح (يتحول إلى 5.0) — float تقريبي (مش دقيق 100%) — القسمة بين float و int = float" },
+      },
+      // ── BOOL ──────────────────────────────────────
+      {
+        id: "bool-def",
+        title: "bool — تخزين القيم المنطقية",
+        explanation: [
+          "نوع بيانات بيُستخدم لتخزين قيم منطقية (True/False)",
+          "الحجم غالبًا 1 بايت (يعتمد على النظام)",
+          "القيمة الممكنة: true أو false فقط",
+        ],
+      },
+      {
+        id: "bool-include",
+        title: "المكتبة المطلوبة",
+        code: `#include <stdbool.h>`,
+        note: { type: "warning", text: "بدون هذه المكتبة، C لا تدعم bool رسميًا — قبل C99 كان لازم تستخدم int بدل bool" },
+      },
+      {
+        id: "bool-declaration",
+        title: "تعريف متغير bool",
+        code: `bool flag = true;`,
+        table: {
+          headers: ["القيمة", "تمثّل"],
+          rows: [
+            ["true", "1"],
+            ["false", "0"],
+          ],
+        },
+      },
+      {
+        id: "bool-uses",
+        title: "جدول استخدامات bool",
+        table: {
+          headers: ["الاستخدام", "المثال", "الشرح"],
+          rows: [
+            ["تعريف متغير منطقي", "bool x = true;", "يخزن قيمة منطقية"],
+            ["طباعة متغير منطقي", 'printf("%d", x);', "يطبع 1 لـ true و 0 لـ false"],
+            ["تغيير القيمة", "x = false;", "يمكن التغيير في أي وقت"],
+          ],
+        },
+      },
+      {
+        id: "bool-example",
+        title: "طباعة قيم bool",
+        code: `#include <stdio.h>\n#include <stdbool.h>\n\nint main() {\n    bool x = true;\n    bool y = false;\n    printf("%i\\n", x);\n    printf("%i\\n", y);\n}`,
+        output: "1\n0",
+      },
+      {
+        id: "bool-pre-c99",
+        title: "قبل C99",
+        code: `int flag = 1; // true\nint flag = 0; // false`,
+        note: { type: "info", text: "لو الكومبايلر قديم ومش بيدعم stdbool.h — استخدم int بدل bool" },
+      },
+      {
+        id: "bool-reminder",
+        title: "تذكير مهم",
+        note: { type: "warning", text: "لازم دايمًا تحط في الأول: #include <stdbool.h>" },
       },
     ],
   },
