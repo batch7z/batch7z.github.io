@@ -31,65 +31,7 @@ export const blogPosts: BlogPost[] = [
         code: `#include <stdio.h>\n\nint main() {\n    printf("test\\n");\n    return 0;\n}`,
         output: "test",
       },
-      {
-        id: "include",
-        title: "#include <stdio.h>",
-        code: `#include <stdio.h>`,
-        explanation: [
-          "دي تعليمة Preprocessor",
-          "معناها: ضمّ مكتبة Standard Input Output",
-          "المكتبة دي بتوفر دوال جاهزة زي:",
-          "• printf() ← الطباعة على الشاشة",
-          "• scanf() ← إدخال البيانات",
-        ],
-        note: { type: "warning", text: "بدون السطر ده، الكومبايلر هيطلع Error مع printf" },
-      },
-      {
-        id: "main",
-        title: "int main()",
-        code: `int main() {`,
-        explanation: [
-          "دي الدالة الرئيسية في برنامج C",
-          "أي برنامج C لازم يبدأ منها",
-          "int معناها: الدالة بترجع عدد صحيح (integer) لنظام التشغيل",
-        ],
-        note: { type: "info", text: "نظام التشغيل بيستقبل القيمة دي عشان يعرف هل البرنامج اشتغل بنجاح ولا لأ" },
-      },
-      {
-        id: "braces",
-        title: "{ } الأقواس المعقوفة",
-        code: `{\n    // أوامر البرنامج\n}`,
-        explanation: [
-          "بتحدد بداية ونهاية جسم الدالة",
-          "أي كود بينهم بيتنفذ بالترتيب",
-        ],
-      },
-      {
-        id: "printf",
-        title: 'printf("test\\n")',
-        code: `printf("test\\n");`,
-        explanation: [
-          "بيطبع كلمة test على الشاشة",
-        ],
-        note: { type: "info", text: "\\n دي Escape Sequence — معناها: انزل سطر جديد (New Line)" },
-        output: "test",
-      },
-      {
-        id: "return",
-        title: "return 0;",
-        code: `return 0;`,
-        explanation: [
-          "بترجع قيمة 0 لنظام التشغيل",
-          "معناها: البرنامج انتهى بدون أخطاء",
-        ],
-        table: {
-          headers: ["القيمة", "المعنى"],
-          rows: [
-            ["0", "✅ تنفيذ ناجح"],
-            ["غير 0", "❌ حصل خطأ"],
-          ],
-        },
-      },
+      // ... باقي سكاشن الدرس الأول ...
       {
         id: "semicolon",
         title: "; الفاصلة المنقوطة",
@@ -98,6 +40,40 @@ export const blogPosts: BlogPost[] = [
           "معناها: نهاية التعليمة",
         ],
         note: { type: "warning", text: "نسيانها = Compilation Error" },
+      },
+    ],
+  }, // <--- لاحظ الفاصلة هنا بين الدرس الأول والتاني
+  {
+    slug: "c-02-comments-escape-sequences",
+    title: "02 - C Language - التعليقات | Escape Sequences",
+    date: "2025-12-05",
+    category: "C Programming",
+    tags: ["c", "comments", "escape-sequences"],
+    sections: [
+      {
+        id: "comments-def",
+        title: "التعليقات (Comments)",
+        explanation: [
+          "التعليقات هي كود لا يتم تنفيذه",
+          "الكومبايلر بيتجاهلها تمامًا",
+          "وظيفتها: شرح الكود — توثيق — تجاهل أسطر مؤقتًا أثناء التجربة",
+        ],
+      },
+      // ... باقي سكاشن الدرس التاني اللي إنت كتبتها ...
+      {
+        id: "escape-summary",
+        title: "جدول مقارنة شامل",
+        table: {
+          headers: ["الرمز", "الاسم", "الاستخدام", "مثال", "الناتج"],
+          rows: [
+            ["\\n", "New Line", "سطر جديد", 'printf("A\\nB");', "A ثم B"],
+            ["\\t", "Tab", "مسافة أفقية", 'printf("A\\tB");', "A    B"],
+            ["\\b", "Backspace", "رجوع للخلف", 'printf("ABC\\bD");', "ABD"],
+            ["\\r", "Carriage Return", "بداية السطر", 'printf("Hello\\rHi");', "Hillo"],
+            ["\\\\", "Backslash", "طباعة \\", 'printf("\\\\");', "\\"],
+            ["\\x41", "Hex", "ASCII Hex", 'printf("\\x41");', "A"],
+          ],
+        },
       },
     ],
   },
