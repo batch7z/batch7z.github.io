@@ -1,5 +1,4 @@
 import { motion } from "framer-motion";
-import { useNavigate } from "react-router-dom";
 import { BookOpen, Clock } from "lucide-react";
 
 const skills = [
@@ -51,31 +50,31 @@ const skills = [
     bgColor: "bg-accent/5 border-accent/15 hover:border-accent/40",
     level: "Active",
     hasSummaries: true,
-    summaryCount: 1,
+    summaryCount: 4,
     blogAnchor: "#blog",
   },
 ];
 
 const SkillsSection = () => {
   return (
-    <section id="skills" className="relative py-28 px-6 lg:px-8">
+    <section id="skills" className="relative py-16 sm:py-28 px-4 sm:px-6 lg:px-8">
       <div className="max-w-7xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="mb-14"
+          className="mb-8 sm:mb-14"
         >
           <div className="flex items-center gap-3 mb-3">
             <span className="text-[11px] tracking-[0.4em] text-muted-foreground font-mono">01</span>
             <div className="h-px w-12 bg-border" />
           </div>
-          <h2 className="font-display text-4xl font-bold text-foreground">
+          <h2 className="font-display text-3xl sm:text-4xl font-bold text-foreground">
             What I'm <span className="text-primary">Learning</span>
           </h2>
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
           {skills.map((skill, i) => (
             <motion.div
               key={skill.title}
@@ -83,27 +82,26 @@ const SkillsSection = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: i * 0.08 }}
-              className={`group relative border rounded-xl p-6 transition-all duration-500 ${skill.hasSummaries ? "cursor-pointer" : "cursor-default"} ${skill.bgColor}`}
+              className={`group relative border rounded-xl p-5 sm:p-6 transition-all duration-500 ${skill.hasSummaries ? "cursor-pointer" : "cursor-default"} ${skill.bgColor}`}
               onClick={() => {
                 if (skill.hasSummaries && skill.blogAnchor) {
                   document.querySelector(skill.blogAnchor)?.scrollIntoView({ behavior: "smooth" });
                 }
               }}
             >
-              <div className="flex items-start justify-between mb-4">
-                <span className="text-3xl">{skill.icon}</span>
-                <span className={`text-[9px] tracking-[0.3em] font-mono px-2 py-1 rounded-full border border-current/20 ${skill.color}`}>
+              <div className="flex items-start justify-between mb-3 sm:mb-4">
+                <span className="text-2xl sm:text-3xl">{skill.icon}</span>
+                <span className={`text-[8px] sm:text-[9px] tracking-[0.3em] font-mono px-2 py-1 rounded-full border border-current/20 ${skill.color}`}>
                   {skill.level.toUpperCase()}
                 </span>
               </div>
-              <h3 className={`font-display text-lg font-semibold mb-2 ${skill.color}`}>
+              <h3 className={`font-display text-base sm:text-lg font-semibold mb-2 ${skill.color}`}>
                 {skill.title}
               </h3>
-              <p className="text-xs text-muted-foreground leading-relaxed mb-4">
+              <p className="text-[10px] sm:text-xs text-muted-foreground leading-relaxed mb-4">
                 {skill.description}
               </p>
 
-              {/* Hover badge */}
               <div className={`flex items-center gap-1.5 transition-all duration-300 opacity-0 translate-y-1 group-hover:opacity-100 group-hover:translate-y-0 ${skill.hasSummaries ? "text-primary" : "text-muted-foreground"}`}>
                 {skill.hasSummaries ? (
                   <>

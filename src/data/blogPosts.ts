@@ -1,3 +1,7 @@
+import img01 from "@/assets/23523.png";
+import img02 from "@/assets/24793.png";
+import img03 from "@/assets/25424.png";
+
 export interface BlogPost {
   slug: string;
   title: string;
@@ -19,13 +23,16 @@ export interface BlogSection {
 }
 
 export const blogPosts: BlogPost[] = [
+  // ══════════════════════════════════════════════
+  // 01
+  // ══════════════════════════════════════════════
   {
     slug: "c-01-installation-first-program",
-    title: "01 - C Language - تثبيت اللغة | أول برنامج",
+    title: "01 - C language course - language installation _ 1st program",
     date: "2025-12-03",
     category: "C Programming",
     tags: ["c", "basics", "printf", "main"],
-    heroImage: "/assets/img/23523.png",
+    heroImage: img01,
     sections: [
       {
         id: "full-code",
@@ -103,13 +110,16 @@ export const blogPosts: BlogPost[] = [
       },
     ],
   },
+  // ══════════════════════════════════════════════
+  // 02
+  // ══════════════════════════════════════════════
   {
     slug: "c-02-comments-escape-sequences",
-    title: "02 - C Language - التعليقات | Escape Sequences",
+    title: "02 - C language course - comments _ Escape Sequence",
     date: "2025-12-05",
     category: "C Programming",
     tags: ["c", "comments", "escape-sequences"],
-    heroImage: "/assets/img/24793.png",
+    heroImage: img02,
     sections: [
       {
         id: "comments-def",
@@ -353,17 +363,16 @@ export const blogPosts: BlogPost[] = [
     ],
   },
   // ══════════════════════════════════════════════
-  // 03 — Little bit about variables
+  // 03
   // ══════════════════════════════════════════════
   {
     slug: "c-03-little-bit-about-variables",
-    title: "03 - C Language - أنواع البيانات الأساسية",
+    title: "03 - C language course - little bit about variables",
     date: "2025-12-07",
     category: "C Programming",
     tags: ["c", "variables", "data-types", "char", "int", "float", "bool"],
-    heroImage: "/assets/img/25424.png",
+    heroImage: img03,
     sections: [
-      // ── CHAR ──────────────────────────────────────
       {
         id: "char-def",
         title: "char — تخزين الحروف",
@@ -431,7 +440,6 @@ export const blogPosts: BlogPost[] = [
         code: `char c = 65;\nprintf("%c", c); // A`,
         note: { type: "info", text: "char = رقم + حرف في نفس الوقت (ASCII)" },
       },
-      // ── INT ───────────────────────────────────────
       {
         id: "int-def",
         title: "int — تخزين الأرقام الصحيحة",
@@ -499,7 +507,6 @@ export const blogPosts: BlogPost[] = [
         code: `int x = 'A';\nprintf("%d", x); // 65`,
         note: { type: "info", text: "لأن A = 65 في ASCII" },
       },
-      // ── FLOAT ─────────────────────────────────────
       {
         id: "float-def",
         title: "float — تخزين الأرقام العشرية",
@@ -552,7 +559,6 @@ export const blogPosts: BlogPost[] = [
         title: "ملاحظات مهمة — float",
         note: { type: "info", text: "float x = 5; ← ✅ صح (يتحول إلى 5.0) — float تقريبي (مش دقيق 100%) — القسمة بين float و int = float" },
       },
-      // ── BOOL ──────────────────────────────────────
       {
         id: "bool-def",
         title: "bool — تخزين القيم المنطقية",
@@ -608,6 +614,296 @@ export const blogPosts: BlogPost[] = [
         id: "bool-reminder",
         title: "تذكير مهم",
         note: { type: "warning", text: "لازم دايمًا تحط في الأول: #include <stdbool.h>" },
+      },
+    ],
+  },
+  // ══════════════════════════════════════════════
+  // 04 — More about variables
+  // ══════════════════════════════════════════════
+  {
+    slug: "c-04-more-about-variables",
+    title: "04 - C language course - more about variables",
+    date: "2025-12-09",
+    category: "C Programming",
+    tags: ["c", "variables", "data-types", "keywords", "case-sensitive"],
+    sections: [
+      {
+        id: "case-sensitive",
+        title: "لغة C حسّاسة لحالة الأحرف (Case Sensitive)",
+        explanation: [
+          "لغة C بتفرّق بين الحروف الكبيرة والصغيرة",
+        ],
+        table: {
+          headers: ["صغير", "كبير", "نفس المعنى؟"],
+          rows: [
+            ["a", "A", "❌"],
+            ["sum", "Sum / SUM", "❌"],
+            ["main", "Main", "❌"],
+          ],
+        },
+      },
+      {
+        id: "case-example",
+        title: "مثال عملي — Case Sensitivity",
+        code: `#include <stdio.h>\n\nint main() {\n    char test = 'A';\n    char Test = 'B';\n    char TeSt = 'C';\n\n    printf("%c\\n%c\\n%c\\n", test, Test, TeSt);\n\n    return 0;\n}`,
+        output: "A\nB\nC",
+        explanation: [
+          "test متغير مختلف تمامًا عن Test",
+          "Test مختلف عن TeSt",
+          "رغم تشابه الأسماء، كل واحد متغير مستقل",
+          "السبب: لغة C حسّاسة لحالة الأحرف",
+        ],
+        note: { type: "info", text: "في لغة C، أي تغيير في Capital / Small letters = اسم مختلف تمامًا" },
+      },
+      {
+        id: "keywords",
+        title: "الكلمات المحجوزة في لغة C (C Keywords)",
+        explanation: [
+          "الكلمات دي محجوزة — مينفعش تستخدمها كـ: اسم متغير، دالة، Struct، Union، أو Type جديد",
+        ],
+        table: {
+          headers: ["", "", "", ""],
+          rows: [
+            ["auto", "else", "long", "switch"],
+            ["break", "enum", "register", "unsigned"],
+            ["case", "extern", "return", "void"],
+            ["char", "float", "short", "sizeof"],
+            ["const", "for", "signed", "while"],
+            ["continue", "if", "goto", "static"],
+            ["default", "int", "struct", ""],
+            ["do", "typedef", "union", ""],
+            ["double", "volatile", "", ""],
+          ],
+        },
+        note: { type: "warning", text: "لغة C حسّاسة لحالة الأحرف — int ≠ Int" },
+      },
+      {
+        id: "packed-note",
+        title: "_Packed و __Packed",
+        explanation: [
+          "ليست كلمات محجوزة في C القياسية",
+          "Compiler-specific — تُستخدم مع GCC أو ARM Compiler",
+        ],
+      },
+      {
+        id: "keywords-examples",
+        title: "أمثلة — الكلمات المحجوزة",
+        code: `// ❌ خطأ — return كلمة محجوزة\nint return = 5;\n\n// ✅ صحيح\nint result = 5;\nreturn result;`,
+        note: { type: "warning", text: "الكلمات المحجوزة لها وظيفة ثابتة ولا يمكن إعادة استخدامها — أي مخالفة = Compile Error" },
+      },
+      {
+        id: "dt-char",
+        title: "char — نوع البيانات",
+        code: `#include <stdio.h>\n\nint main() {\n    char c = 'A';\n    printf("%c", c);\n    return 0;\n}`,
+        output: "A",
+        table: {
+          headers: ["الخاصية", "القيمة"],
+          rows: [
+            ["الحجم", "1 Byte"],
+            ["المدى (signed)", "-128 إلى 127"],
+            ["Format Specifier", "%c"],
+          ],
+        },
+        explanation: [
+          "char بيخزن حرف واحد فقط",
+          "القيمة الحقيقية المخزنة هي رقم ASCII",
+          "لطباعة القيمة الرقمية: printf(\"%d\", c);",
+        ],
+      },
+      {
+        id: "dt-short",
+        title: "short int",
+        code: `#include <stdio.h>\n\nint main() {\n    short int x = 1000;\n    printf("%hd", x);\n    return 0;\n}`,
+        output: "1000",
+        table: {
+          headers: ["الخاصية", "القيمة"],
+          rows: [
+            ["الحجم", "2 Bytes"],
+            ["المدى", "-32768 إلى 32767"],
+            ["Format Specifier", "%hd"],
+          ],
+        },
+        explanation: [
+          "short = short int (نفس المعنى)",
+          "%hd مخصص لـ short int فقط",
+          "يُستخدم لتقليل استهلاك الذاكرة",
+        ],
+      },
+      {
+        id: "dt-ushort",
+        title: "unsigned short int",
+        code: `#include <stdio.h>\n\nint main() {\n    unsigned short int x = 65000;\n    printf("%hu", x);\n    return 0;\n}`,
+        output: "65000",
+        table: {
+          headers: ["الخاصية", "القيمة"],
+          rows: [
+            ["الحجم", "2 Bytes"],
+            ["المدى", "0 إلى 65535"],
+            ["Format Specifier", "%hu"],
+          ],
+        },
+        explanation: [
+          "لا يقبل قيم سالبة",
+          "unsigned short = unsigned short int",
+        ],
+      },
+      {
+        id: "dt-int",
+        title: "int",
+        code: `#include <stdio.h>\n\nint main() {\n    int num = 1000;\n    printf("%d", num);\n    return 0;\n}`,
+        output: "1000",
+        table: {
+          headers: ["الخاصية", "القيمة"],
+          rows: [
+            ["الحجم", "4 Bytes"],
+            ["المدى", "-2147483648 إلى 2147483647"],
+            ["Format Specifier", "%d أو %i"],
+          ],
+        },
+        explanation: [
+          "يأخذ قيم سالبة وموجبة",
+          "في أنظمة 16-bit قديمة قد يكون 2 بايت فقط",
+        ],
+      },
+      {
+        id: "dt-uint",
+        title: "unsigned int",
+        code: `#include <stdio.h>\n\nint main() {\n    unsigned int x = 4000000000;\n    printf("%u", x);\n    return 0;\n}`,
+        output: "4000000000",
+        table: {
+          headers: ["الخاصية", "القيمة"],
+          rows: [
+            ["الحجم", "4 Bytes"],
+            ["المدى", "0 إلى 4294967295"],
+            ["Format Specifier", "%u"],
+          ],
+        },
+        explanation: [
+          "لا يقبل قيم سالبة",
+          "%u مخصص لطباعة unsigned int",
+        ],
+      },
+      {
+        id: "dt-long",
+        title: "long int",
+        code: `#include <stdio.h>\n\nint main() {\n    long int bigNum = 9223372036854775807;\n    printf("%ld", bigNum);\n    return 0;\n}`,
+        output: "9223372036854775807",
+        table: {
+          headers: ["الخاصية", "القيمة"],
+          rows: [
+            ["الحجم", "8 Bytes (قد يكون 4 في 32-bit)"],
+            ["المدى", "-9223372036854775808 إلى 9223372036854775807"],
+            ["Format Specifier", "%ld"],
+          ],
+        },
+      },
+      {
+        id: "dt-ulong",
+        title: "unsigned long int",
+        code: `#include <stdio.h>\n\nint main() {\n    unsigned long int bigNum = 18446744073709551615UL;\n    printf("%lu", bigNum);\n    return 0;\n}`,
+        output: "18446744073709551615",
+        table: {
+          headers: ["الخاصية", "القيمة"],
+          rows: [
+            ["الحجم", "8 Bytes"],
+            ["المدى", "0 إلى 18446744073709551615"],
+            ["Format Specifier", "%lu"],
+          ],
+        },
+      },
+      {
+        id: "dt-longlong",
+        title: "long long int",
+        code: `#include <stdio.h>\n\nint main() {\n    long long int bigNum = 9223372036854775807LL;\n    printf("%lld", bigNum);\n    return 0;\n}`,
+        output: "9223372036854775807",
+        table: {
+          headers: ["الخاصية", "القيمة"],
+          rows: [
+            ["الحجم", "8 Bytes"],
+            ["المدى", "-9223372036854775808 إلى 9223372036854775807"],
+            ["Format Specifier", "%lld"],
+          ],
+        },
+      },
+      {
+        id: "dt-ulonglong",
+        title: "unsigned long long int",
+        code: `#include <stdio.h>\n\nint main() {\n    unsigned long long int bigNum = 18446744073709551615ULL;\n    printf("%llu", bigNum);\n    return 0;\n}`,
+        output: "18446744073709551615",
+        table: {
+          headers: ["الخاصية", "القيمة"],
+          rows: [
+            ["الحجم", "8 Bytes"],
+            ["المدى", "0 إلى 18446744073709551615"],
+            ["Format Specifier", "%llu"],
+          ],
+        },
+      },
+      {
+        id: "dt-float",
+        title: "float",
+        code: `#include <stdio.h>\n\nint main() {\n    float pi = 3.141592;\n    printf("%f", pi);\n    return 0;\n}`,
+        output: "3.141592",
+        table: {
+          headers: ["الخاصية", "القيمة"],
+          rows: [
+            ["الحجم", "4 Bytes"],
+            ["المدى", "1.175494e-38 إلى 3.402823e+38"],
+            ["الدقة", "~6 أرقام بعد الفاصلة"],
+            ["Format Specifier", "%f"],
+          ],
+        },
+      },
+      {
+        id: "dt-double",
+        title: "double",
+        code: `#include <stdio.h>\n\nint main() {\n    double pi = 3.141592653589793;\n    printf("%lf", pi);\n    return 0;\n}`,
+        output: "3.141593",
+        table: {
+          headers: ["الخاصية", "القيمة"],
+          rows: [
+            ["الحجم", "8 Bytes"],
+            ["المدى", "2.225074e-308 إلى 1.797693e+308"],
+            ["الدقة", "~15 رقم بعد الفاصلة"],
+            ["Format Specifier", "%lf"],
+          ],
+        },
+        note: { type: "info", text: "الطباعة الافتراضية تقرّب الرقم، لكن المتغير يحتفظ بالدقة الكاملة داخليًا" },
+      },
+      {
+        id: "dt-longdouble",
+        title: "long double",
+        code: `#include <stdio.h>\n\nint main() {\n    long double pi = 3.1415926535897932384L;\n    printf("%Lf", pi);\n    return 0;\n}`,
+        output: "3.141592653589793238",
+        table: {
+          headers: ["الخاصية", "القيمة"],
+          rows: [
+            ["الحجم", "16 Bytes"],
+            ["الدقة", "~19 رقم بعد الفاصلة"],
+            ["Format Specifier", "%Lf"],
+          ],
+        },
+      },
+      {
+        id: "dt-summary",
+        title: "ملخص أنواع البيانات",
+        table: {
+          headers: ["النوع", "الحجم", "الإشارة", "Format"],
+          rows: [
+            ["char", "1 B", "signed", "%c"],
+            ["short int", "2 B", "signed", "%hd"],
+            ["unsigned short int", "2 B", "unsigned", "%hu"],
+            ["int", "4 B", "signed", "%d"],
+            ["unsigned int", "4 B", "unsigned", "%u"],
+            ["long int", "8 B", "signed", "%ld"],
+            ["unsigned long int", "8 B", "unsigned", "%lu"],
+            ["long long int", "8 B", "signed", "%lld"],
+            ["unsigned long long int", "8 B", "unsigned", "%llu"],
+            ["float", "4 B", "—", "%f"],
+            ["double", "8 B", "—", "%lf"],
+            ["long double", "16 B", "—", "%Lf"],
+          ],
+        },
       },
     ],
   },
