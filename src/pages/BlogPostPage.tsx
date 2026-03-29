@@ -23,7 +23,7 @@ const BlogPostPage = () => {
     <div className="min-h-screen bg-background hex-grid noise">
       {/* Header */}
       <div className="border-b border-border">
-        <div className="max-w-4xl mx-auto px-6 py-4">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 py-4">
           <Link to="/" className="text-xs text-muted-foreground hover:text-primary transition-colors flex items-center gap-2">
             <span>←</span>
             <span className="font-display font-bold tracking-wider">BATCH<span className="text-primary">_7Z</span></span>
@@ -31,21 +31,32 @@ const BlogPostPage = () => {
         </div>
       </div>
 
-      <div className="max-w-4xl mx-auto px-6 py-12">
+      <div className="max-w-4xl mx-auto px-4 sm:px-6 py-8 sm:py-12">
         {/* Post header */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          className="mb-12"
+          className="mb-8 sm:mb-12"
         >
+          {/* Hero image */}
+          {post.heroImage && (
+            <div className="w-full h-40 sm:h-56 md:h-72 rounded-xl overflow-hidden border border-border mb-6">
+              <img
+                src={post.heroImage}
+                alt={post.title}
+                className="w-full h-full object-cover"
+              />
+            </div>
+          )}
+
           <div className="flex items-center gap-3 mb-4">
             <span className="tag-green text-[10px] tracking-wider px-2.5 py-1 rounded-full">{post.category}</span>
             <span className="text-[10px] text-muted-foreground">{post.date}</span>
           </div>
-          <h1 className="font-display text-3xl md:text-4xl font-bold text-foreground mb-6">
+          <h1 className="font-display text-2xl sm:text-3xl md:text-4xl font-bold text-foreground mb-4 sm:mb-6 leading-tight">
             {post.title}
           </h1>
-          <div className="flex items-center gap-2 mb-6">
+          <div className="flex items-center flex-wrap gap-2 mb-6">
             {post.tags.map((tag) => (
               <span key={tag} className="text-[9px] tracking-wider px-2 py-0.5 rounded bg-muted text-muted-foreground">
                 #{tag}
@@ -54,17 +65,17 @@ const BlogPostPage = () => {
           </div>
 
           {/* Table of contents */}
-          <div className="bg-card/60 border border-border rounded-xl p-5">
+          <div className="bg-card/60 border border-border rounded-xl p-4 sm:p-5">
             <h2 className="text-xs font-bold tracking-wider text-primary mb-3">📌 فهرس المحتوى</h2>
             <div className="space-y-1.5">
               {post.sections.map((section, i) => (
                 <a
                   key={section.id}
                   href={`#${section.id}`}
-                  className="text-xs text-muted-foreground hover:text-primary transition-colors flex items-center gap-2"
+                  className="text-[10px] sm:text-xs text-muted-foreground hover:text-primary transition-colors flex items-center gap-2"
                 >
                   <span className="text-primary/40 text-[10px]">{String(i + 1).padStart(2, "0")}</span>
-                  {section.title}
+                  <span className="break-all">{section.title}</span>
                 </a>
               ))}
             </div>
@@ -72,7 +83,7 @@ const BlogPostPage = () => {
         </motion.div>
 
         {/* Sections */}
-        <div className="space-y-6">
+        <div className="space-y-4 sm:space-y-6">
           {post.sections.map((section, i) => (
             <BlogSectionCard key={section.id} section={section} index={i} />
           ))}
@@ -83,7 +94,7 @@ const BlogPostPage = () => {
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
-          className="mt-16 pt-8 border-t border-border flex items-center justify-between"
+          className="mt-12 sm:mt-16 pt-6 sm:pt-8 border-t border-border flex items-center justify-between"
         >
           <Link to="/#blog" className="text-xs text-muted-foreground hover:text-primary transition-colors">
             ← كل المقالات
