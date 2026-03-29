@@ -1,4 +1,4 @@
-Export interface BlogPost {
+export interface BlogPost {
   slug: string;
   title: string;
   date: string;
@@ -101,26 +101,6 @@ export const blogPosts: BlogPost[] = [
       },
     ],
   },
-export interface BlogPost {
-  slug: string;
-  title: string;
-  date: string;
-  category: string;
-  tags: string[];
-  sections: BlogSection[];
-}
-
-export interface BlogSection {
-  id: string;
-  title: string;
-  code?: string;
-  explanation?: string[];
-  note?: { type: "info" | "warning"; text: string };
-  table?: { headers: string[]; rows: string[][] };
-  output?: string;
-}
-
-export const blogPosts: BlogPost[] = [
   {
     slug: "c-02-comments-escape-sequences",
     title: "02 - C Language - التعليقات | Escape Sequences",
@@ -128,7 +108,6 @@ export const blogPosts: BlogPost[] = [
     category: "C Programming",
     tags: ["c", "comments", "escape-sequences"],
     sections: [
-      // ── COMMENTS ──────────────────────────────────
       {
         id: "comments-def",
         title: "التعليقات (Comments)",
@@ -187,8 +166,6 @@ export const blogPosts: BlogPost[] = [
         code: `// ❌ غلط\n/*\n   /* غلط */\n*/\n\n// ✅ صح\n// /* تعليق */`,
         note: { type: "warning", text: "مينفعش تعمل تعليق متداخل!" },
       },
-
-      // ── ESCAPE SEQUENCES ──────────────────────────
       {
         id: "escape-alert",
         title: "\\a — Alert",
@@ -304,7 +281,7 @@ export const blogPosts: BlogPost[] = [
         title: '\\" — Double Quote',
         code: `#include <stdio.h>\n\nint main() {\n    printf("He said: \\"Hello World\\"\\n");\n    return 0;\n}`,
         explanation: [
-          'اسمه Double Quote Escape Sequence',
+          "اسمه Double Quote Escape Sequence",
           'بتسمحلك تطبع أو تستخدم " داخل نصوص',
           'أي " جوه النص بدون \\" هيعمل Compilation Error',
         ],
@@ -373,7 +350,3 @@ export const blogPosts: BlogPost[] = [
     ],
   },
 ];
-
-];
-
-كده صح
