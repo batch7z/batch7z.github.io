@@ -1,6 +1,11 @@
 import img01 from "@/assets/23523.png";
 import img02 from "@/assets/24793.png";
 import img03 from "@/assets/25424.png";
+import img04 from "@/assets/lesson04.png";
+import img05 from "@/assets/lesson05.png";
+import img06 from "@/assets/lesson06.png";
+import img07 from "@/assets/lesson07.png";
+import img08 from "@/assets/lesson08.png";
 
 export interface BlogPost {
   slug: string;
@@ -626,6 +631,7 @@ export const blogPosts: BlogPost[] = [
     date: "2025-12-09",
     category: "C Programming",
     tags: ["c", "variables", "data-types", "keywords", "case-sensitive"],
+    heroImage: img04,
     sections: [
       {
         id: "case-sensitive",
@@ -916,6 +922,7 @@ export const blogPosts: BlogPost[] = [
     date: "2025-12-11",
     category: "C Programming",
     tags: ["c", "string", "char", "float", "int", "printf", "pointers"],
+    heroImage: img05,
     sections: [
       {
         id: "string-def",
@@ -1072,6 +1079,385 @@ export const blogPosts: BlogPost[] = [
           "& تجيب عنوان المتغير",
           "%p يطبع العنوان — تمهيد لموضوع Pointers",
         ],
+      },
+    ],
+  },
+  // ══════════════════════════════════════════════
+  // 06
+  // ══════════════════════════════════════════════
+  {
+    slug: "c-06-const",
+    title: "06 - C language course - const",
+    date: "2025-12-13",
+    category: "C Programming",
+    tags: ["c", "const", "define", "constants", "preprocessor"],
+    heroImage: img06,
+    sections: [
+      {
+        id: "constants-def",
+        title: "الثوابت (Constants) في لغة C",
+        explanation: [
+          "الثوابت هي قيم لا يمكن تغييرها أثناء تشغيل البرنامج",
+        ],
+      },
+      {
+        id: "constants-rules",
+        title: "قواعد مهمة",
+        note: { type: "warning", text: "❌ مينفعش تسيب الثابت فاضي بدون قيمة عند تعريفه — ❌ مينفعش تغيّر قيمة الثابت بعد تعريفه — ✅ ينفع توصل للثابت وتستخدمه في أي مكان في البرنامج" },
+      },
+      {
+        id: "when-to-use",
+        title: "إمتى أستخدم الثوابت؟",
+        explanation: [
+          "لما يكون عندنا قيمة مش هتتغير أثناء البرنامج",
+          "مستخدمة أكتر من مرة",
+          "عايزين نحميها من التغيير",
+        ],
+      },
+      {
+        id: "define-method",
+        title: "#define — طريقة التعريف",
+        code: `#define NAME value\n\n#define MAX  100\n#define PI   3.14`,
+        note: { type: "info", text: "لا نضع علامة = بين الاسم والقيمة — لا نضع ; في آخر السطر — يفضل كتابة اسم الثابت بـ Capital Letters — يفضل يكون في بداية البرنامج" },
+      },
+      {
+        id: "define-example",
+        title: "#define — مثال كامل",
+        code: `#include <stdio.h>\n\n#define TEST 10\n\nint main() {\n    printf("%d", TEST);\n    return 0;\n}`,
+        output: "10",
+      },
+      {
+        id: "const-method",
+        title: "const — طريقة التعريف",
+        code: `const type name = value;\n\nconst int test = 0;`,
+        table: {
+          headers: ["الجزء", "الشرح"],
+          rows: [
+            ["const", "معناها ثابت"],
+            ["int", "نوع البيانات"],
+            ["test", "اسم الثابت"],
+            ["= 0", "إسناد القيمة"],
+            [";", "نهاية السطر"],
+          ],
+        },
+      },
+      {
+        id: "const-examples",
+        title: "أمثلة على const",
+        code: `const int age   = 20;\nconst float pi  = 3.14;`,
+      },
+      {
+        id: "define-vs-const",
+        title: "الفرق بين #define و const",
+        table: {
+          headers: ["الخاصية", "#define", "const"],
+          rows: [
+            ["وقت التنفيذ", "قبل الكومبايل (Preprocessor)", "أثناء الكومبايل"],
+            ["طريقة الشغل", "استبدال نصوص", "متغير ثابت في الذاكرة"],
+            ["نوع البيانات", "❌ ملوش نوع", "✅ ليه نوع"],
+            ["علامة =", "❌ لا", "✅ نعم"],
+            ["علامة ;", "❌ لا", "✅ نعم"],
+            ["الماكروز", "✅ ينفع", "❌ مينفعش"],
+            ["الأمان", "أقل أمانًا", "✅ أأمن"],
+            ["الـ Debug", "أصعب", "✅ أسهل"],
+          ],
+        },
+      },
+      {
+        id: "when-define",
+        title: "إمتى أستخدم #define؟",
+        code: `#define MAX_SIZE 100\n#define SQUARE(x) x*x`,
+        explanation: [
+          "لما تحتاج قيمة ثابتة بسيطة",
+          "لما تعمل Macro",
+          "لما تحتاج استبدال نصوص",
+          "لما تعمل إعدادات عامة في ملفات الهيدر",
+        ],
+      },
+      {
+        id: "when-const",
+        title: "إمتى أستخدم const؟",
+        code: `const int age   = 20;\nconst float pi  = 3.14;`,
+        explanation: [
+          "لما تحتاج ثابت له نوع بيانات",
+          "لما تحتاج أمان أكتر",
+          "لما تتعامل مع متغيرات أو Pointers",
+          "لما تحتاج Debug بسهولة",
+        ],
+      },
+      {
+        id: "const-summary",
+        title: "الخلاصة",
+        code: `// إعدادات عامة\n#define MAX_SIZE 100\n\n// ثوابت عادية\nconst int age = 20;`,
+        explanation: [
+          "استخدم const للثوابت العادية — أأمن وأوضح",
+          "استخدم #define للماكروز والإعدادات العامة",
+        ],
+        note: { type: "info", text: "الـ #define مش دالة ومش متغير — هو مجرد استبدال نصوص بيحصل قبل الترجمة. لو عرّفت #define SQUARE(x) x*x ده Macro Function مش دالة حقيقية" },
+      },
+    ],
+  },
+  // ══════════════════════════════════════════════
+  // 07
+  // ══════════════════════════════════════════════
+  {
+    slug: "c-07-printf-sprintf-puts-putchar",
+    title: "07 - C language course - printf vs sprintf vs puts vs putchar",
+    date: "2025-12-15",
+    category: "C Programming",
+    tags: ["c", "printf", "sprintf", "puts", "putchar", "perror", "output"],
+    heroImage: img07,
+    sections: [
+      {
+        id: "sprintf-intro",
+        title: "sprintf — الكتابة في String",
+        explanation: [
+          "دالة sprintf تُستخدم لتنسيق النصوص وتحويل القيم إلى String وتخزينها داخل char array",
+          "بدل ما تطبعها على الشاشة",
+        ],
+        table: {
+          headers: ["الدالة", "بتطبع فين"],
+          rows: [
+            ["printf", "الشاشة مباشرةً"],
+            ["sprintf", "متغير String"],
+          ],
+        },
+      },
+      {
+        id: "sprintf-syntax",
+        title: "sprintf — الصيغة والمثال",
+        code: `sprintf(string, "format", values);\n\n// مثال عملي\n#include <stdio.h>\n\nint main() {\n    int test = 20;\n    printf("test = %i\\n", test);\n\n    char test2[50];\n    sprintf(test2, "now test is string : %i\\n", test);\n    printf("test: %s\\n", test2);\n\n    return 0;\n}`,
+        output: "test = 20\ntest: now test is string : 20",
+        explanation: [
+          "char test2[50] — مصفوفة حجمها 50 حرف",
+          "sprintf بيحول قيمة test لنص ويخزنه في test2",
+          "%s لطباعة النص المخزن",
+        ],
+      },
+      {
+        id: "sprintf-math",
+        title: "sprintf — مع عملية حسابية",
+        code: `#include <stdio.h>\n\nint main() {\n    int x = 5;\n    int y = 10;\n    char result[50];\n\n    sprintf(result, "sum = %d", x + y);\n    printf("%s\\n", result);\n    return 0;\n}`,
+        output: "sum = 15",
+        note: { type: "info", text: "sprintf تقدر تتعامل مع العمليات الحسابية — الحساب يتم أولًا ثم يتحول الناتج لنص" },
+      },
+      {
+        id: "puts-intro",
+        title: "puts — طباعة نص كامل",
+        code: `#include <stdio.h>\n\nint main() {\n    char test[30] = "test-test";\n    puts(test);\n    puts(test);\n    return 0;\n}`,
+        output: "test-test\ntest-test",
+        explanation: [
+          "لا تحتاج Format Specifier مثل %s",
+          "تضيف \\n تلقائيًا بعد الطباعة",
+          "أبسط في الاستخدام للنصوص",
+          "puts تطبع String فقط — لا تدعم فورمات مثل %d أو %i",
+        ],
+      },
+      {
+        id: "puts-vs-printf",
+        title: "الفرق بين puts و printf",
+        table: {
+          headers: ["الدالة", "النوع", "سطر جديد تلقائي", "فورمات"],
+          rows: [
+            ["puts", "String فقط", "✅ نعم", "❌ لا"],
+            ["printf", "كل الأنواع", "❌ لا", "✅ نعم"],
+          ],
+        },
+      },
+      {
+        id: "putchar-intro",
+        title: "putchar — طباعة حرف واحد",
+        code: `#include <stdio.h>\n\nint main() {\n    char t = 'e';\n    putchar(t);\n    putchar(t);\n    return 0;\n}`,
+        output: "ee",
+        explanation: [
+          "putchar تطبع حرف واحد فقط على الشاشة",
+          "لا تطبع سطر جديد تلقائي",
+          "لو عايز سطر جديد: putchar('\\n');",
+        ],
+      },
+      {
+        id: "perror-intro",
+        title: "perror — طباعة رسائل الخطأ",
+        code: `#include <stdio.h>\n\nint main() {\n    perror("warning");\n    return 0;\n}\n\n// مثال مع فشل فتح ملف\nFILE *f = fopen("file.txt", "r");\nif (!f) {\n    perror("Failed to open file");\n}`,
+        output: "warning: No error",
+        explanation: [
+          "perror تقبل نص String واحد كمقدمة للخطأ",
+          "بعد النص تطبع وصف الخطأ الفعلي من متغير errno",
+          "perror لا تُنهي البرنامج",
+          "غالبًا تُستخدم بعد فشل دالة نظام لمعرفة السبب",
+          "لو مفيش خطأ هتطبع No error",
+        ],
+      },
+      {
+        id: "output-compare",
+        title: "جدول مقارنة شامل",
+        table: {
+          headers: ["الدالة", "وظيفتها", "سطر جديد تلقائي", "فورمات", "تدعم"],
+          rows: [
+            ["printf", "طباعة على الشاشة", "❌", "✅", "كل الأنواع"],
+            ["sprintf", "كتابة في String", "❌", "✅", "كل الأنواع"],
+            ["puts", "طباعة نص", "✅", "❌", "String فقط"],
+            ["putchar", "طباعة حرف", "❌", "❌", "char فقط"],
+            ["perror", "طباعة خطأ", "✅", "❌", "String فقط"],
+          ],
+        },
+      },
+    ],
+  },
+  // ══════════════════════════════════════════════
+  // 08
+  // ══════════════════════════════════════════════
+  {
+    slug: "c-08-scanf-sscanf-getchar-getc-fgetc-gets-fgets",
+    title: "08 - C language course - scanf_sscanf_getchar_getc_fgetc_gets_fgets",
+    date: "2025-12-17",
+    category: "C Programming",
+    tags: ["c", "scanf", "sscanf", "getchar", "getc", "fgetc", "gets", "fgets", "input"],
+    heroImage: img08,
+    sections: [
+      {
+        id: "scanf-intro",
+        title: "scanf — إدخال قيمة من المستخدم",
+        code: `scanf("format", &اسم_المتغير);\n\n// مثال\n#include <stdio.h>\n\nint main() {\n    int x;\n    printf("please enter number: ");\n    scanf("%d", &x);\n    printf("the number: %d", x);\n    return 0;\n}`,
+        output: "please enter number: 10\nthe number: 10",
+        explanation: [
+          "تُستخدم scanf لإدخال قيمة من المستخدم وتخزينها في متغير",
+          "& معناها عنوان المتغير في الذاكرة",
+          "في حالة string مش بنستخدم & لأن اسم المصفوفة هو أصلًا عنوانها",
+        ],
+      },
+      {
+        id: "scanf-types",
+        title: "أمثلة على أنواع الإدخال",
+        code: `// إدخال float\nfloat f;\nscanf("%f", &f);\n\n// إدخال char\nchar c;\nscanf("%c", &c);\n\n// إدخال string\nchar x[5];\nscanf("%s", x); // بدون &`,
+        table: {
+          headers: ["النوع", "&"],
+          rows: [
+            ["int", "✅ لازم"],
+            ["float", "✅ لازم"],
+            ["char", "✅ لازم"],
+            ["string (مصفوفة)", "❌ مش لازم"],
+          ],
+        },
+      },
+      {
+        id: "scanf-format",
+        title: "Format Specifiers في scanf",
+        table: {
+          headers: ["الفورمات", "النوع"],
+          rows: [
+            ["%d", "int"],
+            ["%f", "float"],
+            ["%c", "char"],
+            ["%s", "string"],
+          ],
+        },
+      },
+      {
+        id: "scanf-problems",
+        title: "مشاكل scanf",
+        code: `// ❌ مشكلة Buffer Overflow\nchar x[5];\nscanf("%s", x); // لو المستخدم كتب أكتر من 4 حروف\n\n// ✅ الحل\nscanf("%4s", x); // يقرأ 4 حروف بس + \\0\n\n// مشكلة المسافات\nscanf("%s", x); // "hello world" → "hello" بس`,
+        explanation: [
+          "scanf بيقف عند أول مسافة — مش بيقرأ السطر كله",
+          "لو المستخدم كتب أكتر من حجم المصفوفة = Buffer Overflow",
+        ],
+        note: { type: "warning", text: "استخدم %4s لتحديد عدد الحروف المقروءة ومنع Buffer Overflow" },
+      },
+      {
+        id: "scanf-multiple",
+        title: "الإدخال المتعدد في scanf",
+        code: `#include <stdio.h>\n\nint main() {\n    int x;\n    float f;\n    char s[5];\n\n    printf("please enter: ");\n    scanf("%d %f %s", &x, &f, s);\n\n    printf("int: %d float: %f string: %s", x, f, s);\n    return 0;\n}`,
+        output: "int: 10 float: 3.500000 string: hi",
+        explanation: [
+          "تقدر تدخل أكتر من قيمة في نفس السطر",
+          "لازم نفس الترتيب في الإدخال",
+          "& مع المتغيرات العادية ✅ — بدون & مع string ✅",
+        ],
+      },
+      {
+        id: "getc-putc",
+        title: "getc و putc — إدخال وإخراج حرف",
+        code: `#include <stdio.h>\n\nint main() {\n    char b;\n    printf("enter char: ");\n    b = getc(stdin);\n    putc(b, stdout);\n    return 0;\n}`,
+        explanation: [
+          "getc تقرأ حرف واحد من مصدر إدخال",
+          "putc تطبع حرف واحد إلى مخرج معين",
+        ],
+        table: {
+          headers: ["الدالة", "تطبع على"],
+          rows: [
+            ["putc", "أي Stream (stdout أو ملف)"],
+            ["putchar", "الشاشة فقط (stdout)"],
+          ],
+        },
+      },
+      {
+        id: "getchar-intro",
+        title: "getchar — إدخال حرف واحد",
+        code: `#include <stdio.h>\n\nint main(void) {\n    char k;\n    printf("enter char: ");\n    k = getchar();\n    putchar(k);\n    return 0;\n}`,
+        explanation: [
+          "بتقرأ حرف واحد فقط",
+          "لو المستخدم كتب أكتر من حرف، هيتاخد أول حرف بس",
+          "الحروف الباقية بتفضل في الـ buffer",
+        ],
+      },
+      {
+        id: "fgetc-intro",
+        title: "fgetc — إدخال حرف من stream",
+        code: `#include <stdio.h>\n\nint main(void) {\n    char u;\n    printf("enter char: ");\n    u = fgetc(stdin);\n    printf("the char: %c", u);\n    return 0;\n}`,
+        explanation: [
+          "بتقرأ حرف واحد فقط",
+          "لازم تكتب stdin",
+          "تعتبر شبه getchar",
+        ],
+      },
+      {
+        id: "gets-intro",
+        title: "gets — إدخال نص (غير آمن ⚠️)",
+        code: `#include <stdio.h>\n\nint main() {\n    char l[5];\n    gets(l);\n    printf("the string: %s", l);\n    return 0;\n}`,
+        explanation: [
+          "بتقرأ السطر كله — مش بتقف عند المسافات",
+        ],
+        note: { type: "warning", text: "gets مفيهاش حد لعدد الحروف — لو المستخدم دخل حروف أكتر من حجم المصفوفة = Buffer Overflow! مش بتستخدم في الكود الحديث — استخدم fgets بدلها" },
+      },
+      {
+        id: "fgets-intro",
+        title: "fgets — إدخال نص (آمن ✅)",
+        code: `fgets(اسم_المتغير, عدد_الحروف, stdin);\n\n// مثال\n#include <stdio.h>\n\nint main() {\n    char l[6];\n    fgets(l, 6, stdin);\n    printf("the string: %s", l);\n    return 0;\n}`,
+        output: "hello",
+        explanation: [
+          "بتقرأ المسافات ✅",
+          "بتحدد عدد الحروف ✅",
+          "بتحمي من Buffer Overflow ✅",
+          "بتضيف \\0 في آخر النص ✅",
+          "ليه [6] وعايزين 5 حروف؟ — 5 حروف + \\0 = 6",
+        ],
+      },
+      {
+        id: "sscanf-intro",
+        title: "sscanf — قراءة من String",
+        code: `#include <stdio.h>\n\nint main() {\n    char bir[50] = "25 may 2026";\n    int day, yr;\n    char mon[10];\n\n    sscanf(bir, "%i %s %i", &day, mon, &yr);\n\n    printf("the day: %i\\n", day);\n    printf("the month: %s\\n", mon);\n    printf("the year: %i\\n", yr);\n\n    return 0;\n}`,
+        output: "the day: 25\nthe month: may\nthe year: 2026",
+        explanation: [
+          "sscanf بتقرأ من string موجود في البرنامج بدل إدخال المستخدم",
+          "scanf ← بتطلب إدخال من المستخدم مباشرة",
+          "sscanf ← بتقرأ من string موجود في البرنامج",
+        ],
+      },
+      {
+        id: "input-compare",
+        title: "جدول مقارنة شامل",
+        table: {
+          headers: ["الدالة", "وظيفتها", "تقرأ مسافات", "حد الحروف", "تحتاج stdin"],
+          rows: [
+            ["scanf", "إدخال متعدد الأنواع", "❌", "❌", "❌"],
+            ["sscanf", "قراءة من string", "✅", "❌", "❌"],
+            ["getc", "حرف واحد", "—", "—", "✅"],
+            ["getchar", "حرف واحد", "—", "—", "❌"],
+            ["fgetc", "حرف واحد من stream", "—", "—", "✅"],
+            ["gets", "نص كامل (غير آمن)", "✅", "❌", "❌"],
+            ["fgets", "نص كامل (آمن)", "✅", "✅", "✅"],
+          ],
+        },
       },
     ],
   },
