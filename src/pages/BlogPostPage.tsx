@@ -89,18 +89,55 @@ const BlogPostPage = () => {
           ))}
         </div>
 
-        {/* Footer */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-          className="mt-12 sm:mt-16 pt-6 sm:pt-8 border-t border-border flex items-center justify-between"
-        >
-          <Link to="/#blog" className="text-xs text-muted-foreground hover:text-primary transition-colors">
-            ← كل المقالات
-          </Link>
-          <span className="text-[10px] text-muted-foreground">@batch7z</span>
-        </motion.div>
+        {/* Prev / Next Navigation */}
+        {(() => {
+          const currentIndex = blogPosts.findIndex((p) => p.slug === slug);
+          const prevPost = currentIndex > 0 ? blogPosts[currentIndex - 1] : null;
+          const nextPost = currentIndex < blogPosts.length - 1 ? blogPosts[currentIndex + 1] : null;
+          return (
+            <motion.div
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              viewport={{ once: true }}
+              className="mt-12 sm:mt-16 pt-6 sm:pt-8 border-t border-border space-y-4"
+            >
+              <div className="flex items-center justify-between gap-3">
+                {prevPost ? (
+                  <Link
+                    to={`/blog/${prevPost.slug}`}
+                    className="flex-1 group bg-card/50 border border-border rounded-xl p-3 sm:p-4 hover:border-primary/40 transition-all"
+                  >
+                    <span className="text-[10px] text-muted-foreground tracking-wider">← الدرس السابق</span>
+                    <p className="text-xs sm:text-sm font-semibold text-foreground group-hover:text-primary transition-colors mt-1 line-clamp-1">
+                      {prevPost.title}
+                    </p>
+                  </Link>
+                ) : (
+                  <div className="flex-1" />
+                )}
+                {nextPost ? (
+                  <Link
+                    to={`/blog/${nextPost.slug}`}
+                    className="flex-1 group bg-card/50 border border-border rounded-xl p-3 sm:p-4 hover:border-primary/40 transition-all text-right"
+                  >
+                    <span className="text-[10px] text-muted-foreground tracking-wider">الدرس التالي →</span>
+                    <p className="text-xs sm:text-sm font-semibold text-foreground group-hover:text-primary transition-colors mt-1 line-clamp-1">
+                      {nextPost.title}
+                    </p>
+                  </Link>
+                ) : (
+                  <div className="flex-1" />
+                )}
+              </div>
+              <div className="flex items-center justify-between">
+                <Link to="/#blog" className="text-xs text-muted-foreground hover:text-primary transition-colors">
+                  ← كل المقالات
+                </Link>
+                <span className="text-[10px] text-muted-foreground">@batch7z</span>
+              </div>
+            </motion.div>
+          );
+        })()}
       </div>
     </div>
   );
