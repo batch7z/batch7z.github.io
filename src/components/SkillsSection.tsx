@@ -50,7 +50,7 @@ const skills = [
     bgColor: "bg-accent/5 border-accent/15 hover:border-accent/40",
     level: "Active",
     hasSummaries: true,
-    summaryCount: 4,
+    summaryCount: 5,
     blogAnchor: "#blog",
   },
 ];

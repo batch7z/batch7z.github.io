@@ -907,4 +907,172 @@ export const blogPosts: BlogPost[] = [
       },
     ],
   },
+  // ══════════════════════════════════════════════
+  // 05
+  // ══════════════════════════════════════════════
+  {
+    slug: "c-05-more-about-variables-2",
+    title: "05 - C language course - more about variables",
+    date: "2025-12-11",
+    category: "C Programming",
+    tags: ["c", "string", "char", "float", "int", "printf", "pointers"],
+    sections: [
+      {
+        id: "string-def",
+        title: "التعامل مع String في لغة C",
+        code: `char name[] = "batch";`,
+        explanation: [
+          "الـ String في لغة C هو مصفوفة من char",
+        ],
+      },
+      {
+        id: "string-print",
+        title: "طباعة الـ String كاملة",
+        code: `printf("%s\\n", name);`,
+        table: {
+          headers: ["الجزء", "الشرح"],
+          rows: [
+            ["%s", "مخصص لطباعة النصوص"],
+          ],
+        },
+        output: "batch",
+      },
+      {
+        id: "string-first-char",
+        title: "الوصول إلى أول حرف",
+        code: `printf("%c\\n", *name);\nprintf("%c\\n", name[0]);`,
+        table: {
+          headers: ["الطريقة", "الشرح"],
+          rows: [
+            ["*name", "أول عنصر في المصفوفة"],
+            ["name[0]", "أول عنصر أيضًا"],
+          ],
+        },
+        note: { type: "info", text: "الطريقتان متكافئتان تمامًا" },
+        output: "b",
+      },
+      {
+        id: "string-partial-print",
+        title: "التحكم في عدد الحروف المطبوعة",
+        code: `printf("%.2s\\n", name);   // ba\nprintf("%.3s\\n", name);   // bat\nprintf("%10.1s\\n", name); // حرف واحد + 9 مسافات`,
+        table: {
+          headers: ["الصيغة", "المعنى", "الناتج"],
+          rows: [
+            ["%.2s", "أول حرفين فقط", "ba"],
+            ["%.3s", "أول 3 حروف", "bat"],
+            ["%10.1s", "عرض 10 خانات + حرف واحد", "         b"],
+          ],
+        },
+      },
+      {
+        id: "string-memory",
+        title: "عناوين الذاكرة للـ String",
+        code: `printf("%p\\n", name);\nprintf("%p\\n", &name[0]);\nprintf("%p\\n", &name[1]);\nprintf("%p\\n", &name[2]);`,
+        table: {
+          headers: ["الجزء", "الشرح"],
+          rows: [
+            ["%p", "لطباعة عنوان الذاكرة"],
+            ["name", "يساوي &name[0]"],
+            ["كل char", "حجمه 1 Byte"],
+          ],
+        },
+        note: { type: "info", text: "تمهيد لموضوع Pointers — العناوين تزيد تدريجيًا في الذاكرة بمقدار 1 Byte لكل حرف" },
+      },
+      {
+        id: "pointer-arithmetic",
+        title: "Pointer Arithmetic (تمهيد)",
+        code: `printf("%c\\n", *(name + 0));\nprintf("%c\\n", *(name + 1));\nprintf("%c\\n", *(name + 2));`,
+        table: {
+          headers: ["الصيغة", "المعنى"],
+          rows: [
+            ["name + i", "عنوان العنصر رقم i"],
+            ["*(name + i)", "القيمة في العنوان ده"],
+            ["name[i]", "نفس الشيء بالظبط"],
+          ],
+        },
+        explanation: [
+          "الـ String في C هو Array من char",
+          "name[i] ≡ *(name + i)",
+          "name يشير دائمًا إلى أول عنصر في المصفوفة",
+          "تمهيد مباشر لموضوع Arrays و Pointers",
+        ],
+      },
+      {
+        id: "char-arithmetic",
+        title: "العمليات الحسابية على char",
+        code: `char let1 = 'b';        // ASCII = 98\nchar let2 = 'a';        // ASCII = 97\nchar let3 = let1 + 1;   // 98 + 1 = 99 = 'c'\nunsigned char let4 = let1 + let2; // 98 + 97 = 195`,
+        explanation: [
+          "char = رقم + تفسيره كحرف",
+          "العمليات الحسابية على char مسموحة",
+          "%c → حرف، %d → رقم ASCII",
+        ],
+        table: {
+          headers: ["الخطوة", "القيمة"],
+          rows: [
+            ["let1 = 'b'", "98"],
+            ["let2 = 'a'", "97"],
+            ["let3 = let1 + 1", "99 = 'c'"],
+            ["let4 = let1 + let2", "195"],
+          ],
+        },
+        note: { type: "warning", text: "unsigned char يمنع القيم السالبة — القيمة 195 أكبر من حد signed char (127)" },
+      },
+      {
+        id: "float-precision",
+        title: "التحكم في دقة وعرض float",
+        code: `float x = 2.0123456789;\n\nprintf("%f\\n",    x); // طباعة افتراضية — 6 أرقام\nprintf("%.9f\\n",  x); // 9 أرقام — بيكمل بتقريب\nprintf("%.3f\\n",  x); // 3 أرقام — بيقرّب`,
+        table: {
+          headers: ["الصيغة", "الناتج"],
+          rows: [
+            ["%f", "2.012346"],
+            ["%.9f", "2.012345552 (تقريبي)"],
+            ["%.3f", "2.012"],
+          ],
+        },
+        explanation: [
+          "float دقته تقريبًا 6 أرقام بعد الفاصلة",
+          "الرقم مش بيتخزن كامل 100% بسبب محدودية الدقة",
+        ],
+      },
+      {
+        id: "float-width",
+        title: "التحكم في العرض (Width) لـ float",
+        code: `printf("%6.3f\\n", x);\nprintf("%7.3f\\n", x);\nprintf("%8.3f\\n", x);\nprintf("%9.3f\\n", x);`,
+        table: {
+          headers: ["الصيغة", "الشكل", "المسافات"],
+          rows: [
+            ["%6.3f", " 2.012", "1 مسافة"],
+            ["%7.3f", "  2.012", "2 مسافة"],
+            ["%8.3f", "   2.012", "3 مسافة"],
+            ["%9.3f", "    2.012", "4 مسافة"],
+          ],
+        },
+        explanation: [
+          "%f = طباعة افتراضية",
+          "%.N = N أرقام بعد الفاصلة",
+          "%W.N = عرض كلي W + دقة N",
+          "كل ما W كبر، المسافات قبل الرقم زادت",
+        ],
+      },
+      {
+        id: "int-width",
+        title: "التحكم في عرض int",
+        code: `int y = 333;\n\nprintf("%i\\n",  y); // 333\nprintf("%9d\\n", y); // 333 مع 6 مسافات قبلها\nprintf("%p\\n", &y); // عنوان المتغير في الذاكرة`,
+        table: {
+          headers: ["الصيغة", "الناتج", "الشرح"],
+          rows: [
+            ["%i", "333", "طباعة عادية — نفس %d"],
+            ["%9d", "      333", "عرض 9 خانات — الرقم في الآخر"],
+            ["%p", "0x7ffcb3a4", "عنوان الذاكرة بالـ Hex"],
+          ],
+        },
+        explanation: [
+          "%i ≈ %d (نفس الوظيفة)",
+          "الرقم قبل d = عرض الطباعة",
+          "& تجيب عنوان المتغير",
+          "%p يطبع العنوان — تمهيد لموضوع Pointers",
+        ],
+      },
+    ],
+  },
 ];
