@@ -631,6 +631,7 @@ export const blogPosts: BlogPost[] = [
     date: "2025-12-09",
     category: "C Programming",
     tags: ["c", "variables", "data-types", "keywords", "case-sensitive"],
+    heroImage: img04,
     sections: [
       {
         id: "case-sensitive",
