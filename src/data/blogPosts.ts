@@ -1,6 +1,11 @@
 import img01 from "@/assets/23523.png";
 import img02 from "@/assets/24793.png";
 import img03 from "@/assets/25424.png";
+import img04 from "@/assets/lesson04.png";
+import img05 from "@/assets/lesson05.png";
+import img06 from "@/assets/lesson06.png";
+import img07 from "@/assets/lesson07.png";
+import img08 from "@/assets/lesson08.png";
 
 export interface BlogPost {
   slug: string;
