@@ -922,6 +922,7 @@ export const blogPosts: BlogPost[] = [
     date: "2025-12-11",
     category: "C Programming",
     tags: ["c", "string", "char", "float", "int", "printf", "pointers"],
+    heroImage: img05,
     sections: [
       {
         id: "string-def",
