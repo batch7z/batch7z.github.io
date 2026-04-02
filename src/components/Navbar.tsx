@@ -23,18 +23,20 @@ const Navbar = () => {
     <motion.nav
       initial={{ y: -80, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
-      transition={{ duration: 0.5, delay: 0.2 }}
+      transition={{ duration: 0.5, delay: 0.1 }}
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
-        scrolled || menuOpen ? "bg-background/95 backdrop-blur-xl border-b border-border" : ""
+        scrolled || menuOpen
+          ? "bg-background/90 backdrop-blur-xl border-b border-border shadow-lg shadow-primary/5"
+          : ""
       }`}
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex items-center justify-between">
-        <div className="flex items-center gap-3">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 py-3 sm:py-4 flex items-center justify-between">
+        <a href="#" className="flex items-center gap-2.5">
           <div className="w-2 h-2 rounded-full bg-primary status-pulse" />
-          <span className="font-display font-bold text-base tracking-wider text-foreground">
+          <span className="font-display font-bold text-sm sm:text-base tracking-wider text-foreground">
             BATCH<span className="text-primary">_7Z</span>
           </span>
-        </div>
+        </a>
 
         {/* Desktop links */}
         <div className="hidden sm:flex items-center gap-1">
@@ -42,7 +44,7 @@ const Navbar = () => {
             <a
               key={link.label}
               href={link.href}
-              className="text-[11px] tracking-[0.2em] text-muted-foreground hover:text-primary px-3 py-2 rounded-md hover:bg-muted/50 transition-all duration-300"
+              className="text-[11px] tracking-[0.2em] text-muted-foreground hover:text-primary px-3 py-2 rounded-md hover:bg-primary/5 transition-all duration-300"
             >
               {link.label}
             </a>
@@ -52,7 +54,8 @@ const Navbar = () => {
         {/* Mobile hamburger */}
         <button
           onClick={() => setMenuOpen(!menuOpen)}
-          className="sm:hidden text-muted-foreground hover:text-primary transition-colors p-1"
+          className="sm:hidden text-muted-foreground hover:text-primary transition-colors p-1.5"
+          aria-label="Toggle menu"
         >
           {menuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
         </button>
@@ -73,7 +76,7 @@ const Navbar = () => {
                   key={link.label}
                   href={link.href}
                   onClick={() => setMenuOpen(false)}
-                  className="block text-xs tracking-[0.2em] text-muted-foreground hover:text-primary px-3 py-2.5 rounded-md hover:bg-muted/50 transition-all"
+                  className="block text-xs tracking-[0.2em] text-muted-foreground hover:text-primary px-3 py-3 rounded-md hover:bg-primary/5 transition-all"
                 >
                   {link.label}
                 </a>

@@ -2,82 +2,73 @@ import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import { blogPosts } from "@/data/blogPosts";
 
-const categoryTagClass: Record<string, string> = {
-  "C Programming": "tag-green",
-  "Malware": "tag-amber",
-  "Reverse Engineering": "tag-purple",
-  "Cryptography": "tag-purple",
-  "Assembly": "tag-amber",
-};
-
 const BlogSection = () => {
   return (
-    <section id="blog" className="relative py-16 sm:py-28 px-4 sm:px-6 lg:px-8">
-      <div className="max-w-7xl mx-auto">
+    <section id="blog" className="relative py-20 sm:py-28 px-4 sm:px-6 section-glow">
+      <div className="max-w-6xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="mb-8 sm:mb-14"
+          className="text-center mb-10 sm:mb-14"
         >
-          <div className="flex items-center gap-3 mb-3">
-            <span className="text-[11px] tracking-[0.4em] text-muted-foreground font-mono">02</span>
-            <div className="h-px w-12 bg-border" />
-          </div>
-          <h2 className="font-display text-3xl sm:text-4xl font-bold text-foreground">
-            Blog & <span className="text-secondary">Notes</span>
+          <span className="text-[10px] tracking-[0.5em] text-primary/60 font-mono block mb-3">
+            02 — BLOG
+          </span>
+          <h2 className="font-display text-2xl sm:text-4xl font-bold text-foreground">
+            Notes & <span className="text-secondary glow-text-magenta">Summaries</span>
           </h2>
-          <p className="text-muted-foreground text-xs sm:text-sm mt-3 max-w-lg">
+          <p className="text-muted-foreground text-xs sm:text-sm mt-3 max-w-lg mx-auto">
             ملخصاتي ومذكراتي اليومية — لغة C، تحليل Malware، وأكتر
           </p>
         </motion.div>
 
-        {blogPosts.length > 0 ? (
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mb-8">
+        {blogPosts.length > 0 && (
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4 mb-8">
             {blogPosts.map((post, i) => (
               <motion.div
                 key={post.slug}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ delay: i * 0.08 }}
+                transition={{ delay: i * 0.06 }}
               >
                 <Link
                   to={`/blog/${post.slug}`}
-                  className="group block bg-card/60 border border-border rounded-xl overflow-hidden hover:border-primary/30 transition-all duration-500 h-full"
+                  className="group block bg-card/60 border border-border rounded-xl overflow-hidden card-hover backdrop-blur-sm h-full"
                 >
-                  {/* Hero image */}
                   {post.heroImage && (
-                    <div className="w-full h-36 sm:h-40 overflow-hidden border-b border-border">
+                    <div className="w-full h-32 sm:h-40 overflow-hidden border-b border-border">
                       <img
                         src={post.heroImage}
                         alt={post.title}
+                        loading="lazy"
                         className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                       />
                     </div>
                   )}
-                  <div className="p-4 sm:p-6">
+                  <div className="p-4 sm:p-5">
                     <div className="flex items-center gap-2 mb-3">
-                      <span className={`text-[9px] tracking-wider px-2.5 py-0.5 rounded-full ${categoryTagClass[post.category] || "tag-green"}`}>
+                      <span className="tag-purple text-[9px] tracking-wider px-2 py-0.5 rounded-full">
                         {post.category}
                       </span>
                       <span className="text-[10px] text-muted-foreground">{post.date}</span>
                     </div>
-                    <h3 className="font-display text-xs sm:text-sm font-semibold text-foreground group-hover:text-primary transition-colors mb-3 leading-relaxed">
+                    <h3 className="font-display text-xs sm:text-sm font-semibold text-foreground group-hover:text-primary transition-colors mb-3 leading-relaxed line-clamp-2">
                       {post.title}
                     </h3>
-                    <div className="flex items-center flex-wrap gap-1.5 mb-4">
+                    <div className="flex items-center flex-wrap gap-1.5 mb-3">
                       {post.tags.slice(0, 3).map((tag) => (
-                        <span key={tag} className="text-[9px] px-1.5 py-0.5 rounded bg-muted text-muted-foreground">
+                        <span key={tag} className="text-[9px] px-1.5 py-0.5 rounded bg-muted/50 text-muted-foreground">
                           #{tag}
                         </span>
                       ))}
                     </div>
-                    <div className="flex items-center justify-between">
+                    <div className="flex items-center justify-between pt-2 border-t border-border/50">
                       <span className="text-[10px] text-muted-foreground">
-                        {post.sections.length} أقسام
+                        {post.sections.length} sections
                       </span>
-                      <span className="text-xs text-muted-foreground group-hover:text-primary transition-colors">
+                      <span className="text-[10px] text-primary font-mono tracking-wider opacity-0 group-hover:opacity-100 transition-opacity">
                         READ →
                       </span>
                     </div>
@@ -86,7 +77,7 @@ const BlogSection = () => {
               </motion.div>
             ))}
           </div>
-        ) : null}
+        )}
 
         <motion.div
           initial={{ opacity: 0, y: 15 }}
@@ -94,17 +85,11 @@ const BlogSection = () => {
           viewport={{ once: true }}
           className="border border-dashed border-border rounded-xl p-6 sm:p-8 flex flex-col items-center text-center"
         >
-          <span className="text-[10px] tracking-[0.3em] text-muted-foreground mb-4">COMING SOON</span>
-          <div className="flex flex-wrap items-center justify-center gap-2 sm:gap-3">
-            {[
-              { label: "المزيد من ملخصات C", tagClass: "tag-green" },
-              { label: "Assembly Notes", tagClass: "tag-amber" },
-              { label: "Malware Analysis", tagClass: "tag-amber" },
-              { label: "Reverse Engineering", tagClass: "tag-purple" },
-              { label: "Cryptography", tagClass: "tag-purple" },
-            ].map((item) => (
-              <span key={item.label} className={`text-[9px] sm:text-[10px] tracking-wider px-2.5 sm:px-3 py-1 sm:py-1.5 rounded-full ${item.tagClass}`}>
-                {item.label}
+          <span className="text-[10px] tracking-[0.3em] text-muted-foreground mb-4 font-mono">COMING SOON</span>
+          <div className="flex flex-wrap items-center justify-center gap-2">
+            {["Assembly Notes", "Malware Analysis", "Reverse Engineering", "Cryptography"].map((label) => (
+              <span key={label} className="tag-purple text-[9px] sm:text-[10px] tracking-wider px-3 py-1.5 rounded-full">
+                {label}
               </span>
             ))}
           </div>
