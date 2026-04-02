@@ -28,7 +28,7 @@ const HeroSection = () => {
               <h1 className="font-display text-4xl sm:text-5xl md:text-7xl font-black leading-[0.95] mb-4 sm:mb-6">
                 <span className="text-foreground">I Break</span>
                 <br />
-                <span className="text-primary glow-text-green">Malware</span>
+                <span className="text-primary glow-text-purple">Malware</span>
                 <br />
                 <span className="text-foreground">Apart</span>
                 <span className="text-secondary">.</span>
@@ -58,7 +58,7 @@ const HeroSection = () => {
             className="lg:col-span-5 flex flex-col items-center lg:items-end gap-4 sm:gap-6"
           >
             <div className="relative animate-float-slow">
-              <div className="w-40 h-40 sm:w-52 sm:h-52 md:w-64 md:h-64 rounded-2xl overflow-hidden gradient-border-green glow-green relative z-10">
+              <div className="w-40 h-40 sm:w-52 sm:h-52 md:w-64 md:h-64 rounded-2xl overflow-hidden gradient-border-purple glow-purple relative z-10">
                 <img src={avatarImg} alt="Batch_7z" className="w-full h-full object-cover" />
               </div>
               <div className="absolute -inset-3 rounded-3xl border border-primary/10" />
