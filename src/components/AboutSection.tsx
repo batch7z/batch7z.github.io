@@ -15,7 +15,7 @@ const AboutSection = () => {
             <div className="h-px w-12 bg-border" />
           </div>
           <h2 className="font-display text-3xl sm:text-4xl font-bold text-foreground">
-            About <span className="text-accent">Me</span>
+            About <span className="text-secondary">Me</span>
           </h2>
         </motion.div>
 
@@ -62,7 +62,7 @@ const AboutSection = () => {
                 { name: "CyberChef", desc: "Data Decoding" },
                 { name: "GCC", desc: "C Compiler" },
               ].map((tool) => (
-                <div key={tool.name} className="bg-muted/30 border border-border rounded-lg px-3 py-2 sm:py-2.5">
+                <div key={tool.name} className="bg-muted/30 border border-border rounded-lg px-3 py-2 sm:py-2.5 hover:border-primary/30 transition-colors">
                   <span className="text-[10px] sm:text-xs font-semibold text-foreground block">{tool.name}</span>
                   <span className="text-[9px] sm:text-[10px] text-muted-foreground">{tool.desc}</span>
                 </div>
