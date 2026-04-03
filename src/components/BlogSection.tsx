@@ -37,16 +37,6 @@ const BlogSection = () => {
                   to={`/blog/${post.slug}`}
                   className="group block bg-card/60 border border-border rounded-xl overflow-hidden card-hover backdrop-blur-sm h-full"
                 >
-                  {post.heroImage && (
-                    <div className="w-full h-32 sm:h-40 overflow-hidden border-b border-border">
-                      <img
-                        src={post.heroImage}
-                        alt={post.title}
-                        loading="lazy"
-                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                      />
-                    </div>
-                  )}
                   <div className="p-4 sm:p-5">
                     <div className="flex items-center gap-2 mb-3">
                       <span className="tag-purple text-[9px] tracking-wider px-2 py-0.5 rounded-full">
