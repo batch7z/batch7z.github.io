@@ -1,12 +1,3 @@
-import img01 from "@/assets/23523.png";
-import img02 from "@/assets/24793.png";
-import img03 from "@/assets/25424.png";
-import img04 from "@/assets/lesson04.png";
-import img05 from "@/assets/lesson05.png";
-import img06 from "@/assets/lesson06.png";
-import img07 from "@/assets/lesson07.png";
-import img08 from "@/assets/lesson08.png";
-
 export interface BlogPost {
   slug: string;
   title: string;
@@ -37,7 +28,6 @@ export const blogPosts: BlogPost[] = [
     date: "2025-12-03",
     category: "C Programming",
     tags: ["c", "basics", "printf", "main"],
-    heroImage: img01,
     sections: [
       {
         id: "full-code",
@@ -124,7 +114,6 @@ export const blogPosts: BlogPost[] = [
     date: "2025-12-05",
     category: "C Programming",
     tags: ["c", "comments", "escape-sequences"],
-    heroImage: img02,
     sections: [
       {
         id: "comments-def",
@@ -376,7 +365,6 @@ export const blogPosts: BlogPost[] = [
     date: "2025-12-07",
     category: "C Programming",
     tags: ["c", "variables", "data-types", "char", "int", "float", "bool"],
-    heroImage: img03,
     sections: [
       {
         id: "char-def",
@@ -623,7 +611,7 @@ export const blogPosts: BlogPost[] = [
     ],
   },
   // ══════════════════════════════════════════════
-  // 04 — More about variables
+  // 04
   // ══════════════════════════════════════════════
   {
     slug: "c-04-more-about-variables",
@@ -631,21 +619,14 @@ export const blogPosts: BlogPost[] = [
     date: "2025-12-09",
     category: "C Programming",
     tags: ["c", "variables", "data-types", "keywords", "case-sensitive"],
-    heroImage: img04,
     sections: [
       {
         id: "case-sensitive",
         title: "لغة C حسّاسة لحالة الأحرف (Case Sensitive)",
-        explanation: [
-          "لغة C بتفرّق بين الحروف الكبيرة والصغيرة",
-        ],
+        explanation: ["لغة C بتفرّق بين الحروف الكبيرة والصغيرة"],
         table: {
           headers: ["صغير", "كبير", "نفس المعنى؟"],
-          rows: [
-            ["a", "A", "❌"],
-            ["sum", "Sum / SUM", "❌"],
-            ["main", "Main", "❌"],
-          ],
+          rows: [["a", "A", "❌"], ["sum", "Sum / SUM", "❌"], ["main", "Main", "❌"]],
         },
       },
       {
@@ -664,9 +645,7 @@ export const blogPosts: BlogPost[] = [
       {
         id: "keywords",
         title: "الكلمات المحجوزة في لغة C (C Keywords)",
-        explanation: [
-          "الكلمات دي محجوزة — مينفعش تستخدمها كـ: اسم متغير، دالة، Struct، Union، أو Type جديد",
-        ],
+        explanation: ["الكلمات دي محجوزة — مينفعش تستخدمها كـ: اسم متغير، دالة، Struct، Union، أو Type جديد"],
         table: {
           headers: ["", "", "", ""],
           rows: [
@@ -686,10 +665,7 @@ export const blogPosts: BlogPost[] = [
       {
         id: "packed-note",
         title: "_Packed و __Packed",
-        explanation: [
-          "ليست كلمات محجوزة في C القياسية",
-          "Compiler-specific — تُستخدم مع GCC أو ARM Compiler",
-        ],
+        explanation: ["ليست كلمات محجوزة في C القياسية", "Compiler-specific — تُستخدم مع GCC أو ARM Compiler"],
       },
       {
         id: "keywords-examples",
@@ -704,17 +680,9 @@ export const blogPosts: BlogPost[] = [
         output: "A",
         table: {
           headers: ["الخاصية", "القيمة"],
-          rows: [
-            ["الحجم", "1 Byte"],
-            ["المدى (signed)", "-128 إلى 127"],
-            ["Format Specifier", "%c"],
-          ],
+          rows: [["الحجم", "1 Byte"], ["المدى (signed)", "-128 إلى 127"], ["Format Specifier", "%c"]],
         },
-        explanation: [
-          "char بيخزن حرف واحد فقط",
-          "القيمة الحقيقية المخزنة هي رقم ASCII",
-          "لطباعة القيمة الرقمية: printf(\"%d\", c);",
-        ],
+        explanation: ["char بيخزن حرف واحد فقط", "القيمة الحقيقية المخزنة هي رقم ASCII", "لطباعة القيمة الرقمية: printf(\"%d\", c);"],
       },
       {
         id: "dt-short",
@@ -723,17 +691,9 @@ export const blogPosts: BlogPost[] = [
         output: "1000",
         table: {
           headers: ["الخاصية", "القيمة"],
-          rows: [
-            ["الحجم", "2 Bytes"],
-            ["المدى", "-32768 إلى 32767"],
-            ["Format Specifier", "%hd"],
-          ],
+          rows: [["الحجم", "2 Bytes"], ["المدى", "-32768 إلى 32767"], ["Format Specifier", "%hd"]],
         },
-        explanation: [
-          "short = short int (نفس المعنى)",
-          "%hd مخصص لـ short int فقط",
-          "يُستخدم لتقليل استهلاك الذاكرة",
-        ],
+        explanation: ["short = short int (نفس المعنى)", "%hd مخصص لـ short int فقط", "يُستخدم لتقليل استهلاك الذاكرة"],
       },
       {
         id: "dt-ushort",
@@ -742,16 +702,9 @@ export const blogPosts: BlogPost[] = [
         output: "65000",
         table: {
           headers: ["الخاصية", "القيمة"],
-          rows: [
-            ["الحجم", "2 Bytes"],
-            ["المدى", "0 إلى 65535"],
-            ["Format Specifier", "%hu"],
-          ],
+          rows: [["الحجم", "2 Bytes"], ["المدى", "0 إلى 65535"], ["Format Specifier", "%hu"]],
         },
-        explanation: [
-          "لا يقبل قيم سالبة",
-          "unsigned short = unsigned short int",
-        ],
+        explanation: ["لا يقبل قيم سالبة", "unsigned short = unsigned short int"],
       },
       {
         id: "dt-int",
@@ -760,16 +713,9 @@ export const blogPosts: BlogPost[] = [
         output: "1000",
         table: {
           headers: ["الخاصية", "القيمة"],
-          rows: [
-            ["الحجم", "4 Bytes"],
-            ["المدى", "-2147483648 إلى 2147483647"],
-            ["Format Specifier", "%d أو %i"],
-          ],
+          rows: [["الحجم", "4 Bytes"], ["المدى", "-2147483648 إلى 2147483647"], ["Format Specifier", "%d أو %i"]],
         },
-        explanation: [
-          "يأخذ قيم سالبة وموجبة",
-          "في أنظمة 16-bit قديمة قد يكون 2 بايت فقط",
-        ],
+        explanation: ["يأخذ قيم سالبة وموجبة", "في أنظمة 16-bit قديمة قد يكون 2 بايت فقط"],
       },
       {
         id: "dt-uint",
@@ -778,16 +724,9 @@ export const blogPosts: BlogPost[] = [
         output: "4000000000",
         table: {
           headers: ["الخاصية", "القيمة"],
-          rows: [
-            ["الحجم", "4 Bytes"],
-            ["المدى", "0 إلى 4294967295"],
-            ["Format Specifier", "%u"],
-          ],
+          rows: [["الحجم", "4 Bytes"], ["المدى", "0 إلى 4294967295"], ["Format Specifier", "%u"]],
         },
-        explanation: [
-          "لا يقبل قيم سالبة",
-          "%u مخصص لطباعة unsigned int",
-        ],
+        explanation: ["لا يقبل قيم سالبة", "%u مخصص لطباعة unsigned int"],
       },
       {
         id: "dt-long",
@@ -796,11 +735,7 @@ export const blogPosts: BlogPost[] = [
         output: "9223372036854775807",
         table: {
           headers: ["الخاصية", "القيمة"],
-          rows: [
-            ["الحجم", "8 Bytes (قد يكون 4 في 32-bit)"],
-            ["المدى", "-9223372036854775808 إلى 9223372036854775807"],
-            ["Format Specifier", "%ld"],
-          ],
+          rows: [["الحجم", "8 Bytes (قد يكون 4 في 32-bit)"], ["المدى", "-9223372036854775808 إلى 9223372036854775807"], ["Format Specifier", "%ld"]],
         },
       },
       {
@@ -810,11 +745,7 @@ export const blogPosts: BlogPost[] = [
         output: "18446744073709551615",
         table: {
           headers: ["الخاصية", "القيمة"],
-          rows: [
-            ["الحجم", "8 Bytes"],
-            ["المدى", "0 إلى 18446744073709551615"],
-            ["Format Specifier", "%lu"],
-          ],
+          rows: [["الحجم", "8 Bytes"], ["المدى", "0 إلى 18446744073709551615"], ["Format Specifier", "%lu"]],
         },
       },
       {
@@ -824,11 +755,7 @@ export const blogPosts: BlogPost[] = [
         output: "9223372036854775807",
         table: {
           headers: ["الخاصية", "القيمة"],
-          rows: [
-            ["الحجم", "8 Bytes"],
-            ["المدى", "-9223372036854775808 إلى 9223372036854775807"],
-            ["Format Specifier", "%lld"],
-          ],
+          rows: [["الحجم", "8 Bytes"], ["المدى", "-9223372036854775808 إلى 9223372036854775807"], ["Format Specifier", "%lld"]],
         },
       },
       {
@@ -838,11 +765,7 @@ export const blogPosts: BlogPost[] = [
         output: "18446744073709551615",
         table: {
           headers: ["الخاصية", "القيمة"],
-          rows: [
-            ["الحجم", "8 Bytes"],
-            ["المدى", "0 إلى 18446744073709551615"],
-            ["Format Specifier", "%llu"],
-          ],
+          rows: [["الحجم", "8 Bytes"], ["المدى", "0 إلى 18446744073709551615"], ["Format Specifier", "%llu"]],
         },
       },
       {
@@ -852,12 +775,7 @@ export const blogPosts: BlogPost[] = [
         output: "3.141592",
         table: {
           headers: ["الخاصية", "القيمة"],
-          rows: [
-            ["الحجم", "4 Bytes"],
-            ["المدى", "1.175494e-38 إلى 3.402823e+38"],
-            ["الدقة", "~6 أرقام بعد الفاصلة"],
-            ["Format Specifier", "%f"],
-          ],
+          rows: [["الحجم", "4 Bytes"], ["المدى", "1.175494e-38 إلى 3.402823e+38"], ["الدقة", "~6 أرقام بعد الفاصلة"], ["Format Specifier", "%f"]],
         },
       },
       {
@@ -867,12 +785,7 @@ export const blogPosts: BlogPost[] = [
         output: "3.141593",
         table: {
           headers: ["الخاصية", "القيمة"],
-          rows: [
-            ["الحجم", "8 Bytes"],
-            ["المدى", "2.225074e-308 إلى 1.797693e+308"],
-            ["الدقة", "~15 رقم بعد الفاصلة"],
-            ["Format Specifier", "%lf"],
-          ],
+          rows: [["الحجم", "8 Bytes"], ["المدى", "2.225074e-308 إلى 1.797693e+308"], ["الدقة", "~15 رقم بعد الفاصلة"], ["Format Specifier", "%lf"]],
         },
         note: { type: "info", text: "الطباعة الافتراضية تقرّب الرقم، لكن المتغير يحتفظ بالدقة الكاملة داخليًا" },
       },
@@ -883,11 +796,7 @@ export const blogPosts: BlogPost[] = [
         output: "3.141592653589793238",
         table: {
           headers: ["الخاصية", "القيمة"],
-          rows: [
-            ["الحجم", "16 Bytes"],
-            ["الدقة", "~19 رقم بعد الفاصلة"],
-            ["Format Specifier", "%Lf"],
-          ],
+          rows: [["الحجم", "16 Bytes"], ["الدقة", "~19 رقم بعد الفاصلة"], ["Format Specifier", "%Lf"]],
         },
       },
       {
@@ -922,39 +831,25 @@ export const blogPosts: BlogPost[] = [
     date: "2025-12-11",
     category: "C Programming",
     tags: ["c", "string", "char", "float", "int", "printf", "pointers"],
-    heroImage: img05,
     sections: [
       {
         id: "string-def",
         title: "التعامل مع String في لغة C",
         code: `char name[] = "batch";`,
-        explanation: [
-          "الـ String في لغة C هو مصفوفة من char",
-        ],
+        explanation: ["الـ String في لغة C هو مصفوفة من char"],
       },
       {
         id: "string-print",
         title: "طباعة الـ String كاملة",
         code: `printf("%s\\n", name);`,
-        table: {
-          headers: ["الجزء", "الشرح"],
-          rows: [
-            ["%s", "مخصص لطباعة النصوص"],
-          ],
-        },
+        table: { headers: ["الجزء", "الشرح"], rows: [["%s", "مخصص لطباعة النصوص"]] },
         output: "batch",
       },
       {
         id: "string-first-char",
         title: "الوصول إلى أول حرف",
         code: `printf("%c\\n", *name);\nprintf("%c\\n", name[0]);`,
-        table: {
-          headers: ["الطريقة", "الشرح"],
-          rows: [
-            ["*name", "أول عنصر في المصفوفة"],
-            ["name[0]", "أول عنصر أيضًا"],
-          ],
-        },
+        table: { headers: ["الطريقة", "الشرح"], rows: [["*name", "أول عنصر في المصفوفة"], ["name[0]", "أول عنصر أيضًا"]] },
         note: { type: "info", text: "الطريقتان متكافئتان تمامًا" },
         output: "b",
       },
@@ -964,11 +859,7 @@ export const blogPosts: BlogPost[] = [
         code: `printf("%.2s\\n", name);   // ba\nprintf("%.3s\\n", name);   // bat\nprintf("%10.1s\\n", name); // حرف واحد + 9 مسافات`,
         table: {
           headers: ["الصيغة", "المعنى", "الناتج"],
-          rows: [
-            ["%.2s", "أول حرفين فقط", "ba"],
-            ["%.3s", "أول 3 حروف", "bat"],
-            ["%10.1s", "عرض 10 خانات + حرف واحد", "         b"],
-          ],
+          rows: [["%.2s", "أول حرفين فقط", "ba"], ["%.3s", "أول 3 حروف", "bat"], ["%10.1s", "عرض 10 خانات + حرف واحد", "         b"]],
         },
       },
       {
@@ -977,11 +868,7 @@ export const blogPosts: BlogPost[] = [
         code: `printf("%p\\n", name);\nprintf("%p\\n", &name[0]);\nprintf("%p\\n", &name[1]);\nprintf("%p\\n", &name[2]);`,
         table: {
           headers: ["الجزء", "الشرح"],
-          rows: [
-            ["%p", "لطباعة عنوان الذاكرة"],
-            ["name", "يساوي &name[0]"],
-            ["كل char", "حجمه 1 Byte"],
-          ],
+          rows: [["%p", "لطباعة عنوان الذاكرة"], ["name", "يساوي &name[0]"], ["كل char", "حجمه 1 Byte"]],
         },
         note: { type: "info", text: "تمهيد لموضوع Pointers — العناوين تزيد تدريجيًا في الذاكرة بمقدار 1 Byte لكل حرف" },
       },
@@ -991,36 +878,18 @@ export const blogPosts: BlogPost[] = [
         code: `printf("%c\\n", *(name + 0));\nprintf("%c\\n", *(name + 1));\nprintf("%c\\n", *(name + 2));`,
         table: {
           headers: ["الصيغة", "المعنى"],
-          rows: [
-            ["name + i", "عنوان العنصر رقم i"],
-            ["*(name + i)", "القيمة في العنوان ده"],
-            ["name[i]", "نفس الشيء بالظبط"],
-          ],
+          rows: [["name + i", "عنوان العنصر رقم i"], ["*(name + i)", "القيمة في العنوان ده"], ["name[i]", "نفس الشيء بالظبط"]],
         },
-        explanation: [
-          "الـ String في C هو Array من char",
-          "name[i] ≡ *(name + i)",
-          "name يشير دائمًا إلى أول عنصر في المصفوفة",
-          "تمهيد مباشر لموضوع Arrays و Pointers",
-        ],
+        explanation: ["الـ String في C هو Array من char", "name[i] ≡ *(name + i)", "name يشير دائمًا إلى أول عنصر في المصفوفة", "تمهيد مباشر لموضوع Arrays و Pointers"],
       },
       {
         id: "char-arithmetic",
         title: "العمليات الحسابية على char",
         code: `char let1 = 'b';        // ASCII = 98\nchar let2 = 'a';        // ASCII = 97\nchar let3 = let1 + 1;   // 98 + 1 = 99 = 'c'\nunsigned char let4 = let1 + let2; // 98 + 97 = 195`,
-        explanation: [
-          "char = رقم + تفسيره كحرف",
-          "العمليات الحسابية على char مسموحة",
-          "%c → حرف، %d → رقم ASCII",
-        ],
+        explanation: ["char = رقم + تفسيره كحرف", "العمليات الحسابية على char مسموحة", "%c → حرف، %d → رقم ASCII"],
         table: {
           headers: ["الخطوة", "القيمة"],
-          rows: [
-            ["let1 = 'b'", "98"],
-            ["let2 = 'a'", "97"],
-            ["let3 = let1 + 1", "99 = 'c'"],
-            ["let4 = let1 + let2", "195"],
-          ],
+          rows: [["let1 = 'b'", "98"], ["let2 = 'a'", "97"], ["let3 = let1 + 1", "99 = 'c'"], ["let4 = let1 + let2", "195"]],
         },
         note: { type: "warning", text: "unsigned char يمنع القيم السالبة — القيمة 195 أكبر من حد signed char (127)" },
       },
@@ -1030,16 +899,9 @@ export const blogPosts: BlogPost[] = [
         code: `float x = 2.0123456789;\n\nprintf("%f\\n",    x); // طباعة افتراضية — 6 أرقام\nprintf("%.9f\\n",  x); // 9 أرقام — بيكمل بتقريب\nprintf("%.3f\\n",  x); // 3 أرقام — بيقرّب`,
         table: {
           headers: ["الصيغة", "الناتج"],
-          rows: [
-            ["%f", "2.012346"],
-            ["%.9f", "2.012345552 (تقريبي)"],
-            ["%.3f", "2.012"],
-          ],
+          rows: [["%f", "2.012346"], ["%.9f", "2.012345552 (تقريبي)"], ["%.3f", "2.012"]],
         },
-        explanation: [
-          "float دقته تقريبًا 6 أرقام بعد الفاصلة",
-          "الرقم مش بيتخزن كامل 100% بسبب محدودية الدقة",
-        ],
+        explanation: ["float دقته تقريبًا 6 أرقام بعد الفاصلة", "الرقم مش بيتخزن كامل 100% بسبب محدودية الدقة"],
       },
       {
         id: "float-width",
@@ -1047,19 +909,9 @@ export const blogPosts: BlogPost[] = [
         code: `printf("%6.3f\\n", x);\nprintf("%7.3f\\n", x);\nprintf("%8.3f\\n", x);\nprintf("%9.3f\\n", x);`,
         table: {
           headers: ["الصيغة", "الشكل", "المسافات"],
-          rows: [
-            ["%6.3f", " 2.012", "1 مسافة"],
-            ["%7.3f", "  2.012", "2 مسافة"],
-            ["%8.3f", "   2.012", "3 مسافة"],
-            ["%9.3f", "    2.012", "4 مسافة"],
-          ],
+          rows: [["%6.3f", " 2.012", "1 مسافة"], ["%7.3f", "  2.012", "2 مسافة"], ["%8.3f", "   2.012", "3 مسافة"], ["%9.3f", "    2.012", "4 مسافة"]],
         },
-        explanation: [
-          "%f = طباعة افتراضية",
-          "%.N = N أرقام بعد الفاصلة",
-          "%W.N = عرض كلي W + دقة N",
-          "كل ما W كبر، المسافات قبل الرقم زادت",
-        ],
+        explanation: ["%f = طباعة افتراضية", "%.N = N أرقام بعد الفاصلة", "%W.N = عرض كلي W + دقة N", "كل ما W كبر، المسافات قبل الرقم زادت"],
       },
       {
         id: "int-width",
@@ -1067,18 +919,9 @@ export const blogPosts: BlogPost[] = [
         code: `int y = 333;\n\nprintf("%i\\n",  y); // 333\nprintf("%9d\\n", y); // 333 مع 6 مسافات قبلها\nprintf("%p\\n", &y); // عنوان المتغير في الذاكرة`,
         table: {
           headers: ["الصيغة", "الناتج", "الشرح"],
-          rows: [
-            ["%i", "333", "طباعة عادية — نفس %d"],
-            ["%9d", "      333", "عرض 9 خانات — الرقم في الآخر"],
-            ["%p", "0x7ffcb3a4", "عنوان الذاكرة بالـ Hex"],
-          ],
+          rows: [["%i", "333", "طباعة عادية — نفس %d"], ["%9d", "      333", "عرض 9 خانات — الرقم في الآخر"], ["%p", "0x7ffcb3a4", "عنوان الذاكرة بالـ Hex"]],
         },
-        explanation: [
-          "%i ≈ %d (نفس الوظيفة)",
-          "الرقم قبل d = عرض الطباعة",
-          "& تجيب عنوان المتغير",
-          "%p يطبع العنوان — تمهيد لموضوع Pointers",
-        ],
+        explanation: ["%i ≈ %d (نفس الوظيفة)", "الرقم قبل d = عرض الطباعة", "& تجيب عنوان المتغير", "%p يطبع العنوان — تمهيد لموضوع Pointers"],
       },
     ],
   },
@@ -1091,29 +934,10 @@ export const blogPosts: BlogPost[] = [
     date: "2025-12-13",
     category: "C Programming",
     tags: ["c", "const", "define", "constants", "preprocessor"],
-    heroImage: img06,
     sections: [
-      {
-        id: "constants-def",
-        title: "الثوابت (Constants) في لغة C",
-        explanation: [
-          "الثوابت هي قيم لا يمكن تغييرها أثناء تشغيل البرنامج",
-        ],
-      },
-      {
-        id: "constants-rules",
-        title: "قواعد مهمة",
-        note: { type: "warning", text: "❌ مينفعش تسيب الثابت فاضي بدون قيمة عند تعريفه — ❌ مينفعش تغيّر قيمة الثابت بعد تعريفه — ✅ ينفع توصل للثابت وتستخدمه في أي مكان في البرنامج" },
-      },
-      {
-        id: "when-to-use",
-        title: "إمتى أستخدم الثوابت؟",
-        explanation: [
-          "لما يكون عندنا قيمة مش هتتغير أثناء البرنامج",
-          "مستخدمة أكتر من مرة",
-          "عايزين نحميها من التغيير",
-        ],
-      },
+      { id: "constants-def", title: "الثوابت (Constants) في لغة C", explanation: ["الثوابت هي قيم لا يمكن تغييرها أثناء تشغيل البرنامج"] },
+      { id: "constants-rules", title: "قواعد مهمة", note: { type: "warning", text: "❌ مينفعش تسيب الثابت فاضي بدون قيمة عند تعريفه — ❌ مينفعش تغيّر قيمة الثابت بعد تعريفه — ✅ ينفع توصل للثابت وتستخدمه في أي مكان في البرنامج" } },
+      { id: "when-to-use", title: "إمتى أستخدم الثوابت؟", explanation: ["لما يكون عندنا قيمة مش هتتغير أثناء البرنامج", "مستخدمة أكتر من مرة", "عايزين نحميها من التغيير"] },
       {
         id: "define-method",
         title: "#define — طريقة التعريف",
@@ -1132,20 +956,10 @@ export const blogPosts: BlogPost[] = [
         code: `const type name = value;\n\nconst int test = 0;`,
         table: {
           headers: ["الجزء", "الشرح"],
-          rows: [
-            ["const", "معناها ثابت"],
-            ["int", "نوع البيانات"],
-            ["test", "اسم الثابت"],
-            ["= 0", "إسناد القيمة"],
-            [";", "نهاية السطر"],
-          ],
+          rows: [["const", "معناها ثابت"], ["int", "نوع البيانات"], ["test", "اسم الثابت"], ["= 0", "إسناد القيمة"], [";", "نهاية السطر"]],
         },
       },
-      {
-        id: "const-examples",
-        title: "أمثلة على const",
-        code: `const int age   = 20;\nconst float pi  = 3.14;`,
-      },
+      { id: "const-examples", title: "أمثلة على const", code: `const int age   = 20;\nconst float pi  = 3.14;` },
       {
         id: "define-vs-const",
         title: "الفرق بين #define و const",
@@ -1167,32 +981,19 @@ export const blogPosts: BlogPost[] = [
         id: "when-define",
         title: "إمتى أستخدم #define؟",
         code: `#define MAX_SIZE 100\n#define SQUARE(x) x*x`,
-        explanation: [
-          "لما تحتاج قيمة ثابتة بسيطة",
-          "لما تعمل Macro",
-          "لما تحتاج استبدال نصوص",
-          "لما تعمل إعدادات عامة في ملفات الهيدر",
-        ],
+        explanation: ["لما تحتاج قيمة ثابتة بسيطة", "لما تعمل Macro", "لما تحتاج استبدال نصوص", "لما تعمل إعدادات عامة في ملفات الهيدر"],
       },
       {
         id: "when-const",
         title: "إمتى أستخدم const؟",
         code: `const int age   = 20;\nconst float pi  = 3.14;`,
-        explanation: [
-          "لما تحتاج ثابت له نوع بيانات",
-          "لما تحتاج أمان أكتر",
-          "لما تتعامل مع متغيرات أو Pointers",
-          "لما تحتاج Debug بسهولة",
-        ],
+        explanation: ["لما تحتاج ثابت له نوع بيانات", "لما تحتاج أمان أكتر", "لما تتعامل مع متغيرات أو Pointers", "لما تحتاج Debug بسهولة"],
       },
       {
         id: "const-summary",
         title: "الخلاصة",
         code: `// إعدادات عامة\n#define MAX_SIZE 100\n\n// ثوابت عادية\nconst int age = 20;`,
-        explanation: [
-          "استخدم const للثوابت العادية — أأمن وأوضح",
-          "استخدم #define للماكروز والإعدادات العامة",
-        ],
+        explanation: ["استخدم const للثوابت العادية — أأمن وأوضح", "استخدم #define للماكروز والإعدادات العامة"],
         note: { type: "info", text: "الـ #define مش دالة ومش متغير — هو مجرد استبدال نصوص بيحصل قبل الترجمة. لو عرّفت #define SQUARE(x) x*x ده Macro Function مش دالة حقيقية" },
       },
     ],
@@ -1206,33 +1007,19 @@ export const blogPosts: BlogPost[] = [
     date: "2025-12-15",
     category: "C Programming",
     tags: ["c", "printf", "sprintf", "puts", "putchar", "perror", "output"],
-    heroImage: img07,
     sections: [
       {
         id: "sprintf-intro",
         title: "sprintf — الكتابة في String",
-        explanation: [
-          "دالة sprintf تُستخدم لتنسيق النصوص وتحويل القيم إلى String وتخزينها داخل char array",
-          "بدل ما تطبعها على الشاشة",
-        ],
-        table: {
-          headers: ["الدالة", "بتطبع فين"],
-          rows: [
-            ["printf", "الشاشة مباشرةً"],
-            ["sprintf", "متغير String"],
-          ],
-        },
+        explanation: ["دالة sprintf تُستخدم لتنسيق النصوص وتحويل القيم إلى String وتخزينها داخل char array", "بدل ما تطبعها على الشاشة"],
+        table: { headers: ["الدالة", "بتطبع فين"], rows: [["printf", "الشاشة مباشرةً"], ["sprintf", "متغير String"]] },
       },
       {
         id: "sprintf-syntax",
         title: "sprintf — الصيغة والمثال",
         code: `sprintf(string, "format", values);\n\n// مثال عملي\n#include <stdio.h>\n\nint main() {\n    int test = 20;\n    printf("test = %i\\n", test);\n\n    char test2[50];\n    sprintf(test2, "now test is string : %i\\n", test);\n    printf("test: %s\\n", test2);\n\n    return 0;\n}`,
         output: "test = 20\ntest: now test is string : 20",
-        explanation: [
-          "char test2[50] — مصفوفة حجمها 50 حرف",
-          "sprintf بيحول قيمة test لنص ويخزنه في test2",
-          "%s لطباعة النص المخزن",
-        ],
+        explanation: ["char test2[50] — مصفوفة حجمها 50 حرف", "sprintf بيحول قيمة test لنص ويخزنه في test2", "%s لطباعة النص المخزن"],
       },
       {
         id: "sprintf-math",
@@ -1246,22 +1033,14 @@ export const blogPosts: BlogPost[] = [
         title: "puts — طباعة نص كامل",
         code: `#include <stdio.h>\n\nint main() {\n    char test[30] = "test-test";\n    puts(test);\n    puts(test);\n    return 0;\n}`,
         output: "test-test\ntest-test",
-        explanation: [
-          "لا تحتاج Format Specifier مثل %s",
-          "تضيف \\n تلقائيًا بعد الطباعة",
-          "أبسط في الاستخدام للنصوص",
-          "puts تطبع String فقط — لا تدعم فورمات مثل %d أو %i",
-        ],
+        explanation: ["لا تحتاج Format Specifier مثل %s", "تضيف \\n تلقائيًا بعد الطباعة", "أبسط في الاستخدام للنصوص", "puts تطبع String فقط — لا تدعم فورمات مثل %d أو %i"],
       },
       {
         id: "puts-vs-printf",
         title: "الفرق بين puts و printf",
         table: {
           headers: ["الدالة", "النوع", "سطر جديد تلقائي", "فورمات"],
-          rows: [
-            ["puts", "String فقط", "✅ نعم", "❌ لا"],
-            ["printf", "كل الأنواع", "❌ لا", "✅ نعم"],
-          ],
+          rows: [["puts", "String فقط", "✅ نعم", "❌ لا"], ["printf", "كل الأنواع", "❌ لا", "✅ نعم"]],
         },
       },
       {
@@ -1269,24 +1048,14 @@ export const blogPosts: BlogPost[] = [
         title: "putchar — طباعة حرف واحد",
         code: `#include <stdio.h>\n\nint main() {\n    char t = 'e';\n    putchar(t);\n    putchar(t);\n    return 0;\n}`,
         output: "ee",
-        explanation: [
-          "putchar تطبع حرف واحد فقط على الشاشة",
-          "لا تطبع سطر جديد تلقائي",
-          "لو عايز سطر جديد: putchar('\\n');",
-        ],
+        explanation: ["putchar تطبع حرف واحد فقط على الشاشة", "لا تطبع سطر جديد تلقائي", "لو عايز سطر جديد: putchar('\\n');"],
       },
       {
         id: "perror-intro",
         title: "perror — طباعة رسائل الخطأ",
         code: `#include <stdio.h>\n\nint main() {\n    perror("warning");\n    return 0;\n}\n\n// مثال مع فشل فتح ملف\nFILE *f = fopen("file.txt", "r");\nif (!f) {\n    perror("Failed to open file");\n}`,
         output: "warning: No error",
-        explanation: [
-          "perror تقبل نص String واحد كمقدمة للخطأ",
-          "بعد النص تطبع وصف الخطأ الفعلي من متغير errno",
-          "perror لا تُنهي البرنامج",
-          "غالبًا تُستخدم بعد فشل دالة نظام لمعرفة السبب",
-          "لو مفيش خطأ هتطبع No error",
-        ],
+        explanation: ["perror تقبل نص String واحد كمقدمة للخطأ", "بعد النص تطبع وصف الخطأ الفعلي من متغير errno", "perror لا تُنهي البرنامج", "غالبًا تُستخدم بعد فشل دالة نظام لمعرفة السبب", "لو مفيش خطأ هتطبع No error"],
       },
       {
         id: "output-compare",
@@ -1313,54 +1082,30 @@ export const blogPosts: BlogPost[] = [
     date: "2025-12-17",
     category: "C Programming",
     tags: ["c", "scanf", "sscanf", "getchar", "getc", "fgetc", "gets", "fgets", "input"],
-    heroImage: img08,
     sections: [
       {
         id: "scanf-intro",
         title: "scanf — إدخال قيمة من المستخدم",
         code: `scanf("format", &اسم_المتغير);\n\n// مثال\n#include <stdio.h>\n\nint main() {\n    int x;\n    printf("please enter number: ");\n    scanf("%d", &x);\n    printf("the number: %d", x);\n    return 0;\n}`,
         output: "please enter number: 10\nthe number: 10",
-        explanation: [
-          "تُستخدم scanf لإدخال قيمة من المستخدم وتخزينها في متغير",
-          "& معناها عنوان المتغير في الذاكرة",
-          "في حالة string مش بنستخدم & لأن اسم المصفوفة هو أصلًا عنوانها",
-        ],
+        explanation: ["تُستخدم scanf لإدخال قيمة من المستخدم وتخزينها في متغير", "& معناها عنوان المتغير في الذاكرة", "في حالة string مش بنستخدم & لأن اسم المصفوفة هو أصلًا عنوانها"],
       },
       {
         id: "scanf-types",
         title: "أمثلة على أنواع الإدخال",
         code: `// إدخال float\nfloat f;\nscanf("%f", &f);\n\n// إدخال char\nchar c;\nscanf("%c", &c);\n\n// إدخال string\nchar x[5];\nscanf("%s", x); // بدون &`,
-        table: {
-          headers: ["النوع", "&"],
-          rows: [
-            ["int", "✅ لازم"],
-            ["float", "✅ لازم"],
-            ["char", "✅ لازم"],
-            ["string (مصفوفة)", "❌ مش لازم"],
-          ],
-        },
+        table: { headers: ["النوع", "&"], rows: [["int", "✅ لازم"], ["float", "✅ لازم"], ["char", "✅ لازم"], ["string (مصفوفة)", "❌ مش لازم"]] },
       },
       {
         id: "scanf-format",
         title: "Format Specifiers في scanf",
-        table: {
-          headers: ["الفورمات", "النوع"],
-          rows: [
-            ["%d", "int"],
-            ["%f", "float"],
-            ["%c", "char"],
-            ["%s", "string"],
-          ],
-        },
+        table: { headers: ["الفورمات", "النوع"], rows: [["%d", "int"], ["%f", "float"], ["%c", "char"], ["%s", "string"]] },
       },
       {
         id: "scanf-problems",
         title: "مشاكل scanf",
         code: `// ❌ مشكلة Buffer Overflow\nchar x[5];\nscanf("%s", x); // لو المستخدم كتب أكتر من 4 حروف\n\n// ✅ الحل\nscanf("%4s", x); // يقرأ 4 حروف بس + \\0\n\n// مشكلة المسافات\nscanf("%s", x); // "hello world" → "hello" بس`,
-        explanation: [
-          "scanf بيقف عند أول مسافة — مش بيقرأ السطر كله",
-          "لو المستخدم كتب أكتر من حجم المصفوفة = Buffer Overflow",
-        ],
+        explanation: ["scanf بيقف عند أول مسافة — مش بيقرأ السطر كله", "لو المستخدم كتب أكتر من حجم المصفوفة = Buffer Overflow"],
         note: { type: "warning", text: "استخدم %4s لتحديد عدد الحروف المقروءة ومنع Buffer Overflow" },
       },
       {
@@ -1368,55 +1113,32 @@ export const blogPosts: BlogPost[] = [
         title: "الإدخال المتعدد في scanf",
         code: `#include <stdio.h>\n\nint main() {\n    int x;\n    float f;\n    char s[5];\n\n    printf("please enter: ");\n    scanf("%d %f %s", &x, &f, s);\n\n    printf("int: %d float: %f string: %s", x, f, s);\n    return 0;\n}`,
         output: "int: 10 float: 3.500000 string: hi",
-        explanation: [
-          "تقدر تدخل أكتر من قيمة في نفس السطر",
-          "لازم نفس الترتيب في الإدخال",
-          "& مع المتغيرات العادية ✅ — بدون & مع string ✅",
-        ],
+        explanation: ["تقدر تدخل أكتر من قيمة في نفس السطر", "لازم نفس الترتيب في الإدخال", "& مع المتغيرات العادية ✅ — بدون & مع string ✅"],
       },
       {
         id: "getc-putc",
         title: "getc و putc — إدخال وإخراج حرف",
         code: `#include <stdio.h>\n\nint main() {\n    char b;\n    printf("enter char: ");\n    b = getc(stdin);\n    putc(b, stdout);\n    return 0;\n}`,
-        explanation: [
-          "getc تقرأ حرف واحد من مصدر إدخال",
-          "putc تطبع حرف واحد إلى مخرج معين",
-        ],
-        table: {
-          headers: ["الدالة", "تطبع على"],
-          rows: [
-            ["putc", "أي Stream (stdout أو ملف)"],
-            ["putchar", "الشاشة فقط (stdout)"],
-          ],
-        },
+        explanation: ["getc تقرأ حرف واحد من مصدر إدخال", "putc تطبع حرف واحد إلى مخرج معين"],
+        table: { headers: ["الدالة", "تطبع على"], rows: [["putc", "أي Stream (stdout أو ملف)"], ["putchar", "الشاشة فقط (stdout)"]] },
       },
       {
         id: "getchar-intro",
         title: "getchar — إدخال حرف واحد",
         code: `#include <stdio.h>\n\nint main(void) {\n    char k;\n    printf("enter char: ");\n    k = getchar();\n    putchar(k);\n    return 0;\n}`,
-        explanation: [
-          "بتقرأ حرف واحد فقط",
-          "لو المستخدم كتب أكتر من حرف، هيتاخد أول حرف بس",
-          "الحروف الباقية بتفضل في الـ buffer",
-        ],
+        explanation: ["بتقرأ حرف واحد فقط", "لو المستخدم كتب أكتر من حرف، هيتاخد أول حرف بس", "الحروف الباقية بتفضل في الـ buffer"],
       },
       {
         id: "fgetc-intro",
         title: "fgetc — إدخال حرف من stream",
         code: `#include <stdio.h>\n\nint main(void) {\n    char u;\n    printf("enter char: ");\n    u = fgetc(stdin);\n    printf("the char: %c", u);\n    return 0;\n}`,
-        explanation: [
-          "بتقرأ حرف واحد فقط",
-          "لازم تكتب stdin",
-          "تعتبر شبه getchar",
-        ],
+        explanation: ["بتقرأ حرف واحد فقط", "لازم تكتب stdin", "تعتبر شبه getchar"],
       },
       {
         id: "gets-intro",
         title: "gets — إدخال نص (غير آمن ⚠️)",
         code: `#include <stdio.h>\n\nint main() {\n    char l[5];\n    gets(l);\n    printf("the string: %s", l);\n    return 0;\n}`,
-        explanation: [
-          "بتقرأ السطر كله — مش بتقف عند المسافات",
-        ],
+        explanation: ["بتقرأ السطر كله — مش بتقف عند المسافات"],
         note: { type: "warning", text: "gets مفيهاش حد لعدد الحروف — لو المستخدم دخل حروف أكتر من حجم المصفوفة = Buffer Overflow! مش بتستخدم في الكود الحديث — استخدم fgets بدلها" },
       },
       {
@@ -1424,24 +1146,14 @@ export const blogPosts: BlogPost[] = [
         title: "fgets — إدخال نص (آمن ✅)",
         code: `fgets(اسم_المتغير, عدد_الحروف, stdin);\n\n// مثال\n#include <stdio.h>\n\nint main() {\n    char l[6];\n    fgets(l, 6, stdin);\n    printf("the string: %s", l);\n    return 0;\n}`,
         output: "hello",
-        explanation: [
-          "بتقرأ المسافات ✅",
-          "بتحدد عدد الحروف ✅",
-          "بتحمي من Buffer Overflow ✅",
-          "بتضيف \\0 في آخر النص ✅",
-          "ليه [6] وعايزين 5 حروف؟ — 5 حروف + \\0 = 6",
-        ],
+        explanation: ["بتقرأ المسافات ✅", "بتحدد عدد الحروف ✅", "بتحمي من Buffer Overflow ✅", "بتضيف \\0 في آخر النص ✅", "ليه [6] وعايزين 5 حروف؟ — 5 حروف + \\0 = 6"],
       },
       {
         id: "sscanf-intro",
         title: "sscanf — قراءة من String",
         code: `#include <stdio.h>\n\nint main() {\n    char bir[50] = "25 may 2026";\n    int day, yr;\n    char mon[10];\n\n    sscanf(bir, "%i %s %i", &day, mon, &yr);\n\n    printf("the day: %i\\n", day);\n    printf("the month: %s\\n", mon);\n    printf("the year: %i\\n", yr);\n\n    return 0;\n}`,
         output: "the day: 25\nthe month: may\nthe year: 2026",
-        explanation: [
-          "sscanf بتقرأ من string موجود في البرنامج بدل إدخال المستخدم",
-          "scanf ← بتطلب إدخال من المستخدم مباشرة",
-          "sscanf ← بتقرأ من string موجود في البرنامج",
-        ],
+        explanation: ["sscanf بتقرأ من string موجود في البرنامج بدل إدخال المستخدم", "scanf ← بتطلب إدخال من المستخدم مباشرة", "sscanf ← بتقرأ من string موجود في البرنامج"],
       },
       {
         id: "input-compare",
@@ -1456,6 +1168,412 @@ export const blogPosts: BlogPost[] = [
             ["fgetc", "حرف واحد من stream", "—", "—", "✅"],
             ["gets", "نص كامل (غير آمن)", "✅", "❌", "❌"],
             ["fgets", "نص كامل (آمن)", "✅", "✅", "✅"],
+          ],
+        },
+      },
+    ],
+  },
+  // ══════════════════════════════════════════════
+  // 09
+  // ══════════════════════════════════════════════
+  {
+    slug: "c-09-input-output-exercises",
+    title: "09 - C language course - input and output Exercises",
+    date: "2025-12-19",
+    category: "C Programming",
+    tags: ["c", "exercises", "circle", "rhombus", "area", "perimeter"],
+    sections: [
+      {
+        id: "circle-full-code",
+        title: "كود ١ — حساب مساحة الدائرة (Circle)",
+        code: `#include <stdio.h>\n#define PI 3.14159\n\nint main(void) {\n    char name[50];\n    int radius;\n    float area;\n\n    printf("enter your name: ");\n    fgets(name, 50, stdin);\n\n    printf("hello %s enter radius : ", name);\n    scanf("%d", &radius);\n\n    printf("the circle area is : %f \\n", area = PI * radius * radius);\n    printf("circle circumference : %f\\n", PI * radius * 2);\n    printf("the diameter is : %i\\n", radius * 2);\n\n    return 0;\n}`,
+        output: "enter your name: Ahmed\nhello Ahmed\nenter radius : 10\nthe circle area is : 314.159000\ncircle circumference : 62.831800\nthe diameter is : 20",
+      },
+      {
+        id: "circle-include",
+        title: "1️⃣ المكتبات والثوابت",
+        code: `#include <stdio.h>\n#define PI 3.14159`,
+        table: {
+          headers: ["السطر", "الشرح"],
+          rows: [
+            ["#include <stdio.h>", "بيستدعي مكتبة الـ Input/Output"],
+            ["#define PI 3.14159", "بيعرّف ثابت اسمه PI — مش متغير"],
+          ],
+        },
+        note: { type: "info", text: "#define مش بيحجز مساحة في الذاكرة — الـ Compiler بيستبدل كل كلمة PI بالقيمة 3.14159 مباشرةً قبل الترجمة" },
+      },
+      {
+        id: "circle-vars",
+        title: "2️⃣ تعريف المتغيرات",
+        code: `char name[50];\nint radius;\nfloat area;`,
+        table: {
+          headers: ["المتغير", "النوع", "الشرح"],
+          rows: [
+            ["name[50]", "char array", "بيخزن اسم المستخدم — مصفوفة من 50 حرف"],
+            ["radius", "int", "بيخزن نصف قطر الدائرة"],
+            ["area", "float", "بيخزن مساحة الدائرة"],
+          ],
+        },
+      },
+      {
+        id: "circle-name-input",
+        title: "3️⃣ طلب الاسم من المستخدم",
+        code: `printf("enter your name: ");\nfgets(name, 50, stdin);`,
+        explanation: [
+          "scanf(\"%s\") بيوقف عند أول مسافة (space)",
+          "fgets بيقرأ السطر كله حتى لو فيه مسافات",
+          "الـ 50 هو الحد الأقصى للحروف",
+          "stdin يعني المدخل القياسي = لوحة المفاتيح",
+        ],
+      },
+      {
+        id: "circle-radius-input",
+        title: "4️⃣ طلب نصف القطر",
+        code: `printf("hello %s enter radius : ", name);\nscanf("%d", &radius);`,
+        note: { type: "warning", text: "الـ & مهمة جداً! &radius يعني عنوان المتغير في الذاكرة — لو نسيت الـ & → Undefined Behavior أو Crash" },
+      },
+      {
+        id: "circle-area",
+        title: "5️⃣ حساب وطباعة المساحة",
+        code: `printf("the circle area is : %f \\n", area = PI * radius * radius);`,
+        explanation: [
+          "المعادلة: Area = π × r²",
+          "الحساب: 3.14159 × 10 × 10 = 314.159",
+          "الـ assignment area = ... جوه الـ printf صحيح في C",
+        ],
+      },
+      {
+        id: "circle-circumference",
+        title: "6️⃣ حساب وطباعة المحيط",
+        code: `printf("circle circumference : %f\\n", PI * radius * 2);`,
+        explanation: [
+          "المعادلة: Circumference = π × 2r",
+          "الحساب: 3.14159 × 2 × 10 = 62.8318",
+          "مفيش متغير بيخزن المحيط — الحساب مباشرةً جوه printf",
+        ],
+      },
+      {
+        id: "circle-diameter",
+        title: "7️⃣ حساب وطباعة القطر",
+        code: `printf("the diameter is : %i\\n", radius * 2);`,
+        explanation: ["المعادلة: Diameter = 2r", "الحساب: 10 × 2 = 20", "%i بيطبع عدد صحيح — نفس %d بالظبط"],
+      },
+      {
+        id: "circle-summary",
+        title: "ملخص سريع — الدائرة",
+        table: {
+          headers: ["الخطوة", "الوظيفة"],
+          rows: [
+            ["#include و #define", "تجهيز المكتبات والثوابت"],
+            ["تعريف المتغيرات", "حجز مكان في الذاكرة"],
+            ["fgets", "قراءة الاسم بأمان"],
+            ["scanf", "قراءة نصف القطر"],
+            ["PI * r * r", "حساب المساحة"],
+            ["PI * r * 2", "حساب المحيط"],
+            ["r * 2", "حساب القطر"],
+          ],
+        },
+      },
+      {
+        id: "rhombus-full-code",
+        title: "كود ٢ — حساب مساحة المعيّن (Rhombus)",
+        code: `#include <stdio.h>\n\nint main(void) {\n    int rhombusSide;\n    int rhombusHeight;\n\n    printf("insert rhombus side : ");\n    scanf("%d", &rhombusSide);\n\n    printf("insert rhombus height : ");\n    scanf("%d", &rhombusHeight);\n\n    printf("rhombus perimeter : %d\\n", rhombusSide * 4);\n    printf("rhombus area is : %i\\n", rhombusSide * rhombusHeight);\n\n    return 0;\n}`,
+        output: "insert rhombus side : 10\ninsert rhombus height : 5\nrhombus perimeter : 40\nrhombus area is : 50",
+      },
+      {
+        id: "rhombus-vars",
+        title: "تعريف المتغيرات — المعيّن",
+        code: `int rhombusSide;\nint rhombusHeight;`,
+        table: {
+          headers: ["المتغير", "النوع", "الشرح"],
+          rows: [
+            ["rhombusSide", "int", "طول ضلع المعيّن"],
+            ["rhombusHeight", "int", "ارتفاع المعيّن"],
+          ],
+        },
+      },
+      {
+        id: "rhombus-perimeter",
+        title: "حساب المحيط — المعيّن",
+        code: `printf("rhombus perimeter : %d\\n", rhombusSide * 4);`,
+        explanation: ["المعادلة: Perimeter = Side × 4", "المعيّن له 4 أضلاع متساوية", "الحساب: 10 × 4 = 40"],
+      },
+      {
+        id: "rhombus-area",
+        title: "حساب المساحة — المعيّن",
+        code: `printf("rhombus area is : %i\\n", rhombusSide * rhombusHeight);`,
+        explanation: ["المعادلة: Area = Side × Height", "الحساب: 10 × 5 = 50"],
+      },
+      {
+        id: "rhombus-summary",
+        title: "ملخص سريع — المعيّن",
+        table: {
+          headers: ["الخطوة", "الوظيفة"],
+          rows: [
+            ["#include", "تجهيز مكتبة الـ I/O"],
+            ["تعريف المتغيرات", "حجز مكان في الذاكرة للضلع والارتفاع"],
+            ["scanf × 2", "قراءة الضلع والارتفاع من المستخدم"],
+            ["Side × 4", "حساب المحيط"],
+            ["Side × Height", "حساب المساحة"],
+          ],
+        },
+      },
+    ],
+  },
+  // ══════════════════════════════════════════════
+  // 10
+  // ══════════════════════════════════════════════
+  {
+    slug: "c-10-arithmetic-increment-decrement",
+    title: "10 - C language course - Arithmetic _ increase and decrease operators",
+    date: "2025-12-21",
+    category: "C Programming",
+    tags: ["c", "arithmetic", "operators", "increment", "decrement", "pow", "modulus"],
+    sections: [
+      {
+        id: "binary-ops-intro",
+        title: "العمليات الحسابية على متغيرين (Binary Operators)",
+        explanation: ["العمليات دي بتشتغل على متغيرين"],
+        table: {
+          headers: ["العملية", "الرمز", "الاسم بالإنجليزي"],
+          rows: [["الجمع", "+", "Addition"], ["الطرح", "-", "Subtraction"], ["الضرب", "*", "Multiplication"], ["القسمة", "/", "Division"], ["باقي القسمة", "%", "Modulus"]],
+        },
+      },
+      {
+        id: "priority",
+        title: "الأولوية في العمليات الحسابية",
+        explanation: [
+          "ترتيب الأولوية: الأقواس ( ) ← الأس pow() ← القسمة والضرب / * ← الجمع والطرح + -",
+          "لو عمليتان في نفس المستوى — الأقرب من اليسار تتنفذ الأول",
+        ],
+      },
+      {
+        id: "priority-example1",
+        title: "مثال — قسمة وضرب في نفس السطر",
+        code: `#include <stdio.h>\n\nint main() {\n    int result;\n    result = 20 / 5 * 2;\n    printf("result = %d\\n", result);\n    return 0;\n}`,
+        output: "result = 8",
+        explanation: ["20 / 5 = 4 ← القسمة من اليسار أول", "4 * 2 = 8"],
+      },
+      {
+        id: "priority-example2",
+        title: "مثال — جمع وطرح في نفس السطر",
+        code: `#include <stdio.h>\n\nint main() {\n    int result;\n    result = 10 - 3 + 2;\n    printf("result = %d\\n", result);\n    return 0;\n}`,
+        output: "result = 9",
+        explanation: ["10 - 3 = 7 ← الطرح من اليسار أول", "7 + 2 = 9"],
+      },
+      {
+        id: "priority-example3",
+        title: "مثال — أقواس مع أس",
+        code: `#include <stdio.h>\n#include <math.h>\n\nint main() {\n    int result;\n    result = pow(2 + 3, 2);\n    printf("result = %d\\n", result);\n    return 0;\n}`,
+        output: "result = 25",
+        explanation: ["2 + 3 = 5 ← الأقواس أولاً", "pow(5, 2) = 25 ← الأس ثانياً"],
+        note: { type: "info", text: "عشان تستخدم العمليات المتقدمة لازم تستدعي: #include <math.h>" },
+      },
+      {
+        id: "addition",
+        title: "الجمع +",
+        code: `#include <stdio.h>\n\nint main(void) {\n    int x = 10;\n    int y = 5;\n    int res;\n    res = x + y;\n    printf("x + y = %d\\n", res);\n    return 0;\n}`,
+        output: "x + y = 15",
+      },
+      {
+        id: "subtraction",
+        title: "الطرح -",
+        code: `#include <stdio.h>\n\nint main(void) {\n    int x = 10;\n    int y = 5;\n    int res;\n    res = x - y;\n    printf("x - y = %d\\n", res);\n    return 0;\n}`,
+        output: "x - y = 5",
+      },
+      {
+        id: "multiplication",
+        title: "الضرب *",
+        code: `#include <stdio.h>\n\nint main(void) {\n    int x = 10;\n    int y = 5;\n    int res;\n    res = x * y;\n    printf("x * y = %d\\n", res);\n    return 0;\n}`,
+        output: "x * y = 50",
+      },
+      {
+        id: "division",
+        title: "القسمة /",
+        code: `#include <stdio.h>\n\nint main(void) {\n    int x = 10;\n    int y = 5;\n    int res;\n    res = x / y;\n    printf("x / y = %d\\n", res);\n    return 0;\n}`,
+        output: "x / y = 2",
+        note: { type: "info", text: "القسمة بين int و int تنتج int — الكسر بيتقطع" },
+      },
+      {
+        id: "modulus",
+        title: "باقي القسمة %",
+        code: `#include <stdio.h>\n\nint main(void) {\n    int x = 10;\n    int y = 5;\n    int res;\n    res = x % y;\n    printf("x %% y = %d\\n", res);\n    return 0;\n}`,
+        output: "x % y = 0",
+        note: { type: "info", text: "%% في الـ printf بتطبع علامة % فعلية على الشاشة" },
+      },
+      {
+        id: "pow-func",
+        title: "الأس pow()",
+        code: `#include <stdio.h>\n#include <math.h>\n\nint main(void) {\n    printf("the result is : %.lf \\n", 2 * 3 + pow(5 + 4, 2));\n    return 0;\n}`,
+        output: "the result is : 87",
+        table: {
+          headers: ["الخطوة", "العملية", "الناتج"],
+          rows: [["1", "5 + 4 داخل الأقواس", "9"], ["2", "pow(9, 2) = 9 × 9", "81"], ["3", "2 * 3 خارج الأقواس", "6"], ["4", "6 + 81", "87"]],
+        },
+      },
+      {
+        id: "comprehensive-example",
+        title: "مثال شامل على كل العمليات",
+        code: `#include <stdio.h>\n#include <math.h>\n\nint main(void) {\n    printf("here we go : %i \\n", 80*2/3+4-1);\n    return 0;\n}`,
+        output: "here we go : 56",
+        table: {
+          headers: ["الخطوة", "العملية", "الناتج"],
+          rows: [["1", "80 * 2 ← ضرب أولاً", "160"], ["2", "160 / 3 ← قسمة", "53"], ["3", "53 + 4 ← جمع", "57"], ["4", "57 - 1 ← طرح", "56"]],
+        },
+      },
+      {
+        id: "binary-summary",
+        title: "ملخص Binary Operators",
+        table: {
+          headers: ["العملية", "الرمز", "مثال", "الناتج"],
+          rows: [["الجمع", "+", "10 + 5", "15"], ["الطرح", "-", "10 - 5", "5"], ["الضرب", "*", "10 * 5", "50"], ["القسمة", "/", "10 / 5", "2"], ["باقي القسمة", "%", "10 % 5", "0"], ["الأس", "pow()", "pow(3, 2)", "9"]],
+        },
+        note: { type: "warning", text: "لو استخدمت %d مع ناتج float — الناتج مش هيطلع كامل — استخدم %f للأرقام العشرية" },
+      },
+      {
+        id: "unary-intro",
+        title: "العمليات الحسابية على متغير واحد (Unary Operators)",
+        table: {
+          headers: ["العملية", "الرمز", "المعنى"],
+          rows: [["Increment", "++", "ضيف 1 على قيمة المتغير"], ["Decrement", "--", "نقص 1 من قيمة المتغير"]],
+        },
+        explanation: ["العلامة قبل المتغير (++x) ← زيد الأول ثم استخدم", "العلامة بعد المتغير (x++) ← استخدم الأول ثم زيد"],
+      },
+      {
+        id: "post-increment",
+        title: "++ بعد المتغير (Post-increment)",
+        code: `#include <stdio.h>\n\nint main(void) {\n    int x = 5;\n    int y;\n    y = x++;\n    printf("y = %d \\n", y);\n    y = x;\n    printf("y = %d \\n", y);\n    return 0;\n}`,
+        output: "y = 5\ny = 6",
+        table: {
+          headers: ["الخطوة", "اللي حصل", "القيمة"],
+          rows: [["y = x++", "اتخزنت قيمة x في y الأول (= 5) ثم زادت x", "y=5, x=6"], ["y = x", "اتخزنت قيمة x الجديدة في y", "y=6"]],
+        },
+      },
+      {
+        id: "pre-increment",
+        title: "++ قبل المتغير (Pre-increment)",
+        code: `#include <stdio.h>\n\nint main(void) {\n    int x = 5;\n    int y;\n    y = ++x;\n    printf("y = %d \\n", y);\n    return 0;\n}`,
+        output: "y = 6",
+        explanation: ["البرنامج زاد x أولاً ثم خزن القيمة في y — عكس الـ Post-increment"],
+      },
+      {
+        id: "increment-compare",
+        title: "مقارنة سريعة — Increment",
+        table: {
+          headers: ["الصيغة", "اللي بيحصل", "الناتج لو x = 5"],
+          rows: [["y = x++", "استخدم القيمة الحالية ثم زيد", "y = 5، ثم x = 6"], ["y = ++x", "زيد الأول ثم استخدم", "y = 6، و x = 6"]],
+        },
+      },
+      {
+        id: "post-decrement",
+        title: "-- بعد المتغير (Post-decrement)",
+        code: `#include <stdio.h>\n\nint main(void) {\n    int x = 5;\n    int y;\n    y = x--;\n    printf("y = %d \\n", y);\n    y = x;\n    printf("y = %d \\n", y);\n    return 0;\n}`,
+        output: "y = 5\ny = 4",
+        table: {
+          headers: ["الخطوة", "اللي حصل", "القيمة"],
+          rows: [["y = x--", "اتخزنت قيمة x في y الأول (= 5) ثم نقصت x", "y=5, x=4"], ["y = x", "اتخزنت قيمة x الجديدة في y", "y=4"]],
+        },
+      },
+      {
+        id: "pre-decrement",
+        title: "-- قبل المتغير (Pre-decrement)",
+        code: `#include <stdio.h>\n\nint main(void) {\n    int x = 5;\n    int y;\n    y = --x;\n    printf("y = %d \\n", y);\n    return 0;\n}`,
+        output: "y = 4",
+        explanation: ["البرنامج نقص x أولاً ثم خزن القيمة في y"],
+      },
+      {
+        id: "unary-summary",
+        title: "ملخص Unary Operators",
+        table: {
+          headers: ["العملية", "قبل المتغير", "بعد المتغير"],
+          rows: [["++", "زيد ثم استخدم", "استخدم ثم زيد"], ["--", "نقص ثم استخدم", "استخدم ثم نقص"]],
+        },
+      },
+      {
+        id: "rectangle-example",
+        title: "مثال تطبيقي — حساب مساحة ومحيط المستطيل",
+        code: `#include <stdio.h>\n#include <math.h>\n\nint main(void) {\n    int length    = 10;\n    int breadth   = 5;\n    int area;\n    int perimeter;\n\n    area      = length * breadth;\n    perimeter = 2 * (length + breadth);\n\n    printf("Area = %d \\nPerimeter = %d", area, perimeter);\n\n    return 0;\n}`,
+        output: "Area = 50\nPerimeter = 30",
+        table: {
+          headers: ["المتغير", "النوع", "القيمة", "الشرح"],
+          rows: [["length", "int", "10", "طول المستطيل"], ["breadth", "int", "5", "عرض المستطيل"], ["area", "int", "50", "length × breadth"], ["perimeter", "int", "30", "2 × (length + breadth)"]],
+        },
+      },
+    ],
+  },
+  // ══════════════════════════════════════════════
+  // 11
+  // ══════════════════════════════════════════════
+  {
+    slug: "c-11-assignment-operators",
+    title: "11 - C language course - assignment operators",
+    date: "2025-12-23",
+    category: "C Programming",
+    tags: ["c", "assignment", "operators", "compound"],
+    sections: [
+      {
+        id: "assignment-intro",
+        title: "ما هي Assignment Operators؟",
+        explanation: ["عمليات الـ Assignment بتُستخدم لإضافة متغير لمتغير آخر بشكل مختصر"],
+        table: {
+          headers: ["Operator", "مثال", "نفس معنى"],
+          rows: [["=", "a = b", "a = b"], ["+=", "a += b", "a = a + b"], ["-=", "a -= b", "a = a - b"], ["*=", "a *= b", "a = a * b"], ["/=", "a /= b", "a = a / b"], ["%=", "a %= b", "a = a % b"]],
+        },
+      },
+      {
+        id: "assign-equal",
+        title: "= — الإسناد العادي",
+        code: `#include <stdio.h>\n\nint main(void) {\n    int num1 = 10;\n    int num2;\n    num2 = num1;\n    printf("num2 = num1 : %d\\n", num2);\n    return 0;\n}`,
+        output: "num2 = num1 : 10",
+        explanation: ["num2 = num1 ← خزّن قيمة num1 في num2"],
+      },
+      {
+        id: "assign-plus",
+        title: "+= — جمع وإسناد",
+        code: `#include <stdio.h>\n\nint main(void) {\n    int num1 = 10;\n    int num2;\n    num2 = num1;\n    printf("num2 = num1 : %d\\n", num2);\n    num2 += num1;\n    printf("num2 += num1 : %d\\n", num2);\n    return 0;\n}`,
+        output: "num2 = num1 : 10\nnum2 += num1 : 20",
+        explanation: ["num2 += num1 ← نفس معنى num2 = num2 + num1 = 10 + 10 = 20"],
+      },
+      {
+        id: "assign-minus",
+        title: "-= — طرح وإسناد",
+        code: `#include <stdio.h>\n\nint main(void) {\n    int num1 = 10;\n    int num2;\n    num2 = num1;\n    printf("num2 = num1 : %d\\n", num2);\n    num2 -= num1;\n    printf("num2 -= num1 : %d\\n", num2);\n    return 0;\n}`,
+        output: "num2 = num1 : 10\nnum2 -= num1 : 0",
+        explanation: ["num2 -= num1 ← نفس معنى num2 = num2 - num1 = 10 - 10 = 0"],
+      },
+      {
+        id: "assign-multiply",
+        title: "*= — ضرب وإسناد",
+        code: `#include <stdio.h>\n\nint main(void) {\n    int num1 = 10;\n    int num2;\n    num2 = num1;\n    printf("num2 = num1 : %d\\n", num2);\n    num2 *= num1;\n    printf("num2 *= num1 : %d\\n", num2);\n    return 0;\n}`,
+        output: "num2 = num1 : 10\nnum2 *= num1 : 100",
+        explanation: ["num2 *= num1 ← نفس معنى num2 = num2 * num1 = 10 * 10 = 100"],
+      },
+      {
+        id: "assign-divide",
+        title: "/= — قسمة وإسناد",
+        code: `#include <stdio.h>\n\nint main(void) {\n    int num1 = 10;\n    int num2;\n    num2 = num1;\n    printf("num2 = num1 : %d\\n", num2);\n    num2 /= num1;\n    printf("num2 /= num1 : %d\\n", num2);\n    return 0;\n}`,
+        output: "num2 = num1 : 10\nnum2 /= num1 : 1",
+        explanation: ["num2 /= num1 ← نفس معنى num2 = num2 / num1 = 10 / 10 = 1"],
+      },
+      {
+        id: "assign-modulus",
+        title: "%= — باقي القسمة وإسناد",
+        code: `#include <stdio.h>\n\nint main(void) {\n    int num1 = 10;\n    int num2;\n    num2 = num1;\n    printf("num2 = num1 : %d\\n", num2);\n    num2 %= num1;\n    printf("num2 %%= num1 : %d\\n", num2);\n    return 0;\n}`,
+        output: "num2 = num1 : 10\nnum2 %= num1 : 0",
+        explanation: ["num2 %= num1 ← نفس معنى num2 = num2 % num1 = 10 % 10 = 0"],
+      },
+      {
+        id: "assignment-summary",
+        title: "ملخص شامل",
+        table: {
+          headers: ["Operator", "مثال", "الحساب", "الناتج"],
+          rows: [
+            ["=", "num2 = num1", "num2 = 10", "10"],
+            ["+=", "num2 += num1", "10 + 10", "20"],
+            ["-=", "num2 -= num1", "10 - 10", "0"],
+            ["*=", "num2 *= num1", "10 * 10", "100"],
+            ["/=", "num2 /= num1", "10 / 10", "1"],
+            ["%=", "num2 %= num1", "10 % 10", "0"],
           ],
         },
       },
