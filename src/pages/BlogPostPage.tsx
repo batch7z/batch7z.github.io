@@ -38,17 +38,6 @@ const BlogPostPage = () => {
           animate={{ opacity: 1, y: 0 }}
           className="mb-8 sm:mb-12"
         >
-          {/* Hero image */}
-          {post.heroImage && (
-            <div className="w-full h-40 sm:h-56 md:h-72 rounded-xl overflow-hidden border border-border mb-6">
-              <img
-                src={post.heroImage}
-                alt={post.title}
-                className="w-full h-full object-cover"
-              />
-            </div>
-          )}
-
           <div className="flex items-center gap-3 mb-4">
             <span className="tag-green text-[10px] tracking-wider px-2.5 py-1 rounded-full">{post.category}</span>
             <span className="text-[10px] text-muted-foreground">{post.date}</span>
