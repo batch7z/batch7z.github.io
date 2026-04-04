@@ -1814,3 +1814,5 @@ export const blogPosts: BlogPost[] = [
     ],
   },
 ];
+
+// Reopen array — we need to append before the closing ];
