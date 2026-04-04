@@ -1579,4 +1579,238 @@ export const blogPosts: BlogPost[] = [
       },
     ],
   },
+  // ══════════════════════════════════════════════
+  // 12
+  // ══════════════════════════════════════════════
+  {
+    slug: "c-12-comparison-operators",
+    title: "12 - C language course - Comparison operators",
+    date: "2025-12-25",
+    category: "C Programming",
+    tags: ["c", "comparison", "relational", "operators"],
+    sections: [
+      {
+        id: "relational-intro",
+        title: "ما هي Relational Operators؟",
+        explanation: ["معاملات العلاقات تُستخدم في مقارنة العلاقة بين متغير وآخر", "الناتج 1 = true (صح)", "الناتج 0 = false (غلط)"],
+        table: {
+          headers: ["Operator", "المعنى", "مثال"],
+          rows: [["==", "يساوي", "5 == 3"], [">", "أكبر من", "5 > 3"], ["<", "أصغر من", "5 < 3"], ["!=", "لا يساوي", "5 != 3"], [">=", "أكبر من أو يساوي", "5 >= 3"], ["<=", "أصغر من أو يساوي", "5 <= 3"]],
+        },
+      },
+      {
+        id: "assign-vs-equal",
+        title: "الفرق بين = و ==",
+        explanation: ["= ← معامل إسناد — بيخلي قيمة طرف تتحط في الطرف التاني", "== ← معامل مقارنة — بيقارن بين قيمتين"],
+        code: `#include <stdio.h>\n\nint main(void) {\n    int num1 = 5;\n    int num2;\n    num2 = num1; // إسناد\n    printf("num1 = num2: %i", num2);\n    return 0;\n}`,
+        output: "num1 = num2: 5",
+      },
+      {
+        id: "equal-equal-1",
+        title: "== — يساوي (مثال 1)",
+        code: `#include <stdio.h>\n\nint main(void) {\n    int a = 10;\n    int b = 5;\n    printf("%d == %d : false : (%d)", a, b, a == b);\n    return 0;\n}`,
+        output: "10 == 5 : false : (0)",
+        explanation: ["a ≠ b ← الناتج 0 = false"],
+      },
+      {
+        id: "equal-equal-2",
+        title: "== — يساوي (مثال 2)",
+        code: `#include <stdio.h>\n\nint main(void) {\n    int a = 10;\n    int c = 15;\n    printf("%d == %d : false : (%d)", a, c, a == c);\n    return 0;\n}`,
+        output: "10 == 15 : false : (0)",
+        explanation: ["a ≠ c ← الناتج 0 = false"],
+      },
+      {
+        id: "greater-true",
+        title: "> — أكبر من (true)",
+        code: `#include <stdio.h>\n\nint main(void) {\n    int a = 10;\n    int b = 5;\n    printf("%d > %d : true : (%d)", a, b, a > b);\n    return 0;\n}`,
+        output: "10 > 5 : true : (1)",
+        explanation: ["10 > 5 ← صح ← الناتج 1 = true"],
+      },
+      {
+        id: "greater-false",
+        title: "> — أكبر من (false)",
+        code: `#include <stdio.h>\n\nint main(void) {\n    int a = 10;\n    int c = 15;\n    printf("%d > %d : false : (%d)", a, c, a > c);\n    return 0;\n}`,
+        output: "10 > 15 : false : (0)",
+        explanation: ["10 > 15 ← غلط ← الناتج 0 = false"],
+      },
+      {
+        id: "less-false",
+        title: "< — أصغر من (false)",
+        code: `#include <stdio.h>\n\nint main(void) {\n    int a = 10;\n    int b = 5;\n    printf("%d < %d : false : (%d)", a, b, a < b);\n    return 0;\n}`,
+        output: "10 < 5 : false : (0)",
+        explanation: ["10 < 5 ← غلط ← الناتج 0 = false"],
+      },
+      {
+        id: "less-true",
+        title: "< — أصغر من (true)",
+        code: `#include <stdio.h>\n\nint main(void) {\n    int a = 10;\n    int c = 15;\n    printf("%d < %d : true : (%d)", a, c, a < c);\n    return 0;\n}`,
+        output: "10 < 15 : true : (1)",
+        explanation: ["10 < 15 ← صح ← الناتج 1 = true"],
+      },
+      {
+        id: "not-equal-1",
+        title: "!= — لا يساوي (مثال 1)",
+        code: `#include <stdio.h>\n\nint main(void) {\n    int a = 10;\n    int b = 5;\n    printf("%d != %d : true : (%d)", a, b, a != b);\n    return 0;\n}`,
+        output: "10 != 5 : true : (1)",
+        explanation: ["10 ≠ 5 ← فعلاً مش بيتساووا ← الناتج 1 = true"],
+      },
+      {
+        id: "greater-equal-true",
+        title: ">= — أكبر من أو يساوي (true)",
+        code: `#include <stdio.h>\n\nint main(void) {\n    int a = 10;\n    int b = 5;\n    printf("%d >= %d : true : (%d)", a, b, a >= b);\n    return 0;\n}`,
+        output: "10 >= 5 : true : (1)",
+        explanation: ["10 >= 5 ← صح ← الناتج 1 = true"],
+      },
+      {
+        id: "greater-equal-false",
+        title: ">= — أكبر من أو يساوي (false)",
+        code: `#include <stdio.h>\n\nint main(void) {\n    int a = 10;\n    int c = 15;\n    printf("%d >= %d : false : (%d)", a, c, a >= c);\n    return 0;\n}`,
+        output: "10 >= 15 : false : (0)",
+        explanation: ["10 >= 15 ← غلط ← الناتج 0 = false"],
+      },
+      {
+        id: "less-equal-false",
+        title: "<= — أصغر من أو يساوي (false)",
+        code: `#include <stdio.h>\n\nint main(void) {\n    int a = 10;\n    int b = 5;\n    printf("%d <= %d : false : (%d)", a, b, a <= b);\n    return 0;\n}`,
+        output: "10 <= 5 : false : (0)",
+        explanation: ["10 <= 5 ← غلط ← الناتج 0 = false"],
+      },
+      {
+        id: "less-equal-true",
+        title: "<= — أصغر من أو يساوي (true)",
+        code: `#include <stdio.h>\n\nint main(void) {\n    int a = 10;\n    int c = 15;\n    printf("%d <= %d : true : (%d)", a, c, a <= c);\n    return 0;\n}`,
+        output: "10 <= 15 : true : (1)",
+        explanation: ["10 <= 15 ← صح ← الناتج 1 = true"],
+      },
+      {
+        id: "relational-summary",
+        title: "ملخص شامل — a=10, b=5, c=15",
+        table: {
+          headers: ["Operator", "المعنى", "مثال", "الناتج"],
+          rows: [
+            ["==", "يساوي", "a == b (10==5)", "0 (false)"],
+            [">", "أكبر من", "a > b (10>5)", "1 (true)"],
+            ["<", "أصغر من", "a < b (10<5)", "0 (false)"],
+            ["!=", "لا يساوي", "a != b (10!=5)", "1 (true)"],
+            [">=", "أكبر من أو يساوي", "a >= b (10>=5)", "1 (true)"],
+            ["<=", "أصغر من أو يساوي", "a <= b (10<=5)", "0 (false)"],
+          ],
+        },
+      },
+    ],
+  },
+  // ══════════════════════════════════════════════
+  // 13
+  // ══════════════════════════════════════════════
+  {
+    slug: "c-13-logical-operators",
+    title: "13 - C language course - Logical operators",
+    date: "2025-12-27",
+    category: "C Programming",
+    tags: ["c", "logical", "operators", "AND", "OR", "NOT"],
+    sections: [
+      {
+        id: "logical-intro",
+        title: "ما هي Logical Operators؟",
+        explanation: ["المعاملات المنطقية تُستخدم لربط أكثر من شرط مع بعض", "الناتج 1 = true (صح)", "الناتج 0 = false (غلط)"],
+        table: {
+          headers: ["Operator", "الاسم", "الوصف", "مثال"],
+          rows: [["&&", "AND", "لازم الشرطين يتحققوا", "x < 5 && x < 10"], ["||", "OR", "لازم أحد الشرطين يتحقق", "x < 5 || x < 4"], ["!", "NOT", "عكس نتيجة الشرط", "!(x == y)"]],
+        },
+      },
+      {
+        id: "and-truth-table",
+        title: "&& — AND (و) — جدول الحقيقة",
+        explanation: ['مبدأ && "الكل أو لا شيء" — لازم الطرفين يكونوا صح عشان الناتج يطلع 1'],
+        table: {
+          headers: ["الطرف الأيسر", "الطرف الأيمن", "الناتج"],
+          rows: [["true (1)", "true (1)", "1 (true)"], ["true (1)", "false (0)", "0 (false)"], ["false (0)", "true (1)", "0 (false)"], ["false (0)", "false (0)", "0 (false)"]],
+        },
+      },
+      {
+        id: "and-false-example",
+        title: "&& — مثال ناتج false",
+        code: `#include <stdio.h>\n\nint main(void) {\n    int num1 = 10;\n    int num2 = 20;\n    int num3 = num1 + num2; // = 30\n    int result;\n\n    result = (num1 == num2) && (num3 > num2);\n    printf("(num1 == num2) && (num3 > num2) is %d \\n", result);\n\n    return 0;\n}`,
+        output: "(num1 == num2) && (num3 > num2) is 0",
+        table: {
+          headers: ["الجزء", "الحساب", "الناتج"],
+          rows: [["num1 == num2", "10 == 20", "0 (false)"], ["num3 > num2", "30 > 20", "1 (true)"], ["0 && 1", "الطرف الأيسر غلط", "0 (false)"]],
+        },
+      },
+      {
+        id: "and-true-example",
+        title: "&& — مثال ناتج true",
+        code: `#include <stdio.h>\n\nint main(void) {\n    int num1 = 10;\n    int num2 = 20;\n    int num3 = num1 + num2; // = 30\n    int result;\n\n    result = (num1 == num1) && (num3 > num2);\n    printf("(num1 == num1) && (num3 > num2) is %d \\n", result);\n\n    return 0;\n}`,
+        output: "(num1 == num1) && (num3 > num2) is 1",
+        table: {
+          headers: ["الجزء", "الحساب", "الناتج"],
+          rows: [["num1 == num1", "10 == 10", "1 (true)"], ["num3 > num2", "30 > 20", "1 (true)"], ["1 && 1", "الطرفين صح", "1 (true)"]],
+        },
+      },
+      {
+        id: "or-truth-table",
+        title: "|| — OR (الأو) — جدول الحقيقة",
+        explanation: ['مبدأ || "يكفي واحد" — لو أي طرف صح، الناتج يطلع 1'],
+        table: {
+          headers: ["الطرف الأيسر", "الطرف الأيمن", "الناتج"],
+          rows: [["true (1)", "true (1)", "1 (true)"], ["true (1)", "false (0)", "1 (true)"], ["false (0)", "true (1)", "1 (true)"], ["false (0)", "false (0)", "0 (false)"]],
+        },
+      },
+      {
+        id: "or-true-example",
+        title: "|| — مثال ناتج true",
+        code: `#include <stdio.h>\n\nint main(void) {\n    int num1 = 10;\n    int num2 = 20;\n    int num3 = num1 + num2; // = 30\n    int result;\n\n    result = (num1 == num2) || (num3 > num2);\n    printf("(num1 == num2) || (num3 > num2) is %d \\n", result);\n\n    return 0;\n}`,
+        output: "(num1 == num2) || (num3 > num2) is 1",
+        table: {
+          headers: ["الجزء", "الحساب", "الناتج"],
+          rows: [["num1 == num2", "10 == 20", "0 (false)"], ["num3 > num2", "30 > 20", "1 (true)"], ["0 || 1", "طرف واحد صح يكفي", "1 (true)"]],
+        },
+      },
+      {
+        id: "or-false-example",
+        title: "|| — مثال ناتج false",
+        code: `#include <stdio.h>\n\nint main(void) {\n    int num1 = 10;\n    int num2 = 20;\n    int num3 = num1 + num2; // = 30\n    int result;\n\n    result = (num1 == num2) || (num3 < num2);\n    printf("(num1 == num2) || (num3 < num2) is %d \\n", result);\n\n    return 0;\n}`,
+        output: "(num1 == num2) || (num3 < num2) is 0",
+        table: {
+          headers: ["الجزء", "الحساب", "الناتج"],
+          rows: [["num1 == num2", "10 == 20", "0 (false)"], ["num3 < num2", "30 < 20", "0 (false)"], ["0 || 0", "مفيش ولا جزء صح", "0 (false)"]],
+        },
+      },
+      {
+        id: "not-true-to-false",
+        title: "! — NOT — عكس true يطلع false",
+        code: `#include <stdio.h>\n\nint main(void) {\n    int num1 = 10;\n    int num2 = 20;\n    int result;\n\n    result = !(num1 != num2);\n    printf("!(num1 != num2) is %d \\n", result);\n\n    return 0;\n}`,
+        output: "!(num1 != num2) is 0",
+        table: {
+          headers: ["الخطوة", "الحساب", "الناتج"],
+          rows: [["داخل الأقواس", "num1 != num2 = 10 != 20", "1 (true)"], ["بعد !", "عكس الـ 1", "0 (false)"]],
+        },
+      },
+      {
+        id: "not-false-to-true",
+        title: "! — NOT — عكس false يطلع true",
+        code: `#include <stdio.h>\n\nint main(void) {\n    int num1 = 10;\n    int num2 = 20;\n    int result;\n\n    result = !(num1 == num2);\n    printf("!(num1 == num2) is %d \\n", result);\n\n    return 0;\n}`,
+        output: "!(num1 == num2) is 1",
+        table: {
+          headers: ["الخطوة", "الحساب", "الناتج"],
+          rows: [["داخل الأقواس", "num1 == num2 = 10 == 20", "0 (false)"], ["بعد !", "عكس الـ 0", "1 (true)"]],
+        },
+      },
+      {
+        id: "logical-summary",
+        title: "ملخص شامل — num1=10, num2=20, num3=30",
+        table: {
+          headers: ["Operator", "المعنى", "مثال", "الناتج"],
+          rows: [
+            ["&&", "الطرفين لازم صح", "(10==20) && (30>20)", "0 (false)"],
+            ["&&", "الطرفين صح", "(10==10) && (30>20)", "1 (true)"],
+            ["||", "طرف واحد صح يكفي", "(10==20) || (30>20)", "1 (true)"],
+            ["||", "الطرفين غلط", "(10==20) || (30<20)", "0 (false)"],
+            ["!", "عكس true", "!(10 != 20)", "0 (false)"],
+            ["!", "عكس false", "!(10 == 20)", "1 (true)"],
+          ],
+        },
+      },
+    ],
+  },
 ];
