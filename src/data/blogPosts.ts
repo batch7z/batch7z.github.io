@@ -1813,6 +1813,298 @@ export const blogPosts: BlogPost[] = [
       },
     ],
   },
+  // ══════════════════════════════════════════════
+  // 14
+  // ══════════════════════════════════════════════
+  {
+    slug: "c-14-bitwise-operators",
+    title: "14 - C language course - BitWise operators",
+    date: "2025-12-03",
+    category: "C Programming",
+    tags: ["c", "bitwise", "operators", "AND", "OR", "XOR", "shift"],
+    sections: [
+      {
+        id: "bitwise-intro",
+        title: "ما هي Bitwise Operators؟",
+        explanation: [
+          "عوامل التشغيل على مستوى البت تُستخدم لإجراء عمليات على مستوى الـ Bit مباشرة",
+          "أثناء الحساب، العمليات الرياضية بتتحول لمستوى البت في الخلفية — وده بيخلي المعالجة أسرع وبيوفر طاقة",
+        ],
+        table: {
+          headers: ["Operator", "المعنى"],
+          rows: [["&", "Bitwise AND"], ["|", "Bitwise OR"], ["^", "Bitwise XOR"], ["~", "Bitwise Complement"], ["<<", "Shift Left"], [">>", "Shift Right"]],
+        },
+      },
+      {
+        id: "bitwise-vs-logical",
+        title: "مقارنة بالـ Logical Operators",
+        table: {
+          headers: ["Bitwise", "Logical", "الفرق"],
+          rows: [["&", "&&", "نفس المبدأ — لازم الطرفين 1"], ["|", "||", "نفس المبدأ — يكفي طرف واحد 1"], ["^", "—", "يطلع 1 لو الطرفين مختلفين"], ["~", "!", "عكس كل bit"]],
+        },
+      },
+      {
+        id: "bitwise-and",
+        title: "& — AND",
+        explanation: ["لازم الـ bit في الطرف الأول مطابق للـ bit المقابل في الطرف التاني عشان الناتج يطلع 1"],
+        code: `#include <stdio.h>\n\nvoid main() {\n    unsigned int x1 = 60;\n    unsigned int x2 = 13;\n    int x3 = 0;\n    x3 = x1 & x2;\n    printf("line &: %d\\n", x3);\n    return 0;\n}`,
+        output: "line &: 12",
+        table: {
+          headers: ["Bit 1", "Bit 2", "الناتج"],
+          rows: [["1", "1", "1"], ["1", "0", "0"], ["0", "1", "0"], ["0", "0", "0"]],
+        },
+        note: { type: "info", text: "الـ bits اللي اتطابقت بـ 1 في الطرفين كانت bit رقم 4 و bit رقم 8 — فالناتج = 4 + 8 = 12" },
+      },
+      {
+        id: "bitwise-or",
+        title: "| — OR",
+        explanation: ["يكفي طرف واحد يكون 1 عشان الناتج يطلع 1"],
+        code: `#include <stdio.h>\n\nvoid main() {\n    unsigned int x1 = 60;\n    unsigned int x2 = 13;\n    int x3 = 0;\n    x3 = x1 | x2;\n    printf("line |: %d\\n", x3);\n    return 0;\n}`,
+        output: "line |: 61",
+        table: {
+          headers: ["Bit 1", "Bit 2", "الناتج"],
+          rows: [["1", "1", "1"], ["1", "0", "1"], ["0", "1", "1"], ["0", "0", "0"]],
+        },
+      },
+      {
+        id: "bitwise-xor",
+        title: "^ — XOR",
+        explanation: ["بيطلع 1 فقط لو الطرفين مختلفين — لو متشابهين الناتج 0"],
+        code: `#include <stdio.h>\n\nvoid main() {\n    unsigned int x1 = 60;\n    unsigned int x2 = 13;\n    int x3 = 0;\n    x3 = x1 ^ x2;\n    printf("line ^: %d\\n", x3);\n    return 0;\n}`,
+        output: "line ^: 49",
+        table: {
+          headers: ["Bit 1", "Bit 2", "الناتج"],
+          rows: [["1", "1", "0"], ["1", "0", "1"], ["0", "1", "1"], ["0", "0", "0"]],
+        },
+      },
+      {
+        id: "bitwise-complement",
+        title: "~ — Complement",
+        explanation: ["بيعكس كل bit — الـ 0 يبقى 1 والـ 1 يبقى 0", "وبيعكس إشارة الرقم — الموجب يبقى سالب والعكس"],
+        code: `#include <stdio.h>\n\nvoid main() {\n    unsigned int x1 = 60;\n    int x3 = 0;\n    x3 = ~x1;\n    printf("line ~: %d\\n", x3);\n    return 0;\n}`,
+        output: "line ~: -61",
+      },
+      {
+        id: "bitwise-shift-left",
+        title: "<< — Shift Left",
+        explanation: ["بيحرك كل bit خطوات من اليمين للشمال", "حركة واحدة = ضرب في 2", "حركتين = ضرب في 4"],
+        code: `#include <stdio.h>\n\nvoid main() {\n    unsigned int x1 = 60;\n    int x3 = 0;\n    x3 = x1 << 2;\n    printf("line <<: %d\\n", x3);\n    return 0;\n}`,
+        output: "line <<: 240",
+        note: { type: "info", text: "التحقق: 60 × 4 = 240 ✅" },
+      },
+      {
+        id: "bitwise-shift-right",
+        title: ">> — Shift Right",
+        explanation: ["بيحرك كل bit خطوات من الشمال لليمين", "حركة واحدة = قسمة على 2", "حركتين = قسمة على 4"],
+        code: `#include <stdio.h>\n\nvoid main() {\n    unsigned int x1 = 60;\n    int x3 = 0;\n    x3 = x1 >> 2;\n    printf("line >>: %d\\n", x3);\n    return 0;\n}`,
+        output: "line >>: 15",
+        note: { type: "info", text: "التحقق: 60 ÷ 4 = 15 ✅" },
+      },
+      {
+        id: "bitwise-summary",
+        title: "ملخص شامل — x1=60, x2=13",
+        table: {
+          headers: ["Operator", "المعنى", "مثال", "الناتج"],
+          rows: [
+            ["&", "AND — لازم الطرفين 1", "60 & 13", "12"],
+            ["|", "OR — يكفي طرف واحد 1", "60 | 13", "61"],
+            ["^", "XOR — الطرفين مختلفين", "60 ^ 13", "49"],
+            ["~", "Complement — عكس كل bit", "~60", "-61"],
+            ["<<", "Shift Left — ضرب في 2^n", "60 << 2", "240"],
+            [">>", "Shift Right — قسمة على 2^n", "60 >> 2", "15"],
+          ],
+        },
+        note: { type: "info", text: "Bitwise بتتعامل مع الـ bits مباشرة = أسرع + أقل استهلاك من الطريقة العادية" },
+      },
+    ],
+  },
+  // ══════════════════════════════════════════════
+  // 15
+  // ══════════════════════════════════════════════
+  {
+    slug: "c-15-ternary",
+    title: "15 - C language course - ternary",
+    date: "2025-12-03",
+    category: "C Programming",
+    tags: ["c", "ternary", "conditional", "operator"],
+    sections: [
+      {
+        id: "ternary-intro",
+        title: "ما هي الجمل الشرطية (Ternary)؟",
+        explanation: [
+          "الجمل الشرطية اتسمت بـ الثالوث (Ternary) عشان بتتكون من 3 أجزاء:",
+          "الشرط — اللي بيتحقق منه",
+          "الناتج لو الشرط صح — بعد ?",
+          "الناتج لو الشرط غلط — بعد :",
+        ],
+        code: `(condition) ? (if_true) : (if_false);`,
+        table: {
+          headers: ["الجزء", "الشرح"],
+          rows: [["condition", "الشرط اللي بيتحقق منه"], ["?", "نهاية الشرط — بداية الناتج الأول"], ["if_true", "اللي بيحصل لو الشرط صح"], [":", "نهاية الناتج الأول — بداية الناتج التاني"], ["if_false", "اللي بيحصل لو الشرط غلط"]],
+        },
+      },
+      {
+        id: "ternary-true",
+        title: "مثال — تنفيذ الشرط الأول",
+        code: `#include <stdio.h>\n\nvoid main() {\n    int n1 = 5;\n    int n2 = 4;\n    (n1 > n2) ? printf("%d > %d\\n", n1, n2) : printf("%d > %d\\n", n2, n1);\n    return 0;\n}`,
+        output: "5 > 4",
+        explanation: ["n1 = 5 أكبر من n2 = 4 ← الشرط صح ← اتنفذ الجزء الأول"],
+      },
+      {
+        id: "ternary-false",
+        title: "مثال — تنفيذ الشرط الثاني",
+        code: `#include <stdio.h>\n\nvoid main() {\n    int n1 = 9;\n    int n2 = 10;\n    (n1 > n2) ? printf("%d > %d\\n", n1, n2) : printf("%d > %d\\n", n2, n1);\n    return 0;\n}`,
+        output: "10 > 9",
+        explanation: ["n1 = 9 مش أكبر من n2 = 10 ← الشرط غلط ← اتنفذ الجزء التاني"],
+      },
+      {
+        id: "ternary-variable",
+        title: "مثال — تخزين الناتج في متغير",
+        code: `#include <stdio.h>\n\nvoid main() {\n    int x = 0;\n    float k = 26.4231;\n    int t = (x == 1) ? printf("True Value: %f\\n", k) : printf("False Value: 0\\n");\n    return 0;\n}`,
+        output: "False Value: 0",
+        explanation: ["x = 0 ← مش بيساوي 1 ← الشرط غلط ← اتنفذ الجزء التاني"],
+      },
+      {
+        id: "ternary-largest",
+        title: "مثال — إيجاد أكبر 3 أرقام",
+        code: `#include <stdio.h>\n\nint main() {\n    int e, f, g, max;\n    printf("Enter any three numbers: \\n");\n    scanf_s("%d %d %d", &e, &f, &g);\n    max = (e > f) ? (e > g ? e : g) : (f > g ? f : g);\n    printf("%d is the largest number", max);\n    return 0;\n}`,
+        table: {
+          headers: ["الإدخال", "الناتج"],
+          rows: [["900 4 1", "900 is the largest number"], ["5 700 6", "700 is the largest number"], ["-9 0 888", "888 is the largest number"]],
+        },
+      },
+      {
+        id: "ternary-permissions",
+        title: "مثال — التحقق من صلاحيات (Bitwise)",
+        code: `#include <stdio.h>\n#define R 1\n#define W 2\n#define X 4\n\nint main() {\n    int per = 0;\n    per = R | W | X;\n    per & X ? printf("execution permission given\\n") : printf("NO! you can't execute\\n");\n    return 0;\n}`,
+        output: "execution permission given",
+        table: {
+          headers: ["الجزء", "الشرح"],
+          rows: [["#define R 1", "ثابت لصلاحية القراءة"], ["#define W 2", "ثابت لصلاحية الكتابة"], ["#define X 4", "ثابت لصلاحية التنفيذ"], ["per = R | W | X", "أعطى كل الصلاحيات"], ["per & X", "بيتحقق من صلاحية X باستخدام &"]],
+        },
+      },
+      {
+        id: "ternary-leap",
+        title: "مثال — السنة الكبيسة",
+        code: `#include <stdio.h>\n\nint main() {\n    int yr;\n    printf("enter year: ");\n    scanf_s("%d", &yr);\n    (yr % 4 == 0) ? (yr % 100 != 0 ? printf("%d is a leap year\\n", yr)\n        : (yr % 400 == 0 ? printf("%d is a leap year\\n", yr)\n            : printf("%d is not a leap year\\n", yr)))\n                : printf("%d is not a leap year\\n", yr);\n    return 0;\n}`,
+        table: {
+          headers: ["الإدخال", "الناتج"],
+          rows: [["2026", "2026 is not a leap year"], ["2000", "2000 is a leap year"], ["1900", "1900 is not a leap year"]],
+        },
+      },
+      {
+        id: "ternary-even-odd",
+        title: "مثال — زوجي أم فردي",
+        code: `#include <stdio.h>\n\nint main() {\n    int d;\n    printf("put in number: ");\n    scanf_s("%i", &d);\n    d % 2 == 0 ? printf("%d is even\\n", d) : printf("%d is odd", d);\n    return 0;\n}`,
+        table: {
+          headers: ["الإدخال", "الناتج"],
+          rows: [["10", "10 is even"], ["11", "11 is odd"]],
+        },
+      },
+      {
+        id: "ternary-summary",
+        title: "ملخص شامل",
+        explanation: [
+          "الصيغة: (condition) ? (if_true) : (if_false);",
+          "أقصر من if/else",
+          "ينفع يتخزن في متغير",
+          "ينفع تعمل شروط متداخلة",
+          "بتوفر سطور في الكود",
+        ],
+      },
+    ],
+  },
+  // ══════════════════════════════════════════════
+  // 16
+  // ══════════════════════════════════════════════
+  {
+    slug: "c-16-if-else",
+    title: "16 - C language course - if - else if- else",
+    date: "2025-12-03",
+    category: "C Programming",
+    tags: ["c", "if", "else", "conditional", "control flow"],
+    sections: [
+      {
+        id: "if-intro",
+        title: "ما هي جملة if؟",
+        explanation: ["جملة if هي أبسط أشكال الجمل الشرطية في لغة C"],
+        code: `if (condition) {\n    // الكود اللي هيتنفذ لو الشرط صح\n}`,
+        table: {
+          headers: ["الجزء", "الشرح"],
+          rows: [["if", "بداية الجملة الشرطية"], ["(condition)", "الشرط اللي بيتحقق منه"], ["{ }", "الكود اللي هيتنفذ لو الشرط صح"]],
+        },
+      },
+      {
+        id: "if-only",
+        title: "الشكل الأول — if بدون else",
+        code: `#include <stdio.h>\n\nint main() {\n    int x;\n    printf("put in number to be checked : ");\n    scanf_s("%d", &x);\n    if (x % 2 == 0)\n        printf("%d is even\\n", x);\n    if (x % 2 != 0)\n        printf("%d is odd\\n", x);\n    return 0;\n}`,
+        output: "put in number to be checked : 10\n10 is even",
+        note: { type: "warning", text: "في المثال ده اتعملت اتنين if منفصلين — الأفضل تستخدم if مع else" },
+      },
+      {
+        id: "if-else",
+        title: "الشكل الثاني — if مع else",
+        code: `#include <stdio.h>\n\nint main() {\n    int y;\n    printf("Put in number to be checked : ");\n    scanf_s("%d", &y);\n    if (y % 2 == 0) {\n        printf("number is even %d\\n", y);\n    }\n    else {\n        printf("number is odd %d\\n", y);\n    }\n    return 0;\n}`,
+        output: "Put in number to be checked : 100\nnumber is even 100",
+        explanation: ["else بتتنفذ تلقائياً لو الشرط في if متحققش — أفضل من عمل اتنين if"],
+      },
+      {
+        id: "if-multiple",
+        title: "الشكل الثالث — if متعددة",
+        code: `#include <stdio.h>\n\nint main() {\n    int per1 = 16;\n    int per2 = 30;\n    if (per1 < 18)\n        printf("personal 1 is not eligible to vote.\\n");\n    else\n        printf("personal 1 is eligible to vote.\\n");\n    if (per2 < 18)\n        printf("personal 2 is not eligible to vote.\\n");\n    else\n        printf("personal 2 is eligible to vote.\\n");\n    return 0;\n}`,
+        output: "personal 1 is not eligible to vote.\npersonal 2 is eligible to vote.",
+      },
+      {
+        id: "if-else-if",
+        title: "الشكل الرابع — if و else if و else",
+        code: `#include <stdio.h>\n\nint main() {\n    int n;\n    printf("Enter any number : ");\n    scanf_s("%d", &n);\n    if (n > 0)\n        printf("n > 0\\n");\n    else if (n < 0)\n        printf("n < 0\\n");\n    else {\n        printf("n == 0\\n");\n    }\n    return 0;\n}`,
+        table: {
+          headers: ["الإدخال", "الناتج"],
+          rows: [["1", "n > 0"], ["-1", "n < 0"], ["0", "n == 0"]],
+        },
+        explanation: ["else if بتفحص شرط تاني لو الأول متحققش", "else الأخيرة بتتنفذ لو مفيش ولا شرط اتحقق"],
+      },
+      {
+        id: "if-grades",
+        title: "مثال — التقديرات الدراسية",
+        code: `#include <stdio.h>\n\nint main() {\n    int mark;\n    printf("Enter the percentage : ");\n    scanf_s("%d", &mark);\n    if (mark <= 100 && mark >= 90)\n        printf("A+ Grade\\n");\n    else if (mark < 90 && mark >= 80)\n        printf("A Grade\\n");\n    else if (mark < 80 && mark >= 70)\n        printf("B Grade\\n");\n    else if (mark < 70 && mark >= 60)\n        printf("C Grade\\n");\n    else if (mark < 60 && mark >= 50)\n        printf("D Grade\\n");\n    else {\n        printf("F Failed\\n");\n    }\n    return 0;\n}`,
+        table: {
+          headers: ["الدرجة", "التقدير"],
+          rows: [["90 – 100", "A+ Grade"], ["80 – 89", "A Grade"], ["70 – 79", "B Grade"], ["60 – 69", "C Grade"], ["50 – 59", "D Grade"], ["أقل من 50", "F Failed"]],
+        },
+      },
+      {
+        id: "if-age",
+        title: "مثال — السن القانوني للعمل",
+        code: `#include <stdio.h>\n\nint main() {\n    int age;\n    printf("please enter your age: ");\n    scanf_s("%d", &age);\n    if (age < 18) {\n        printf("you are minor\\n");\n        printf("not eligible to work\\n");\n    }\n    else {\n        if (age >= 18 && age <= 60) {\n            printf("you are eligible to work\\n");\n        }\n        else {\n            printf("you are too old to work\\n");\n            printf("please collect your pension!\\n");\n        }\n    }\n    return 0;\n}`,
+        table: {
+          headers: ["السن", "الناتج"],
+          rows: [["أقل من 18", "you are minor + not eligible to work"], ["18 – 60", "you are eligible to work"], ["أكبر من 60", "you are too old to work + collect pension"]],
+        },
+      },
+      {
+        id: "if-leap",
+        title: "مثال — السنة الكبيسة",
+        code: `#include <stdio.h>\n\nint main() {\n    int year;\n    printf("enter the year : ");\n    scanf_s("%d", &year);\n    if (year % 100 == 0) {\n        if (year % 400 == 0)\n            printf("%d is leap year\\n", year);\n        else\n            printf("%d is not leap year\\n", year);\n    }\n    else {\n        if (year % 4 == 0)\n            printf("%d is leap year\\n", year);\n        else\n            printf("%d is not leap year\\n", year);\n    }\n    return 0;\n}`,
+        table: {
+          headers: ["الإدخال", "الناتج"],
+          rows: [["2026", "2026 is not leap year"], ["2000", "2000 is leap year"], ["1900", "1900 is not leap year"]],
+        },
+      },
+      {
+        id: "if-summary",
+        title: "ملخص أشكال جملة if",
+        table: {
+          headers: ["الشكل", "الصيغة", "متى تستخدمه"],
+          rows: [
+            ["الأول", "if فقط", "شرط واحد بس"],
+            ["الثاني", "if + else", "حالتين — صح أو غلط"],
+            ["الثالث", "if متعددة", "متغيرات مختلفة كل واحد بشرطه"],
+            ["الرابع", "if + else if + else", "أكتر من حالة لنفس المتغير"],
+          ],
+        },
+        note: { type: "info", text: "{ } مش إجبارية لو سطر واحد بس — لكن الأفضل تحطها دايماً" },
+      },
+    ],
+  },
 ];
-
-// Reopen array — we need to append before the closing ];
